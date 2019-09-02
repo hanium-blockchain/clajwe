@@ -1,1 +1,104 @@
-//- 새롭게 등록하는 화면
+//- 자산 등록 화면
+
+extends ../layout
+
+block content
+    h1 register asset
+    br
+    br
+
+    form(action='registers/request_register_asset', method='POST')
+        .form-group.row
+            label.col(for='name') 자산명
+            input.form-control.col-10(type='text' id='name' name='name' placeholder='자산명을 입력하세요')
+
+        .form-group.row
+            label.col(for='number') 자산 번호
+            input.form-control.col-10(type='text' id='number' name='number' placeholder='자산 번호를 입력하세요')
+
+        .form-group.row
+            label.col(for='address') 자산 소재지
+            select.form-control.col-3(id='select-address')
+                option 서울특별시
+                option 부산광역시
+                option 전라북도
+                option 전라남도
+                option 충청북도
+                option 충청남도
+            select.form-control.col-3(id='select-address2')
+                option 서대문구
+                option 강남구
+                option 마포구
+                option 은평구
+            input.form-control.col-4(type='text' id='address' name='address' placeholder='상세 주소를 입력하세요')
+
+        .form-group.row 
+            label.col(for='area') 면적
+            input.form-control.col-10(type='text' id='area' name='area' placeholder='면적을 입력하세요')
+
+        .form-group.row
+            label.col(for='complete-date') 준공년월
+            select.form-control.col-4(id='complete-date-year')
+                option 2010
+                option 2011
+                option 2012
+                option 2013
+                option 2014
+                option 2015
+            select.form-control.col-3(id='complete-date-month')
+                option 1
+                option 2
+                option 3
+                option 4
+                option 5
+                option 6
+            select.form-control.col-3(id='complete-date-day')
+                option 1
+                option 2
+                option 3
+                option 4
+                option 5
+                option 6
+                option 7
+                option 8
+
+        .form-group
+            label(for='description') 자산 설명
+            textarea.form-control(id='description' rows='5' placeholder='자산에 대한 설명을 입력해 주세요')
+
+
+        .form-group.row
+            label.col(for='end-date') 청산 일시
+            select.form-control.col-4(id='end-date-year')
+                option 2020
+                option 2021
+                option 2022
+                option 2023
+                option 2024
+                option 2025
+            select.form-control.col-3(id='end-date-month')
+                option 1
+                option 2
+                option 3
+                option 4
+                option 5
+                option 6
+            select.form-control.col-3(id='end-date-day')
+                option 1
+                option 2
+                option 3
+                option 4
+                option 5
+                option 6
+                option 7
+                option 8
+
+        .form-group
+            label(for='photo') 사진 등록
+            input.form-control-file(type='file' id='photo')
+            
+        br
+        .form-group
+            button.btn.btn-dark(type='submit') 자산 등록
+            
+
