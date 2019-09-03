@@ -51,3 +51,18 @@ th.detail {
   background-color: lightgray;
   width : 40%;
 }
+
+td.button{
+  text-align: right;
+}
+
+/* 평가 css */
+table.table.table-bordered.evaluate {
+  width: 40%;
+  margin: auto;
+}
+
+th.evaluate {
+  background-color: lightgray;
+  width : 40%;
+}

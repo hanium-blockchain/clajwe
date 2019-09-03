@@ -1,30 +1,5 @@
 //- 디테일2
 
-extends ../layout
-
-block content
-    h1 detail page2
-    hr
-
-    table.table.table-bordered.detail
-        tbody
-            tr
-                th.detail(rowspan='2') 가치
-                td(scope='row') 코인 #{invest.value}
-            tr  
-                td(scope='row') 현금 #{invest.value} 원 
-            tr
-                th.detail(scope='row') 현재 투자 인원
-                td(scope='row') #{invest.invest_person_num} 명 
-            tr 
-                th.detail(scope='row') 투자 총액
-                td(scope='row') #{invest.invest_sum} 원 
-            tr
-                th.detail(scope='row') 남은 투자 금액 
-                td(scope='row') #{invest.invest_left} 원
-            tr
-                td(colspan='2')
-                    button.btn.btn-dark 투자하기
 
     
     

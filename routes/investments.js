@@ -22,8 +22,8 @@ router.get('/detail2', function(req, res, next){
         invest_sum: 2233,
         invest_left: 1122,
     }
-    res.render('detail/detail_config', {invest: invest});
-})
+    res.render('detail_includes/invest_asset', {invest: invest});
+});
 
 
 module.exports = router;
