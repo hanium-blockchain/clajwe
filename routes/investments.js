@@ -15,5 +15,15 @@ router.get('/detail', function(req, res, next){
     res.render('detail/detail_context', {asset: asset});
 });
 
+router.get('/detail2', function(req, res, next){
+    const invest = {
+        value: 1122333,
+        invest_person_num: 3,
+        invest_sum: 2233,
+        invest_left: 1122,
+    }
+    res.render('detail/detail_config', {invest: invest});
+})
+
 
 module.exports = router;

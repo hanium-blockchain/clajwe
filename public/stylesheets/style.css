@@ -38,3 +38,16 @@ table.table.table-bordered {
   width: 65%;
   margin: auto;
 }
+
+/* 투자 css */
+table.table.table-bordered.detail {
+  width: 40%;
+  margin: auto;
+}
+
+th.detail {
+  vertical-align: top;
+  text-align: center;
+  background-color: lightgray;
+  width : 40%;
+}
