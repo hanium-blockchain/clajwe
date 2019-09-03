@@ -8,7 +8,7 @@ a {
 }
 
 /* 자산 등록 css */
-th{
+.newRegiTable th{
   vertical-align: top;
   text-align: center;
   background-color: lightgray;

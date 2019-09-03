@@ -9,10 +9,6 @@ var connection = mysql.createConnection({
     database: 'testDB',
 });
 
-router.get('/new', function(req, res, next){
-    res.render('detail/new_register');
-});
-
 function validateRegisterForm(form){
     var name = form.name || '';
     var number = form.number || 0;
@@ -33,6 +29,14 @@ function validateRegisterForm(form){
     return null;
 }
 
+router.get('/new', function(req, res, next){
+    res.render('detail/new_register');
+});
+
+
+
+
+
 router.post('/request_register', (req, res, next) => {
     var err = validateRegisterForm(req.body);
     if(err){
@@ -51,5 +55,7 @@ router.post('/request_register', (req, res, next) => {
     req.flash('success', 'register success!');
     res.redirect('back');
 });
+
+
 
 module.exports = router;
