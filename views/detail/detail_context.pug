@@ -6,27 +6,27 @@ block content
     h1 detail page
     hr
 
-    table.table.table-bordered
+    table.table.table-bordered.asset-info
         tbody
             tr  
-                th(scope='row') 자산명
+                th.asset-info(scope='row') 자산명
                 td(scope='row')= asset.name
-                th(scope='row') 자산 번호
+                th.asset-info(scope='row') 자산 번호
                 td(scope='row')= asset.number
             tr
-                th(scope='row') 지신 소재지
+                th.asset-info(scope='row') 자산 소재지
                 td(colspan='3')= asset.address
             tr
-                th(scope='row') 면적
+                th.asset-info(scope='row') 면적
                 td(colspan='3') 계약면적 #{asset.number} m²
             tr
-                th(scope='row') 준공년월
+                th.asset-info(scope='row') 준공년월
                 td(colspan='3')= asset.complete_date
             tr
-                th(scope='row') 자산 설명
+                th.asset-info(scope='row') 자산 설명
                 td(colspan='3')= asset.description
             tr
-                th(scope='row') 청산 일시
+                th.asset-info(scope='row') 청산 일시
                 td(colspan='3')= asset.end_date
 
 

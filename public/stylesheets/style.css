@@ -66,3 +66,26 @@ th.evaluate {
   background-color: lightgray;
   width : 40%;
 }
+
+
+/* 자산 상세정보 css */
+table.table.table-bordered.asset-info {
+  width: 70%;
+  margin: auto;
+}
+
+th.asset-info{
+  background-color: lightgray;
+  width: 30%;
+}
+
+/* 투자 상세 정보 css */
+table.table.table-bordered.invest-info {
+  width: 70%;
+  margin: auto;
+}
+
+th.invest-info{
+  background-color: lightgray;
+  width: 50%;
+}
