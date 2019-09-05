@@ -12,6 +12,34 @@ router.get('/detail2', function(req, res, next){
     res.render('detail_includes/invest_asset', {invest: invest});
 });
 
+router.get('/info', function(req, res, next){
+    const asset = {
+        value: 100100,
+        left: 20020,
+    }
+    const investList = [
+        {
+            name: '김김김',
+            invest: 200,
+        },
+        {
+            name: '박박박',
+            invest: 300,
+        },
+        {
+            name: '최최최',
+            invest: 500,
+        },
+        {
+            name: '정정정',
+            invest: 300,
+        }
+    ]
+
+    res.render('detail_includes/invest_info', { asset: asset, investList: investList });
+});
+
+
 router.get('/list', function (req, res, next) {
     var investHead = ['#', '분류', '자산명', '등록자', '완료일자']
     const invest = Data.investList
