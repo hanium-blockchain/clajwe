@@ -2,16 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Data = require('./data')
 
-
-router.get('/detail2', function(req, res, next){
-    const user = {
-        name: '김김김'
-    }
-    res.render('detail_includes/evaluate_asset', { user: user });
-});
-
 router.get('/detail', function(req, res, next){
-    // res.render('detail/eval_detail');
     const asset = Data.asset;
     const user = {
         name: '김김김'

@@ -4,7 +4,8 @@ var Data = require('./data')
 
 router.get('/detail', function(req, res, next){
     const asset = Data.asset
-    res.render('detail/detail_context', {asset: asset});
+    const invest = Data.investDetail2
+    res.render('detail/invest_detail', {asset: asset, invest: invest});
 });
 
 router.get('/detail2', function(req, res, next){
