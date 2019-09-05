@@ -12,19 +12,20 @@ var connection = mysql.createConnection({
 function validateRegisterForm(form){
     var name = form.name || '';
     var number = form.number || 0;
-    var address = form.address || '';
+    var address = form.address1 + ' ' + form.address2 + ' ' + form.address3;
     var area = form.area || 0;
-    var complete_date = form.complete-date-year || '';
-    var description = form.description || '';
-    var end_date = form.end-date-year || '';
+    var completeDate = form.completeYear + '년 ' + form.completeMonth + '월 ' + form.completeDay + '일';
+    var description = form.description;
+    var endDate = form.endYear + '년 ' + form.endMonth + '월 ' + form.endDay + '일'; 
 
-    if(!name){ return 'Name is required'; }
-    if(!number) { return 'Number is required'; }
-    if(!address) { return 'Address is required'; }
-    if(!area) { return 'Area is required'; }
-    if(!complete_date) { return 'Complete-date is required'; }
-    if(!description) { return 'Description is required'; }
-    if(!end_date) { return 'End-date is required'; }
+    console.log(address);
+    console.log(completeDate);
+    console.log(endDate);
+
+    if(!name) return 'Name is required';
+    if(!number) return 'Number is required';
+    if(!area) return 'area is required';
+    if(!description) return 'Description is required';
     
     return null;
 }
@@ -35,7 +36,17 @@ router.get('/new', function(req, res, next){
 
 
 router.post('/request_register', (req, res, next) => {
+    const user = {
+        userid: 'userid',
+        name: '등록자',
+    }
+
     console.log(req.body);
+
+    var err = validateRegisterForm(req.body);
+    
+
+
     res.redirect('back');
 });
 
