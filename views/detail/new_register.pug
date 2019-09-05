@@ -13,13 +13,22 @@ block content
                 tr
                     .form-group
                         th(scope='row') 자산명
-                        td(scope='row')
+                        td(colspan='3')
                             input.form-control.col-10(type='text' id='name' name='name' placeholder='자산명') 
 
+
+                tr
                     .form-group
                         th(scope='row') 자산번호
-                        td(scope='row')
+                        td.regi(scope='row')
                             input.form-control.col-10(type='text' id='number' name='number' placeholder='자산 번호')
+                    .form-group
+                        th(scope='row') 카테고리
+                        td.regi(scope='row')
+                            select.form-control.col-10(id='category' name='category')
+                                option 아파트
+                                option 주택
+                                option 부동산어쩌구
 
                 tr
                     .form-group

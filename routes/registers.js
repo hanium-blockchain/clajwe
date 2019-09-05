@@ -12,15 +12,8 @@ var connection = mysql.createConnection({
 function validateRegisterForm(form){
     var name = form.name || '';
     var number = form.number || 0;
-    var address = form.address1 + ' ' + form.address2 + ' ' + form.address3;
     var area = form.area || 0;
-    var completeDate = form.completeYear + '년 ' + form.completeMonth + '월 ' + form.completeDay + '일';
-    var description = form.description;
-    var endDate = form.endYear + '년 ' + form.endMonth + '월 ' + form.endDay + '일'; 
-
-    console.log(address);
-    console.log(completeDate);
-    console.log(endDate);
+    var description = form.description || '';
 
     if(!name) return 'Name is required';
     if(!number) return 'Number is required';
@@ -37,13 +30,47 @@ router.get('/new', function(req, res, next){
 
 router.post('/request_register', (req, res, next) => {
     const user = {
-        userid: 'userid',
-        name: '등록자',
+        public_key: 'pk2'
     }
 
     console.log(req.body);
 
     var err = validateRegisterForm(req.body);
+    if(err){
+        console.log('register form error!!!');
+        return res.redirect('back')
+    }
+    
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1;
+    var yyyy = today.getFullYear();
+
+    today = yyyy + '년 ' + mm+ '월 ' + dd + '일';
+    var address = req.body.address1 + ' ' + req.body.address2 + ' ' + req.body.address3;
+    var completeDate = req.body.completeYear + '년 ' + req.body.completeMonth + '월 ' + req.body.completeDay + '일';
+    var endDate = req.body.endYear + '년 ' + req.body.endMonth + '월 ' + req.body.endDay + '일'; 
+
+    
+    connection.connect(function(err) {
+        if(err){
+            console.log(err);
+            console.log('connection error!!!');
+            return res.redirect('back');
+        }
+        console.log('connectoin success!!!')
+        var sql = "INSERT INTO assets(user_id, address, category, asset_no, asset_name, area, completion_date, description, date, end_date) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"
+        var params = [user.public_key, address, req.body.category, req.body.number, req.body.name, req.body.area, completeDate, req.body.description, today, endDate];
+        connection.query(sql, params, function(err, result){
+            if(err){
+                console.log(err);
+                console.log('data insert error!!!');
+                return;
+            }
+            console.log('insert success!!!');
+        })
+    })
+    
     
 
 

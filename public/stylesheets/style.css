@@ -12,7 +12,8 @@ a {
   vertical-align: top;
   text-align: center;
   background-color: lightgray;
-  width : 20%;
+  table-layout: fixed;
+  width: 20%;
 }
 
 select.address{
