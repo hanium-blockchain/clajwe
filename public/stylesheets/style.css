@@ -59,7 +59,7 @@ td.button{
 
 /* 평가 css */
 table.table.table-bordered.evaluate {
-  width: 40%;
+  width: 100%;
   margin: auto;
 }
 
@@ -71,7 +71,7 @@ th.evaluate {
 
 /* 자산 상세정보 css */
 table.table.table-bordered.asset-info {
-  width: 70%;
+  width: 100%;
   margin: auto;
 }
 
