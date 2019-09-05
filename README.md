@@ -62,7 +62,11 @@ npm start
 
 **|  |____detail_includes**
 
-|  |  |____etc.pug
+|  |  |____evaluate_asset.pug
+
+|  |  |____invest_asset.pug
+
+|  |  |____invest_info.pug
 
 
 

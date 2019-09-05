@@ -10,22 +10,22 @@ block content
         each item in list
           th(scope='col')= item
     tbody
-      if check === 'eval'
-        each e, idx in eval
-          tr
-            th(rowspan=2, scope='row')= idx+1
-            td= e.category
-            td= e.title
-            td= e.register
-            td= e.D_day
-          tr
-            td(colspan=4)= `가치 : ${e.value}`
-      else if check === 'invest'
+      if check === 'invest'
         each i, idx in invest
           tr
-            th(scope='row')= idx+1
+            th(rowspan=2, scope='row')= idx+1
             td= i.category
             td= i.title
             td= i.register
-            td= i.date
+            td= i.D_day
+          tr
+            td(colspan=4)= `가치 : ${i.value}`
+      else if check === 'eval'
+        each e, idx in eval
+          tr
+            th(scope='row')= idx+1
+            td= e.category
+            td= e.title
+            td= e.register
+            td= e.date
 
