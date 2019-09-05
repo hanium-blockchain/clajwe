@@ -34,25 +34,8 @@ router.get('/new', function(req, res, next){
 });
 
 
-
-
-
 router.post('/request_register', (req, res, next) => {
-    var err = validateRegisterForm(req.body);
-    if(err){
-        req.flash('danger', err);
-        return res.redirect('back');
-    }
-    connection.connect(function(err){
-        if(err){
-            console.log(err);
-            console.log('connection error!!');
-        }
-        console.log('connection success!');
-
-    });
     console.log(req.body);
-    req.flash('success', 'register success!');
     res.redirect('back');
 });
 
