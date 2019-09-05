@@ -1,5 +1,20 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  
+
+  .card.text-center
+  .card-header
+    ul.nav.nav-tabs.card-header-tabs
+      li.nav-item
+        a.nav-link.active(href='#') Active
+      li.nav-item
+        a.nav-link(href='#') Link
+      li.nav-item
+        a.nav-link.disabled(href='#' tabindex='-1' aria-disabled='true') Disabled
+  .card-body
+    h5.card-title Special title treatment
+    p.card-text With supporting text below as a natural lead-in to additional content.
+    a.btn.btn-primary(href='#') Go somewhere
+
+  

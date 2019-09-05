@@ -1,0 +1,45 @@
+extends ../layout
+
+block content
+    .container
+        h1.title  Signin for blockchain
+        br
+
+        form(action='users/', method='POST')
+
+            .form-group.signin
+                label(for='id') id
+                input.form-control.id(type='text', id='id', name='id', placeholder='input your id') 
+                a.btn.btn-dark.id(href='/') confirm id
+
+            .form-group.signin
+                label(for='password') pw
+                input.form-control(type='password', id='password', name='password', placeholder='input your password')
+
+            .form-group.signin
+                label(for='password2') check pw
+                input.form-control(type='password', id='password2', name='password2', placeholder='check your password')
+
+            .form-group.signin
+                label(for='name') Name
+                input.form-control(type='text', id='name', name='name', placeholder='input your name')
+
+            .form-group.signin
+                label(for='email') Email
+                input.form-control(type='text', id='email', name='email', placeholder='input your email')
+
+            .form-group.signin
+                label(for='phone') Phone
+                input.form-control.phone(type='phone', id='phone', name='phone', placeholder='input your phone number  (ex 01012341234)')
+                a.btn.btn-dark.phone(href='/') auth phone
+
+            .form-group.signin
+                label(for='evaluator') Evaluator
+                input.form-control(type='checkbox', name='evaluator')
+            
+            .form-group-submit 
+                button.btn.btn-dark.submit(type='submit') Signin
+
+            .form-group-submit
+                a.btn.btn-dark.back(href='/') back
+
