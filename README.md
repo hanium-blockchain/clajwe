@@ -76,7 +76,7 @@ npm start
 
 | Table명    | PK       | FK                           |                                                              |
 | ---------- | -------- | ---------------------------- | ------------------------------------------------------------ |
-| Users      | user_id  |                              | name<br/>id<br/>pwd<br/>email<br/>is_evaluator               |
+| Users      | public_key  |                              | name<br/>pwd<br/>email<br/>is_evaluator               |
 | Hashes     | hash_id  | user_id                      | hash_code                                                    |
 | Assets     | asset_id | user_id(등록자)              | address<br/>category<br/>asset_no<br/>asset_name<br/>area<br/>completion_date<br/>Description<br/>date(등록일자)<br/>is_chain<br/>end_date<br/>is_evaluate<br/>is_approved |
 | Coins      | coin_id  | user_id<br />asset_id        | coin                                                         |
