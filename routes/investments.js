@@ -8,16 +8,13 @@ router.get('/detail', function(req, res, next){
     res.render('detail/invest_detail', {asset: asset, invest: invest});
 });
 
-router.get('/detail2', function(req, res, next){
-    const invest = Data.investDetail2
-    res.render('detail_includes/invest_asset', {invest: invest});
+router.get('/liquidation', function(req, res, next){
+    const asset = Data.asset
+    res.render('detail/liquidation_detail', {asset: asset});
 });
 
 router.get('/info', function(req, res, next){
-    const asset = {
-        value: 100100,
-        left: 20020,
-    }
+    const asset2 = Data.asset2
     const investList = [
         {
             name: '김김김',
@@ -36,8 +33,7 @@ router.get('/info', function(req, res, next){
             invest: 300,
         }
     ]
-
-    res.render('detail_includes/invest_info', { asset: asset, investList: investList });
+    res.render('detail_includes/invest_info', { asset: asset2, investList: investList });
 });
 
 

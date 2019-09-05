@@ -1,26 +1,20 @@
-extends ../layout
+table.table.table-bordered.invest-info
+    tbody
+        tr
+            th.invest-info 가치
+            td= asset.value
+        tr
+            th.invest-info 남은 가치 총 액
+            td= asset.left
 
-block content
-    h1 invest info 
-    hr
+br
+br
 
-    table.table.table-bordered.invest-info
-        tbody
+table.table.table-bordered.invest-info
+    tbody
+        tr
+            th(colspan='2') 투자 내역 리스트
+        // each invest in investList
             tr
-                th.invest-info 가치
-                td= asset.value
-            tr
-                th.invest-info 남은 가치 총 액
-                td= asset.left
-
-    br
-    br
-
-    table.table.table-bordered.invest-info
-        tbody
-            tr
-                th(colspan='2') 투자 내역 리스트
-            each invest in investList
-                tr
-                    td= invest.name
-                    td= invest.invest 
+                td= invest.name
+                td= invest.invest 

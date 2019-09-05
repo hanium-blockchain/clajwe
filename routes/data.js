@@ -13,6 +13,31 @@ exports.investDetail2 = {
   invest_sum: 2233,
   invest_left: 1122,
 }
+
+exports.asset2 = {
+    value: 100100,
+    left: 20020,
+}
+
+exports.investList = [
+    {
+        name: '김김김',
+        invest: 200,
+    },
+    {
+        name: '박박박',
+        invest: 300,
+    },
+    {
+        name: '최최최',
+        invest: 500,
+    },
+    {
+        name: '정정정',
+        invest: 300,
+    }
+]
+
 exports.evalList = [
   {
       category: '건물',
