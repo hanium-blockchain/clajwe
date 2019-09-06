@@ -2,10 +2,53 @@ var express = require('express');
 var router = express.Router();
 var Data = require('./data')
 
+var mysql = require('mysql');
+var connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '1234',
+    database: 'testDB',
+});
+
 router.get('/detail', function(req, res, next){
     const asset = Data.asset
     const invest = Data.investDetail2
     res.render('detail/invest_detail', {asset: asset, invest: invest});
+});
+
+router.post('/request_invest', (req, res, next) => {
+    console.log(req.body);
+    const asset = {
+        asset_id: 123,
+    }
+    const user = {
+        user_id: 'userid222',
+    }
+
+    const value2coin = 2 * req.body.investValue;
+
+    connection.connect(function(err){
+        if(err){
+            console.log(err);
+            console.log('connection error!!!');
+            return res.redirect('back');
+        }
+        console.log('connection success!!!');
+        // INSERT INTO eval_value (asset_id, user_id, value, value2coin) VALUES (1, 'userid', 10, 20);
+        var sql = "INSERT INTO eval_value (asset_id, user_id, value, value2coin) VALUES (?, ?, ?, ?);"
+        var params = [asset.asset_id, user.user_id, req.body.investValue, value2coin];
+        connection.query(sql, params, function(err, result){
+            if(err){
+                console.log(err);
+                console.log('data insert error!!!');
+                return;
+            }
+            console.log('insert success!!!');
+        })
+    });
+
+
+    res.redirect('back');
 });
 
 router.get('/liquidation', function(req, res, next){
