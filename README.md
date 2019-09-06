@@ -56,15 +56,19 @@ npm start
 
 |  |  |____new_register.pug
 
-|  |  |____detail_config.pug
-
 |  |  |____detail_context.pug
+
+|  |  |____eval_detail.pug
+
+|  |  |____invest_detail.pug
+
+|  |  |____invest_info.pug
 
 **|  |____detail_includes**
 
-|  |  |____evaluate_asset.pug
+|  |  |____eval_form.pug
 
-|  |  |____invest_asset.pug
+|  |  |____invest_form.pug
 
 |  |  |____invest_info.pug
 
