@@ -296,3 +296,64 @@ exports.investList = [
 ]
 
 
+
+
+
+exports.myInv = [
+    {
+        category: '건물',
+        title: '명지대학교',
+        value: 10000000000
+    },
+    {
+        category: '아파트',
+        title: '푸르지오',
+        value: 400000
+    },{
+        category: '부동산',
+        title: '남가좌동',
+        value: 9000000
+    },
+    {
+        category: '부동산',
+        title: '섭골길 16',
+        value: 2000
+    },
+    {
+        category: '건물',
+        title: '명지대학교',
+        value: 10000000000
+    },
+    {
+        category: '아파트',
+        title: '푸르지오',
+        value: 400000
+    },
+    {
+        category: '부동산',
+        title: '남가좌동',
+        value: 9000000
+    },
+    {
+        category: '부동산',
+        title: '섭골길 16',
+        value: 2000
+    },
+    {
+        category: '부동산',
+        title: '섭골길 16',
+        value: 2000
+    },
+    {
+        category: '건물',
+        title: '명지대학교',
+        value: 10000000000
+    },
+    {
+        category: '아파트',
+        title: '푸르지오',
+        value: 400000
+    }
+  ]
+  
+  
