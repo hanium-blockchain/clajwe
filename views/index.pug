@@ -25,6 +25,19 @@ block content
                       td= myI.value      
                     tr
                       
-        #nav-profile.tab-pane.fade(role='tabpanel' aria-labelledby='nav-profile-tab') bbbbbb
-        //- #nav-contact.tab-pane.fade(role='tabpanel' aria-labelledby='nav-contact-tab') 
-
+        #nav-profile.tab-pane.fade(role='tabpanel' aria-labelledby='nav-profile-tab') 
+         block content 
+          table.table.listTable
+              thead.thead
+                tr
+                  each item in list
+                    th(scope='col')= item
+              tbody
+                if check === 'myReg'
+                  each myR, idxi in myReg
+                    tr
+                      th(rowspan=2,scope='row')= idxi+1
+                      td= myR.category
+                      td= myR.title
+                      td= myR.value      
+                    tr

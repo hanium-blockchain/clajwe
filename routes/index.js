@@ -11,11 +11,20 @@ router.get('/', function(req, res, next) {
   const myInv = Data.myInv;
   res.render('index',{check: 'myInv', list: myInvHead, myInv: myInv});
   
+  var myRegHead=[' ', '분류', '자산명', '가격']
+  const myReg = Data.myReg;
+  res.render('index',{check: 'myReg', list: myRegHead, myReg: myReg});
+
+
 });
 router.get('/home', function(req, res, next) {
   var myInvHead=[' ', '분류', '자산명', '가격']
   const myInv = Data.myInv;
   res.render('index',{check: 'myInv', list: myInvHead, myInv: myInv});
+
+  var myRegHead=[' ', '분류', '자산명', '가격']
+  const myReg = Data.myReg;
+  res.render('index',{check: 'myReg', list: myRegHead, myReg: myReg});
   
 });
 // router.get('/', function(req, res, next) {
