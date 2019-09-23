@@ -303,116 +303,89 @@ exports.myInv = [
     {
         category: '건물',
         title: '명지대학교',
-        value: 10000000000
+        value: 10000000000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
     },
     {
         category: '아파트',
         title: '푸르지오',
-        value: 400000
+        value: 400000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
     },{
         category: '부동산',
         title: '남가좌동',
-        value: 9000000
+        value: 9000000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
     },
     {
         category: '부동산',
         title: '섭골길 16',
-        value: 2000
+        value: 2000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
     },
     {
         category: '건물',
         title: '명지대학교',
-        value: 10000000000
+        value: 10000000000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
     },
     {
         category: '아파트',
         title: '푸르지오',
-        value: 400000
+        value: 400000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
     },
     {
         category: '부동산',
         title: '남가좌동',
-        value: 9000000
+        value: 9000000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
     },
     {
         category: '부동산',
         title: '섭골길 16',
-        value: 2000
+        value: 2000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
     },
     {
         category: '부동산',
         title: '섭골길 16',
-        value: 2000
+        value: 2000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
     },
     {
         category: '건물',
         title: '명지대학교',
-        value: 10000000000
+        value: 10000000000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
     },
     {
         category: '아파트',
         title: '푸르지오',
-        value: 400000
-    }
-  ]
-  
-  
-
-
-  exports.myReg = [
-    {
-        category: '건물',
-        title: '홍은동 407-9',
-        value: 10000000000
-    },
-    {
-        category: '아파트',
-        title: '푸르지오',
-        value: 400000
-    },{
-        category: '부동산',
-        title: '남가좌동',
-        value: 9000000
-    },
-    {
-        category: '부동산',
-        title: '섭골길 16',
-        value: 2000
-    },
-    {
-        category: '건물',
-        title: '명지대학교',
-        value: 10000000000
-    },
-    {
-        category: '아파트',
-        title: '푸르지오',
-        value: 400000
-    },
-    {
-        category: '부동산',
-        title: '남가좌동',
-        value: 9000000
-    },
-    {
-        category: '부동산',
-        title: '섭골길 16',
-        value: 2000
-    },
-    {
-        category: '부동산',
-        title: '섭골길 16',
-        value: 2000
-    },
-    {
-        category: '건물',
-        title: '명지대학교',
-        value: 10000000000
-    },
-    {
-        category: '아파트',
-        title: '푸르지오',
-        value: 400000
+        value: 400000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
     }
   ]
   

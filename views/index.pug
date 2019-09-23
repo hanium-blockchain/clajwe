@@ -26,18 +26,18 @@ block content
                     tr
                       
         #nav-profile.tab-pane.fade(role='tabpanel' aria-labelledby='nav-profile-tab') 
-         block content 
-          table.table.listTable
+          block content
+            table.table.listTable
               thead.thead
                 tr
                   each item in list
                     th(scope='col')= item
               tbody
-                if check === 'myReg'
-                  each myR, idxi in myReg
+                if check === 'myInv'
+                  each myI, idx in myInv
                     tr
-                      th(rowspan=2,scope='row')= idxi+1
-                      td= myR.category
-                      td= myR.title
-                      td= myR.value      
+                      th(rowspan=2,scope='row')= idx+1
+                      td= myI.category_reg
+                      td= myI.title_reg
+                      td= myI.value_reg     
                     tr
