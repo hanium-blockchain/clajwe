@@ -35,8 +35,20 @@ block content
                                 select.form-control.col-3(id='address1' name='address1')
                                     option 서울특별시
                                     option 부산광역시
+                                    option 대구광역시
+                                    option 인천광역시
+                                    option 광주광역시
+                                    option 대전광역시
+                                    option 울산광역시
+                                    option 세종특별자치시
+                                    option 경기도
+                                    option 강원도
+                                    option 충청북도
                                     option 전라북도
                                     option 전라남도
+                                    option 경상북도
+                                    option 경상남도
+                                    option 제주특별자치도
                                 select.form-control.col-3(id='address2' name='address2')
                                     option 서대문구
                                     option 강남구
@@ -94,6 +106,22 @@ block content
                                     option 13
                                     option 14
                                     option 15
+                                    option 16
+                                    option 17
+                                    option 18
+                                    option 19
+                                    option 20
+                                    option 21
+                                    option 22
+                                    option 23
+                                    option 24
+                                    option 25
+                                    option 26
+                                    option 27
+                                    option 28
+                                    option 29
+                                    option 30
+                                    option 31
 
                 tr
                     .form-group
@@ -153,3 +181,16 @@ block content
                             button.btn.btn-dark(type='submit') 자산 등록
                 
 
+    script.
+        var address1 = document.getElementById('address1');
+        console.log("ad : " + address1);
+
+
+
+    //- script.
+        $(function(){
+            $('select[name="address1"]').change(function(){
+                var $this = $(this);
+                console.log($this.val());
+            })
+        })
