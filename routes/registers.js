@@ -17,6 +17,8 @@ function validateRegisterForm(form){
 
     if(!name) return 'Name is required';
     if(!number) return 'Number is required';
+    if(form.address1 == '시/도') return 'address1 is not selected';
+    if(form.address2 == '시/군/구') return 'address2 is not selected';
     if(!area) return 'area is required';
     if(!description) return 'Description is required';
     
@@ -37,6 +39,7 @@ router.post('/request_register', (req, res, next) => {
 
     var err = validateRegisterForm(req.body);
     if(err){
+        console.log(err);
         console.log('register form error!!!');
         return res.redirect('back')
     }
@@ -71,9 +74,6 @@ router.post('/request_register', (req, res, next) => {
         })
     })
     
-    
-
-
     res.redirect('back');
 });
 
