@@ -89,3 +89,8 @@ th.invest-info{
   background-color: lightgray;
   width: 50%;
 }
+
+/* 007 */
+tr:hover {
+  background-color: rgb(205, 205, 205);
+}

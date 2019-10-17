@@ -1,0 +1,20 @@
+extends ../layout
+
+block content
+  h3= title
+    hr
+    br
+  table.table.assignListTable
+    thead.thead-dark
+      tr
+        each item in list
+          th(scope='col')= item
+    tbody
+      each e, idx in eval
+          tr
+            th(scope='row')= idx+1
+            td= e.category
+            td= e.title
+            td= e.register
+            td= e.date
+

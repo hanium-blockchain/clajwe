@@ -270,4 +270,55 @@ exports.investList = [
   }
 ]
 
-
+exports.evaluatorList = [
+    {
+        ev_id:	'0',
+        user_id: '0',
+        li_no: '0000',
+        li_Category: '부동산',
+        li_date: '09.09.09',
+        li_birth: '09.09.09',
+        li_inner: '000',
+        date: '00.00.00'
+    },
+    {
+        ev_id:	'1',
+        user_id: '1',
+        li_no: '0000',
+        li_Category: '부동산',
+        li_date: '09.09.09',
+        li_birth: '09.09.09',
+        li_inner: '000',
+        date: '00.00.00'
+    },
+    {
+        ev_id:	'2',
+        user_id: '2',
+        li_no: '0000',
+        li_Category: '부동산',
+        li_date: '09.09.09',
+        li_birth: '09.09.09',
+        li_inner: '000',
+        date: '00.00.00'
+    },
+    {
+        ev_id:	'3',
+        user_id: '3',
+        li_no: '0000',
+        li_Category: '부동산',
+        li_date: '09.09.09',
+        li_birth: '09.09.09',
+        li_inner: '000',
+        date: '00.00.00'
+    },
+    {
+        ev_id:	'4',
+        user_id: '4',
+        li_no: '0000',
+        li_Category: '부동산',
+        li_date: '09.09.09',
+        li_birth: '09.09.09',
+        li_inner: '000',
+        date: '00.00.00'
+    }
+]
