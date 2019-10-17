@@ -96,3 +96,81 @@ $(function(){
         }
     })
 })
+
+function initDayOpt(){
+    $('#completeDay').find('option').remove().end();
+    var defaultOpt = new Option("DD");
+    $('#completeDay').append(defaultOpt);
+}
+
+$(function(){
+    $('#completeMonth').change(function(){
+        initDayOpt();
+
+        switch($('#completeMonth option:selected').val()){
+            case "1" :
+            case "3" :
+            case "5" : 
+            case "7" :
+            case "8" :
+            case "10" :
+            case "12" :
+                for(var i=1; i<32; i++){
+                    var opt = new Option(i, i);
+                    $('#completeDay').append(opt);
+                }
+                break;
+            case "2" : 
+                for(var i=1; i<29; i++){
+                    var opt = new Option(i, i);
+                    $('#completeDay').append(opt);
+                }
+                break;
+            case "4" :
+            case "6" :
+            case "9" :
+            case "11" :
+                for(var i=1; i<31; i++){
+                    var opt = new Option(i, i);
+                    $('#completeDay').append(opt);
+                }
+                break;    
+        }
+    });
+})
+
+$(function(){
+    $('#endMonth').change(function(){
+        initDayOpt();
+
+        switch($('#endMonth option:selected').val()){
+            case "1" :
+            case "3" :
+            case "5" : 
+            case "7" :
+            case "8" :
+            case "10" :
+            case "12" :
+                for(var i=1; i<32; i++){
+                    var opt = new Option(i, i);
+                    $('#endDay').append(opt);
+                }
+                break;
+            case "2" : 
+                for(var i=1; i<29; i++){
+                    var opt = new Option(i, i);
+                    $('#endDay').append(opt);
+                }
+                break;
+            case "4" :
+            case "6" :
+            case "9" :
+            case "11" :
+                for(var i=1; i<31; i++){
+                    var opt = new Option(i, i);
+                    $('#endDay').append(opt);
+                }
+                break;    
+        }
+    });
+})

@@ -295,6 +295,58 @@ exports.investList = [
   }
 ]
 
+exports.evaluatorList = [
+    {
+        ev_id:	'0',
+        user_id: '0',
+        li_no: '0000',
+        li_Category: '부동산',
+        li_date: '09.09.09',
+        li_birth: '09.09.09',
+        li_inner: '000',
+        date: '00.00.00'
+    },
+    {
+        ev_id:	'1',
+        user_id: '1',
+        li_no: '0000',
+        li_Category: '부동산',
+        li_date: '09.09.09',
+        li_birth: '09.09.09',
+        li_inner: '000',
+        date: '00.00.00'
+    },
+    {
+        ev_id:	'2',
+        user_id: '2',
+        li_no: '0000',
+        li_Category: '부동산',
+        li_date: '09.09.09',
+        li_birth: '09.09.09',
+        li_inner: '000',
+        date: '00.00.00'
+    },
+    {
+        ev_id:	'3',
+        user_id: '3',
+        li_no: '0000',
+        li_Category: '부동산',
+        li_date: '09.09.09',
+        li_birth: '09.09.09',
+        li_inner: '000',
+        date: '00.00.00'
+    },
+    {
+        ev_id:	'4',
+        user_id: '4',
+        li_no: '0000',
+        li_Category: '부동산',
+        li_date: '09.09.09',
+        li_birth: '09.09.09',
+        li_inner: '000',
+        date: '00.00.00'
+    }
+]
 
 
 
@@ -375,6 +427,78 @@ exports.myInv = [
         category: '건물',
         title: '명지대학교',
         value: 10000000000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
+    },
+    {
+        category: '아파트',
+        title: '푸르지오',
+        value: 400000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
+    },
+    {
+        category: '아파트',
+        title: '푸르지오',
+        value: 400000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
+    },
+    {
+        category: '아파트',
+        title: '푸르지오',
+        value: 400000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
+    },
+    {
+        category: '아파트',
+        title: '푸르지오',
+        value: 400000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
+    },
+    {
+        category: '아파트',
+        title: '푸르지오',
+        value: 400000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
+    },
+    {
+        category: '아파트',
+        title: '푸르지오',
+        value: 400000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
+    },
+    {
+        category: '아파트',
+        title: '푸르지오',
+        value: 400000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
+    },
+    {
+        category: '아파트',
+        title: '푸르지오',
+        value: 400000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
+    },
+    {
+        category: '아파트',
+        title: '푸르지오',
+        value: 400000,
         category_reg: '건물',
         title_reg: '명지대학교',
         value_reg: 10000000000

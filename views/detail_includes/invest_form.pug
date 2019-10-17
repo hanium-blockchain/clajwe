@@ -21,4 +21,7 @@ form(action='../investments/request_invest' method='POST')
                     input.form-control(type='text' id='investValue' name='investValue' placeholder='투자금액')
             tr
                 td.button(colspan='2')
-                    button.btn.btn-dark(type='submit') 투자하기
+                    if (isM)
+                        button.btn.btn-dark(type='submit') 승인하기
+                    else
+                        button.btn.btn-dark(type='submit') 투자하기

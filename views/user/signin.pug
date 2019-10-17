@@ -7,36 +7,40 @@ block content
     br
   
     form(action='users/requestsignin', method='POST')
+        .form-group.signin
+            label(for='email') Email
+            input.form-control.sc(type='text', id='email', name='email', placeholder='input your email')
 
         .form-group.signin
-            label(for='id') id 
-            input.form-control.sc(type='text', id='id', name='id', placeholder='input your id') 
-            a.btn.btn-dark.id(href='/') confirm id
-
-        .form-group.signin
-            label(for='password') pw
+            label(for='password') PW
             input.form-control.sc(type='password', id='password', name='password', placeholder='input your password')
 
         .form-group.signin
-            label(for='password2') check pw
+            label(for='password2') Check PW
             input.form-control.sc(type='password', id='password2', name='password2', placeholder='check your password')
 
         .form-group.signin
             label(for='name') Name
             input.form-control.sc(type='text', id='name', name='name', placeholder='input your name')
 
-        .form-group.signin
-            label(for='email') Email
-            input.form-control.sc(type='text', id='email', name='email', placeholder='input your email')
-
-        .form-group.signin
-            label(for='phone') Phone
-            input.form-control.sc(type='phone', id='phone', name='phone', placeholder='input your phone number  (ex 01012341234)')
-            a.btn.btn-dark.phone(href='/') auth phone
-
+    
         .form-group.signin
             label(for='evaluator') Evaluator
             input.form-control.sc(type='checkbox',id='evalu1', name='evaluator')
+        .form-group.signin
+            .dropdown
+                button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                    | 자격증 종류
+                .dropdown-menu(aria-labelledby='dropdownMenuButton')
+                    a.dropdown-item(href='#') 수첩형 자격증 
+                    a.dropdown-item(href='#') 성장형 자격증
+        .form-group.signin
+            th(scope='row') 자격증 종류
+            td.regi(scope='row')
+                select.form-control.col-10
+                    option 수첩형 자격증
+                    option 성장형 자격증
+
         
         .form-group-submit 
             button.btn.btn-dark.submit(type='submit') Signin

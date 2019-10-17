@@ -21,6 +21,12 @@ router.post('/users/requestsignin', (req, res, next) => {
     req.flash('danger', err);
     return res.redirect('back');
   }
+
+  var today = new Data();
+  var dd = today.getDate();
+  var mm = today.getMonth() + 1;
+  var yyyy = today.getFullYear();
+
   connection.connect(function(err) {
     if(err){
       console.log(err);

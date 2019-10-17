@@ -70,57 +70,17 @@ block content
                         td(colspan='3')
                             .row
                                 select.form-control.col-4(id='completeYear' name='completeYear')
-                                    option 2010
-                                    option 2011
-                                    option 2012
-                                    option 2013
-                                    option 2014
-                                    option 2015
+                                    //- each val in [1,2,3,4,5,6,7,8,9,10,11,12]
+                                    //-     option= val
+                                    option YYYY
+                                    -for(var i=1990; i<2020; i++)
+                                        option= i
                                 select.form-control.col-3(id='completeMonth' name='completeMonth')
-                                    option 1
-                                    option 2
-                                    option 3
-                                    option 4
-                                    option 5
-                                    option 6
-                                    option 7
-                                    option 8
-                                    option 9
-                                    option 10
-                                    option 11
-                                    option 12
+                                    option MM
+                                    -for(var i=1; i<13; i++)
+                                        option= i
                                 select.form-control.col-3(id='completeDay' name='completeDay')
-                                    option 1
-                                    option 2
-                                    option 3
-                                    option 4
-                                    option 5
-                                    option 6
-                                    option 7
-                                    option 8
-                                    option 9
-                                    option 10
-                                    option 11
-                                    option 12
-                                    option 13
-                                    option 14
-                                    option 15
-                                    option 16
-                                    option 17
-                                    option 18
-                                    option 19
-                                    option 20
-                                    option 21
-                                    option 22
-                                    option 23
-                                    option 24
-                                    option 25
-                                    option 26
-                                    option 27
-                                    option 28
-                                    option 29
-                                    option 30
-                                    option 31
+                                    option DD
 
                 tr
                     .form-group
@@ -134,41 +94,15 @@ block content
                         td(colspan='3')
                             .row
                                 select.form-control.col-4(id='endYear' name='endYear')
-                                    option 2020
-                                    option 2021
-                                    option 2022
-                                    option 2023
-                                    option 2024
-                                    option 2025
+                                    option YYYY
+                                    -for(var i=2019; i<2031; i++)
+                                        option= i
                                 select.form-control.col-3(id='endMonth' name='endMonth')
-                                    option 1
-                                    option 2
-                                    option 3
-                                    option 4
-                                    option 5
-                                    option 6
-                                    option 7
-                                    option 8
-                                    option 9
-                                    option 10
-                                    option 11
-                                    option 12
+                                    option MM
+                                    -for(var i=1; i<13; i++)
+                                        option= i
                                 select.form-control.col-3(id='endDay' name='endDay')
-                                    option 1
-                                    option 2
-                                    option 3
-                                    option 4
-                                    option 5
-                                    option 6
-                                    option 7
-                                    option 8
-                                    option 9
-                                    option 10
-                                    option 11
-                                    option 12
-                                    option 13
-                                    option 14
-                                    option 15
+                                    option DD
                 
                 tr
                     .form-group
