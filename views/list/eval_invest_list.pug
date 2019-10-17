@@ -1,7 +1,11 @@
 extends ../layout
 
 block content
-  table.table.listTable
+  h3= title
+    hr
+    br
+  
+  table.table.listTable.eval_investTable
     thead.thead-dark
       tr
         each item in list
@@ -9,7 +13,7 @@ block content
     tbody
       if check === 'invest'
         each i, idx in invest
-          tr
+          tr.investList(class=i.value)
             th(rowspan=2, scope='row')= idx+1
             td= i.category
             td= i.title
@@ -19,7 +23,7 @@ block content
             td(colspan=4)= `가치 : ${i.value}`
       else if check === 'eval'
         each e, idx in eval
-          tr
+          tr.evalList(class=e.value)
             th(scope='row')= idx+1
             td= e.category
             td= e.title
@@ -27,4 +31,5 @@ block content
             td= e.date
             td 
               a.nav-link(href='../evaluations/detail') 평가하기
+
 

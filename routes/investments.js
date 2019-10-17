@@ -86,8 +86,7 @@ router.get('/list', function (req, res, next) {
     const jsons = {
         data: invest
     }
-    res.send(jsons)
-    // res.render('list/eval_invest_list', {title: '투자 가능한 리스트',check: 'invest', list: investHead, invest: invest});
+    res.render('list/eval_invest_list', {title: '투자 가능한 리스트',check: 'invest', list: investHead, invest: invest});
 })
 
 

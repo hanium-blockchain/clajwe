@@ -92,6 +92,10 @@ th.invest-info{
   width: 50%;
 }
 
+/* 007 */
+tr:hover {
+  background-color: rgb(205, 205, 205);
+}
 /* 로그인 css */
 .loginBody {
   padding: 0;
