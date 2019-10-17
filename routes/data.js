@@ -438,6 +438,78 @@ exports.myInv = [
         category_reg: '건물',
         title_reg: '명지대학교',
         value_reg: 10000000000
+    },
+    {
+        category: '아파트',
+        title: '푸르지오',
+        value: 400000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
+    },
+    {
+        category: '아파트',
+        title: '푸르지오',
+        value: 400000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
+    },
+    {
+        category: '아파트',
+        title: '푸르지오',
+        value: 400000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
+    },
+    {
+        category: '아파트',
+        title: '푸르지오',
+        value: 400000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
+    },
+    {
+        category: '아파트',
+        title: '푸르지오',
+        value: 400000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
+    },
+    {
+        category: '아파트',
+        title: '푸르지오',
+        value: 400000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
+    },
+    {
+        category: '아파트',
+        title: '푸르지오',
+        value: 400000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
+    },
+    {
+        category: '아파트',
+        title: '푸르지오',
+        value: 400000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
+    },
+    {
+        category: '아파트',
+        title: '푸르지오',
+        value: 400000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
     }
   ]
   
