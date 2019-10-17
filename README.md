@@ -82,7 +82,7 @@ npm start
 | ---------- | -------- | ---------------------------- | ------------------------------------------------------------ |
 | Users      | public_key  |                              | name<br/>pwd<br/>email<br/>is_evaluator               |
 | Hashes     | hash_id  | user_id                      | hash_code                                                    |
-| Assets     | asset_id | user_id(등록자)              | address<br/>category<br/>asset_no<br/>asset_name<br/>area<br/>completion_date<br/>Description<br/>date(등록일자)<br/>is_chain<br/>end_date<br/>is_evaluate<br/>is_approved |
+| Assets     | asset_id | user_id(등록자)              | address<br/>category<br/>asset_no<br/>asset_name<br/>area<br/>completion_date<br/>Description<br/>date(등록일자)<br/>is_chain<br/>end_date<br/>is_evaluate<br/>is_approved<br/>picture |
 | Coins      | coin_id  | user_id<br />asset_id        | coin                                                         |
 | Evaluators | ev_id    | user_id                      | li_no<br/>li_Category<br/>li_date<br/>li_birth<br/>li_inner (내지번호) |
 | Values     | value_id | asset_id<br/>user_id(평가자) | value<br/>value2coin                                         |
