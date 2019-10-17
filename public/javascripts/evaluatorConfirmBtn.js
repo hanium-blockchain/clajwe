@@ -20,11 +20,13 @@ $(function() {
   });
 
   $('.eval_investTable tr.investList').click(function(){
-    var url = '/evaluations/detail'
+    var idx = $('.investList').index(this);
+    var url = '/evaluations/detail/'+idx
     location.href=url
   });
   $('.eval_investTable tr.evalList').click(function(){
-    var url = '/investments/detail'
+    var idx = $('.evalList').index(this);
+    var url = '/investments/detail/'+idx
     location.href=url
   });
 
