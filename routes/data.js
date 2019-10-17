@@ -13,6 +13,31 @@ exports.investDetail2 = {
   invest_sum: 2233,
   invest_left: 1122,
 }
+
+exports.asset2 = {
+    value: 100100,
+    left: 20020,
+}
+
+exports.investList = [
+    {
+        name: '김김김',
+        invest: 200,
+    },
+    {
+        name: '박박박',
+        invest: 300,
+    },
+    {
+        name: '최최최',
+        invest: 500,
+    },
+    {
+        name: '정정정',
+        invest: 300,
+    }
+]
+
 exports.evalList = [
   {
       category: '건물',
@@ -322,3 +347,98 @@ exports.evaluatorList = [
         date: '00.00.00'
     }
 ]
+
+
+
+
+exports.myInv = [
+    {
+        category: '건물',
+        title: '명지대학교',
+        value: 10000000000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
+    },
+    {
+        category: '아파트',
+        title: '푸르지오',
+        value: 400000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
+    },{
+        category: '부동산',
+        title: '남가좌동',
+        value: 9000000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
+    },
+    {
+        category: '부동산',
+        title: '섭골길 16',
+        value: 2000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
+    },
+    {
+        category: '건물',
+        title: '명지대학교',
+        value: 10000000000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
+    },
+    {
+        category: '아파트',
+        title: '푸르지오',
+        value: 400000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
+    },
+    {
+        category: '부동산',
+        title: '남가좌동',
+        value: 9000000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
+    },
+    {
+        category: '부동산',
+        title: '섭골길 16',
+        value: 2000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
+    },
+    {
+        category: '부동산',
+        title: '섭골길 16',
+        value: 2000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
+    },
+    {
+        category: '건물',
+        title: '명지대학교',
+        value: 10000000000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
+    },
+    {
+        category: '아파트',
+        title: '푸르지오',
+        value: 400000,
+        category_reg: '건물',
+        title_reg: '명지대학교',
+        value_reg: 10000000000
+    }
+  ]
+  
+  

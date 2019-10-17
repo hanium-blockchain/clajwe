@@ -1,5 +1,43 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  .group-nav
+    nav
+      #nav-tab.nav.nav-tabs(role='tablist')
+        a#nav-home-tab.nav-item.nav-link.active(data-toggle='tab' href='#nav-home' role='tab' aria-controls='nav-home' aria-selected='true') MY 투자
+        a#nav-profile-tab.nav-item.nav-link(data-toggle='tab' href='#nav-profile' role='tab' aria-controls='nav-profile' aria-selected='false') MY 자산
+        //- a#nav-contact-tab.nav-item.nav-link(data-toggle='tab' href='#nav-contact' role='tab' aria-controls='nav-contact' aria-selected='false') Contact
+      #nav-tabContent.tab-content
+        #nav-home.tab-pane.fade.show.active(role='tabpanel' aria-labelledby='nav-home-tab')
+          block content
+            table.table.listTable
+              thead.thead
+                tr
+                  each item in list
+                    th(scope='col')= item
+              tbody
+                if check === 'myInv'
+                  each myI, idx in myInv
+                    tr
+                      th(rowspan=2,scope='row')= idx+1
+                      td= myI.category
+                      td= myI.title
+                      td= myI.value      
+                    tr
+                      
+        #nav-profile.tab-pane.fade(role='tabpanel' aria-labelledby='nav-profile-tab') 
+          block content
+            table.table.listTable
+              thead.thead
+                tr
+                  each item in list
+                    th(scope='col')= item
+              tbody
+                if check === 'myInv'
+                  each myI, idx in myInv
+                    tr
+                      th(rowspan=2,scope='row')= idx+1
+                      td= myI.category_reg
+                      td= myI.title_reg
+                      td= myI.value_reg     
+                    tr

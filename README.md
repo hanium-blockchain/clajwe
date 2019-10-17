@@ -56,15 +56,19 @@ npm start
 
 |  |  |____new_register.pug
 
-|  |  |____detail_config.pug
-
 |  |  |____detail_context.pug
+
+|  |  |____eval_detail.pug
+
+|  |  |____invest_detail.pug
+
+|  |  |____invest_info.pug
 
 **|  |____detail_includes**
 
-|  |  |____evaluate_asset.pug
+|  |  |____eval_form.pug
 
-|  |  |____invest_asset.pug
+|  |  |____invest_form.pug
 
 |  |  |____invest_info.pug
 
@@ -76,9 +80,9 @@ npm start
 
 | Table명    | PK       | FK                           |                                                              |
 | ---------- | -------- | ---------------------------- | ------------------------------------------------------------ |
-| Users      | user_id  |                              | name<br/>id<br/>pwd<br/>email<br/>is_evaluator               |
+| Users      | public_key  |                              | name<br/>pwd<br/>email<br/>is_evaluator<br/>is_Manager<br/>signDate               |
 | Hashes     | hash_id  | user_id                      | hash_code                                                    |
-| Assets     | asset_id | user_id(등록자)              | address<br/>category<br/>asset_no<br/>asset_name<br/>area<br/>completion_date<br/>Description<br/>date(등록일자)<br/>is_chain<br/>end_date<br/>is_evaluate<br/>is_approved |
+| Assets     | asset_id | user_id(등록자)              | address<br/>category<br/>asset_no<br/>asset_name<br/>area<br/>completion_date<br/>Description<br/>date(등록일자)<br/>is_chain<br/>end_date<br/>is_evaluate<br/>is_approved<br/>picture |
 | Coins      | coin_id  | user_id<br />asset_id        | coin                                                         |
 | Evaluators | ev_id    | user_id                      | li_no<br/>li_Category<br/>li_date<br/>li_birth<br/>li_inner (내지번호) |
 | Values     | value_id | asset_id<br/>user_id(평가자) | value<br/>value2coin                                         |

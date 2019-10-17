@@ -3,40 +3,57 @@
 extends ../layout
 
 block content
-    h1 register asset
-    hr
-    br
 
-    form(action='../request_register' method='POST')
+    form(action='../registers/request_register' method='POST')
         table.table.table-bordered.newRegiTable
             tbody
                 tr
                     .form-group
                         th(scope='row') 자산명
-                        td(scope='row')
+                        td(colspan='3')
                             input.form-control.col-10(type='text' id='name' name='name' placeholder='자산명') 
 
+
+                tr
                     .form-group
                         th(scope='row') 자산번호
-                        td(scope='row')
+                        td.regi(scope='row')
                             input.form-control.col-10(type='text' id='number' name='number' placeholder='자산 번호')
+                    .form-group
+                        th(scope='row') 카테고리
+                        td.regi(scope='row')
+                            select.form-control.col-10(id='category' name='category')
+                                option 아파트
+                                option 주택
+                                option 부동산어쩌구
 
                 tr
                     .form-group
                         th(scope='row') 자산 소재지
                         td(colspan='3')
                             .row 
-                                select.form-control.address.col-3(id='select-address')
+                                select.form-control.address1.col-3(id='address1' name='address1')
+                                    option 시/도
                                     option 서울특별시
                                     option 부산광역시
+                                    option 대구광역시
+                                    option 인천광역시
+                                    option 광주광역시
+                                    option 대전광역시
+                                    option 울산광역시
+                                    option 세종특별자치시
+                                    option 경기도
+                                    option 강원도
+                                    option 충청북도
+                                    option 충청남도
                                     option 전라북도
                                     option 전라남도
-                                select.form-control.address.col-3(id='select-address2')
-                                    option 서대문구
-                                    option 강남구
-                                    option 마포구
-                                    option 종로구
-                                input.form-control.col-4(type='text' id='address' name='address' placeholder='상세주소를 입력해주세요')
+                                    option 경상북도
+                                    option 경상남도
+                                    option 제주특별자치도
+                                select.form-control.address2.col-3(id='address2' name='address2')
+                                    option 시/군/구
+                                input.form-control.col-4(type='text' id='address' name='address3' placeholder='상세주소를 입력해주세요')
                 
                 tr
                     .form-group
@@ -52,21 +69,14 @@ block content
                         th(scope='row') 준공년월
                         td(colspan='3')
                             .row
-                                select.form-control.col-4(id='complete-date-year')
+                                select.form-control.col-4(id='completeYear' name='completeYear')
                                     option 2010
                                     option 2011
                                     option 2012
                                     option 2013
                                     option 2014
                                     option 2015
-                                select.form-control.col-3(id='complete-date-month')
-                                    option 1
-                                    option 2
-                                    option 3
-                                    option 4
-                                    option 5
-                                    option 6
-                                select.form-control.col-3(id='complete-date-day')
+                                select.form-control.col-3(id='completeMonth' name='completeMonth')
                                     option 1
                                     option 2
                                     option 3
@@ -75,33 +85,62 @@ block content
                                     option 6
                                     option 7
                                     option 8
+                                    option 9
+                                    option 10
+                                    option 11
+                                    option 12
+                                select.form-control.col-3(id='completeDay' name='completeDay')
+                                    option 1
+                                    option 2
+                                    option 3
+                                    option 4
+                                    option 5
+                                    option 6
+                                    option 7
+                                    option 8
+                                    option 9
+                                    option 10
+                                    option 11
+                                    option 12
+                                    option 13
+                                    option 14
+                                    option 15
+                                    option 16
+                                    option 17
+                                    option 18
+                                    option 19
+                                    option 20
+                                    option 21
+                                    option 22
+                                    option 23
+                                    option 24
+                                    option 25
+                                    option 26
+                                    option 27
+                                    option 28
+                                    option 29
+                                    option 30
+                                    option 31
 
                 tr
                     .form-group
                         th(scope='row') 자산 설명
                         td(colspan='3')
-                            textarea.form-control(id='description' rows='7' placeholder='자산에 대한 설명을 입력해 주세요')
+                            textarea.form-control(id='description' name='description' rows='7' placeholder='자산에 대한 설명을 입력해 주세요')
                 
                 tr
                     .form-group
                         th(scope='row') 청산 일시
                         td(colspan='3')
                             .row
-                                select.form-control.col-4(id='end-date-year')
+                                select.form-control.col-4(id='endYear' name='endYear')
                                     option 2020
                                     option 2021
                                     option 2022
                                     option 2023
                                     option 2024
                                     option 2025
-                                select.form-control.col-3(id='end-date-month')
-                                    option 1
-                                    option 2
-                                    option 3
-                                    option 4
-                                    option 5
-                                    option 6
-                                select.form-control.col-3(id='end-date-day')
+                                select.form-control.col-3(id='endMonth' name='endMonth')
                                     option 1
                                     option 2
                                     option 3
@@ -110,6 +149,26 @@ block content
                                     option 6
                                     option 7
                                     option 8
+                                    option 9
+                                    option 10
+                                    option 11
+                                    option 12
+                                select.form-control.col-3(id='endDay' name='endDay')
+                                    option 1
+                                    option 2
+                                    option 3
+                                    option 4
+                                    option 5
+                                    option 6
+                                    option 7
+                                    option 8
+                                    option 9
+                                    option 10
+                                    option 11
+                                    option 12
+                                    option 13
+                                    option 14
+                                    option 15
                 
                 tr
                     .form-group
@@ -119,5 +178,6 @@ block content
                     .form-group
                         td(colspan='2')
                             button.btn.btn-dark(type='submit') 자산 등록
-                
-
+                            br
+                            br
+                            

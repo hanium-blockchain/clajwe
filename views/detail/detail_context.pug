@@ -1,34 +1,22 @@
-//- 디테일1
-
-extends ../layout
-
-block content
-    h1 detail page
-    hr
-
-    table.table.table-bordered.asset-info
-        tbody
-            tr  
-                th.asset-info(scope='row') 자산명
-                td(scope='row')= asset.name
-                th.asset-info(scope='row') 자산 번호
-                td(scope='row')= asset.number
-            tr
-                th.asset-info(scope='row') 자산 소재지
-                td(colspan='3')= asset.address
-            tr
-                th.asset-info(scope='row') 면적
-                td(colspan='3') 계약면적 #{asset.number} m²
-            tr
-                th.asset-info(scope='row') 준공년월
-                td(colspan='3')= asset.complete_date
-            tr
-                th.asset-info(scope='row') 자산 설명
-                td(colspan='3')= asset.description
-            tr
-                th.asset-info(scope='row') 청산 일시
-                td(colspan='3')= asset.end_date
-
-
-                
-        
+table.table.table-bordered.asset-info
+    tbody
+        tr  
+            th.asset-info(scope='row') 자산명
+            td(scope='row')= asset.name
+            th.asset-info(scope='row') 자산 번호
+            td(scope='row')= asset.number
+        tr
+            th.asset-info(scope='row') 자산 소재지
+            td(colspan='3')= asset.address
+        tr
+            th.asset-info(scope='row') 면적
+            td(colspan='3') 계약면적 #{asset.number} m²
+        tr
+            th.asset-info(scope='row') 준공년월
+            td(colspan='3')= asset.complete_date
+        tr
+            th.asset-info(scope='row') 자산 설명
+            td(colspan='3')= asset.description
+        tr
+            th.asset-info(scope='row') 청산 일시
+            td(colspan='3')= asset.end_date

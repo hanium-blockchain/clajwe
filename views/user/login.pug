@@ -1,0 +1,26 @@
+extends ../layout
+
+block content    
+  .login
+    
+    form(method="post", action='../user/login')
+      .logo
+       h3 로그인
+      .form-group.login
+        label 아이디
+        input#inputId.form-control(type="text", placeholder="아이디를 입력하세요", name="id")
+      .form-group.login.password
+        label 비밀번호
+        input#inputPwd.form-control(type="password", placeholder="비밀번호를 입력하세요", name="pwd")
+      .form-group.login
+        input#check(type="checkbox", name="autoLogin")
+        label.autoLogin(for="check") 자동로그인
+              
+      .form-group.login
+        button.loginBtn.btn.btn-outline-secondary(type='submit') LOGIN
+      .form-group.login
+        a.signinBtn.btn.btn-secondary(href='/users/signin') join for blockchain
+  
+      
+  script.
+    $('body').css('background', 'white');

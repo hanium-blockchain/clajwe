@@ -1,5 +1,6 @@
-body {
-  padding: 50px;
+
+body{
+  /* padding: 50px; */
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -12,7 +13,8 @@ a {
   vertical-align: top;
   text-align: center;
   background-color: lightgray;
-  width : 20%;
+  table-layout: fixed;
+  width: 20%;
 }
 
 select.address{
@@ -41,7 +43,7 @@ table.table.table-bordered {
 
 /* 투자 css */
 table.table.table-bordered.detail {
-  width: 40%;
+  width: 100%;
   margin: auto;
 }
 
@@ -58,7 +60,7 @@ td.button{
 
 /* 평가 css */
 table.table.table-bordered.evaluate {
-  width: 40%;
+  width: 100%;
   margin: auto;
 }
 
@@ -70,7 +72,7 @@ th.evaluate {
 
 /* 자산 상세정보 css */
 table.table.table-bordered.asset-info {
-  width: 70%;
+  width: 100%;
   margin: auto;
 }
 
@@ -93,4 +95,136 @@ th.invest-info{
 /* 007 */
 tr:hover {
   background-color: rgb(205, 205, 205);
+}
+/* 로그인 css */
+.loginBody {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+}
+.logo {
+  text-align: center; }
+
+.logoImg {
+  display: inline-block;
+  width: 30%;
+  height: 30%; }
+
+.login.form-group {
+  /* display: flex; */
+  margin: 0 auto;
+  align-items: center;
+  width: 25%;
+  margin-bottom: 20px; }
+
+.loginBtn, .signinBtn {
+
+  width: 100%; }
+
+.login.form-group.password {
+  margin-bottom: 5px; }
+
+#check {
+  margin: 5px; }
+
+.autoLogin {
+  font-size: 90%;
+  width: 5rem; }
+
+
+  /* 회원가입 css */
+
+.signin.logo{
+ 
+  text-align: center;
+ }
+.signin.form-group {
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  width: 70%;
+  margin-bottom: 20px; }
+
+button.submit, a.back {
+  width: 15%; }
+
+.form-group-submit {
+  margin-bottom: 20px;
+  text-align: right;
+  margin-right: 15%; }
+
+input.form-control.id, input.form-control.phone {
+  width: 70%;
+  margin-right: 10px;
+ }
+input.form-control.sc{
+  margin-left: 20px;
+}
+input.form-control.password2{
+  margin-left: 50px;
+}
+input.form-control.evalu1{
+  margin-left: 20px;
+}
+a.id, a.phone {
+  width: 30%;
+  margin: 0 auto; }
+
+/* navbar css */
+.navBar {
+  height: 5em;
+  width: 100%;
+
+}
+
+nav.navbar.navbar-expand-lg.navbar-dark.bg-dark {
+  width: 100%;
+  margin-bottom: 50px;
+
+}
+.navbar-expand-lg {
+  z-index: 100;
+}
+
+/*home 화면 */
+
+.group-nav{
+  width: 80%;
+  margin: auto;
+
+}
+#nav-tabContent.tab-content{
+  margin-top: 20px;
+}
+
+
+/* footer css */
+hr.footer-divider {
+
+  margin-bottom: 1rem;
+  border: solid 0.5px lightgray;
+  width: 96%;
+
+}
+
+.footer {
+  margin-bottom: 1rem;
+  color: black;
+}
+
+p.nav-link {
+  color: black;
+}
+
+.terms {
+  margin-bottom: 1rem;
+  text-align: right;
+  width: 98%;
+}
+
+.terms-body {
+  display: inline-block;
+  height:20px;
 }

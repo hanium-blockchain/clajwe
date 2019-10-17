@@ -1,9 +1,4 @@
-extends ../layout
-
-block content
-    h1 invest page
-    hr
-
+form(action='../investments/request_invest' method='POST')
     table.table.table-bordered.detail
         tbody
             tr
@@ -21,5 +16,9 @@ block content
                 th.detail(scope='row') 남은 투자 금액 
                 td(scope='row') #{invest.invest_left} 원
             tr
+                th.detail(scope='row') 원하는 투자 금액
+                td(scope='row') 
+                    input.form-control(type='text' id='investValue' name='investValue' placeholder='투자금액')
+            tr
                 td.button(colspan='2')
-                    button.btn.btn-dark 투자하기
+                    button.btn.btn-dark(type='submit') 투자하기
