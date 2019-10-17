@@ -3,7 +3,7 @@ extends ../layout
 block content    
   .login
     
-    form(method="post", action='/user/login')
+    form(method="post", action='../user/login')
       .logo
        h3 로그인
       .form-group.login
@@ -19,7 +19,7 @@ block content
       .form-group.login
         button.loginBtn.btn.btn-outline-secondary(type='submit') LOGIN
       .form-group.login
-        a.signinBtn.btn.btn-secondary(href='/user/signin') join for blockchain
+        a.signinBtn.btn.btn-secondary(href='/users/signin') join for blockchain
   
       
   script.

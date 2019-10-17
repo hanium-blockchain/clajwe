@@ -153,8 +153,17 @@ button.submit, a.back {
 
 input.form-control.id, input.form-control.phone {
   width: 70%;
-  margin-right: 10px; }
-
+  margin-right: 10px;
+ }
+input.form-control.sc{
+  margin-left: 20px;
+}
+input.form-control.password2{
+  margin-left: 50px;
+}
+input.form-control.evalu1{
+  margin-left: 20px;
+}
 a.id, a.phone {
   width: 30%;
   margin: 0 auto; }
