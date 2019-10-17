@@ -80,7 +80,7 @@ npm start
 
 | Table명    | PK       | FK                           |                                                              |
 | ---------- | -------- | ---------------------------- | ------------------------------------------------------------ |
-| Users      | public_key  |                              | name<br/>pwd<br/>email<br/>is_evaluator               |
+| Users      | public_key  |                              | name<br/>pwd<br/>email<br/>is_evaluator<br/>is_Manager<br/>signDate               |
 | Hashes     | hash_id  | user_id                      | hash_code                                                    |
 | Assets     | asset_id | user_id(등록자)              | address<br/>category<br/>asset_no<br/>asset_name<br/>area<br/>completion_date<br/>Description<br/>date(등록일자)<br/>is_chain<br/>end_date<br/>is_evaluate<br/>is_approved<br/>picture |
 | Coins      | coin_id  | user_id<br />asset_id        | coin                                                         |
