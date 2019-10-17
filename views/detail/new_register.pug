@@ -32,7 +32,8 @@ block content
                         th(scope='row') 자산 소재지
                         td(colspan='3')
                             .row 
-                                select.form-control.col-3(id='address1' name='address1')
+                                select.form-control.address1.col-3(id='address1' name='address1')
+                                    option 시/도
                                     option 서울특별시
                                     option 부산광역시
                                     option 대구광역시
@@ -50,6 +51,7 @@ block content
                                     option 경상남도
                                     option 제주특별자치도
                                 select.form-control.col-3(id='address2' name='address2')
+                                    option 시/군/구
                                     option 서대문구
                                     option 강남구
                                     option 마포구
@@ -179,18 +181,28 @@ block content
                     .form-group
                         td(colspan='2')
                             button.btn.btn-dark(type='submit') 자산 등록
+                            br
+                            br
+                            
+        
+    button.test(id='test') 하이 
                 
 
-    script.
-        var address1 = document.getElementById('address1');
-        console.log("ad : " + address1);
+
+    //- script(type='text/javascript').
+        //- $('#address1').change(function(){
+        //-     console.log('address1 changed');
+        //- });
+        //- $('#test').click(function(){
+        //-     console.log('click event')
+        //- });
+        //- $(document).ready(function(){
+
+        //-     $('#test').click(function(){
+        //-         console.log('@@@@@ click event @@@@@');
+        //-     });
+
+        //- })
 
 
-
-    //- script.
-        $(function(){
-            $('select[name="address1"]').change(function(){
-                var $this = $(this);
-                console.log($this.val());
-            })
-        })
+        
