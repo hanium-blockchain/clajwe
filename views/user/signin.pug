@@ -8,40 +8,64 @@ block content
   
     form(action='users/requestsignin', method='POST')
         .form-group.signin
-            label(for='email') Email
+            label.col-1(for='email') Email
             input.form-control.sc(type='text', id='email', name='email', placeholder='input your email')
 
         .form-group.signin
-            label(for='password') PW
+            label.col-1(for='password') PW
             input.form-control.sc(type='password', id='password', name='password', placeholder='input your password')
 
         .form-group.signin
-            label(for='password2') Check PW
+            label.col-1(for='password2') Check PW
             input.form-control.sc(type='password', id='password2', name='password2', placeholder='check your password')
 
         .form-group.signin
-            label(for='name') Name
+            label.col-1(for='name') Name
             input.form-control.sc(type='text', id='name', name='name', placeholder='input your name')
+        .form-group.signin
+            input#isCheckBox.col-1(type='checkbox',unchecked="true")
+            |  Evaluator
 
-    
-        .form-group.signin
-            label(for='evaluator') Evaluator
-            input.form-control.sc(type='checkbox',id='evalu1', name='evaluator')
-        .form-group.signin
-            .dropdown
-                button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
-                    | 자격증 종류
-                .dropdown-menu(aria-labelledby='dropdownMenuButton')
-                    a.dropdown-item(href='#') 수첩형 자격증 
-                    a.dropdown-item(href='#') 성장형 자격증
-        .form-group.signin
-            th(scope='row') 자격증 종류
-            td.regi(scope='row')
+        #txtMyTextBox
+            .form-group.signin
+                label.col-2(for='type') 자격증 종류
                 select.form-control.col-10
-                    option 수첩형 자격증
-                    option 성장형 자격증
+                            option 수첩형 자격증
+                            option 성장형 자격증
+            .form-group.signin
+                label.col-2(for='bir') 생년월일
+                input.form-control.sc(type='text',  placeholder='법정생년월일 6자리')
+            .form-group.signin
+                label.col-2(for='eval_num') 자격증 번호
+                input.form-control.sc(type='text', placeholder='예:1234567890A')
+            .form-group.signin
+                label.col-2(for='eval_date') 발급연월일
+                input.form-control.sc(type='text',  placeholder='최근 발급연월일 기재')
+            .form-group.signin
+                label.col-2(for='eval_1') 자격증내지번호
+                input.form-control.sc(type='text', placeholder='20019년 8월 3일 이후 발행자격증만 기재')
 
+       
         
+    
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
+        script(type='text/javascript').
+            $(document).ready(function () {
+            $("#txtMyTextBox").hide();
+            $("#isCheckBox").on("click", function () {
+                if (document.getElementById('isCheckBox').checked) {
+                    $("#txtMyTextBox").show();
+                } else {
+                    $("#txtMyTextBox").hide();
+                    }
+                    });
+                });
+        br
+
+       
+    
+
+
         .form-group-submit 
             button.btn.btn-dark.submit(type='submit') Signin
 
