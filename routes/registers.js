@@ -1,4 +1,4 @@
-var express = require('express');
+/*var express = require('express');
 var router = express.Router();
 
 var mysql = require('mysql');
@@ -86,6 +86,85 @@ router.post('/request_register', (req, res, next) => {
     
     res.redirect('back');
 });
+
+module.exports = router;
+*/
+
+
+
+const express = require('express');
+const Assets = require('../models/assets');
+const Users = require('../models/users');
+// const catchErrors = require('../lib/async-error');
+
+const router = express.Router();
+
+function validateRegisterForm(form){
+    var name = form.name || '';
+    var number = form.number || 0;
+    var area = form.area || 0;
+    var description = form.description || '';
+
+    if(!name) return 'Name is required';
+    if(!number) return 'Number is required';
+    
+    if(form.address1 == '시/도') return 'address1 is not selected';
+    if(form.address2 == '시/군/구') return 'address2 is not selected';
+
+    if(form.completeYear == 'YYYY') return 'completeYear is not selected';
+    if(form.completeMonth == 'MM') return 'completeMonth is not selected';
+    if(form.completeDay == 'DD') return 'completeDay is not selected';
+
+    if(form.endYear == 'YYYY') return 'endYear is not selected';
+    if(form.endMonth == 'MM') return 'endMonth is not selected';
+    if(form.endDay == 'DD') return 'endDay is not selected';
+
+    if(!area) return 'area is required';
+    if(!description) return 'Description is required';
+    
+    return null;
+}
+
+router.get('/new', function(req, res, next){
+    res.render('detail/new_register');
+});
+
+router.post('/request_register', (req, res, next) => {
+    var err = validateRegisterForm(req.body);
+    if(err){
+        console.log('@@@ register form error! @@@');
+        console.log(err);
+        return res.redirect('back');
+    }
+
+
+    var user = new Users({
+        name: 'name',
+        pwd: '1234',
+        email: '11@gmail.com',
+    });
+
+    var address = req.body.address1 + ' ' + req.body.address2 + ' ' + req.body.address3;
+    var completeDate = req.body.completeYear + '년 ' + req.body.completeMonth + '월 ' + req.body.completeDay + '일';
+    var endDate = req.body.endYear + '년 ' + req.body.endMonth + '월 ' + req.body.endDay + '일'; 
+
+    var asset = new Assets({
+        user_id: user.user_id,
+        address: address,
+        category: req.body.category,
+        asset_no: req.body.number,
+        asset_name : req.body.name,
+        area: req.body.area,
+        completion_date : completeDate,
+        description: req.body.description,
+        end_date: endDate,
+    });
+
+    asset.save();
+    // alert('자산 등록이 완료되었습니다.');
+
+    return res.redirect('back');
+})
 
 
 

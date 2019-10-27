@@ -97,15 +97,21 @@ $(function(){
     })
 })
 
-function initDayOpt(){
+function initComDayOpt(){
     $('#completeDay').find('option').remove().end();
     var defaultOpt = new Option("DD");
     $('#completeDay').append(defaultOpt);
 }
 
+function initEndDayOpt(){
+    $('#endDay').find('option').remove().end();
+    var defaultOpt = new Option("DD");
+    $('#endDay').append(defaultOpt);
+}
+
 $(function(){
     $('#completeMonth').change(function(){
-        initDayOpt();
+        initComDayOpt();
 
         switch($('#completeMonth option:selected').val()){
             case "1" :
@@ -141,7 +147,7 @@ $(function(){
 
 $(function(){
     $('#endMonth').change(function(){
-        initDayOpt();
+        initEndDayOpt();
 
         switch($('#endMonth option:selected').val()){
             case "1" :
