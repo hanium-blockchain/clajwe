@@ -1,14 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var Data = require('./data')
+var Investments = require('../models/assets');
+var Values = require('../models/values');
+const catchErrors = require('../lib/async-error');
 
-var mysql = require('mysql');
-var connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '1234',
-    database: 'testDB',
-});
 
 router.get('/detail', function(req, res, next){
     const asset = Data.asset
@@ -80,11 +76,13 @@ router.get('/info', function(req, res, next){
 });
 
 
-router.get('/list', function (req, res, next) {
+router.get('/list', catchErrors(async (req, res, next) => {
     var investHead = ['#', '분류', '자산명', '등록자', '완료일자']
-    const invest = Data.investList
+    const invest = await Investments.find({is_evaluate: true}).populate('user_id').populate('values_id')
+    console.log(invest);
+    // value_id를 asset테이블에 추가하기 --> 평가할때, asset 테이블에 is_evaluate를 바꾸면서 value_id 값을 추가해준다.
     res.render('list/eval_invest_list', {title: '투자 가능한 리스트',check: 'invest', list: investHead, invest: invest});
-})
+}));
 
 
 module.exports = router;

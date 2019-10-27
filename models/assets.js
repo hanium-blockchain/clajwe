@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 
 var schema = new Schema({
     user_id: { type: Schema.Types.ObjectId, ref: 'Users' },
+    value_id: { type: Schema.Types.ObjectId, ref: 'Values' },
     address: { type: String, trim: true, required: true },
     category: { type: String, trim: true, require: true },
     asset_no: { type: Number, default:0, required: true },

@@ -21,11 +21,11 @@ block content
               td= i.user_id.name
               td= i.createAt
             tr
-              td(colspan=4)= `가치 : ${i.value}`
+              td(colspan=4)= `가치 : ${i.area}`
         else if check === 'eval'
           each e,idx in eval
             tr.evalList(idNum=`${e.id}`)
-              th(scope='row')= 1
+              th(scope='row')= idx+1
               td= e.category
               td= e.asset_name
               td= e.user_id.name
