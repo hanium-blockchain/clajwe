@@ -17,8 +17,18 @@ function validateRegisterForm(form){
 
     if(!name) return 'Name is required';
     if(!number) return 'Number is required';
+    
     if(form.address1 == '시/도') return 'address1 is not selected';
     if(form.address2 == '시/군/구') return 'address2 is not selected';
+
+    if(form.completeYear == 'YYYY') return 'completeYear is not selected';
+    if(form.completeMonth == 'MM') return 'completeMonth is not selected';
+    if(form.completeDay == 'DD') return 'completeDay is not selected';
+
+    if(form.endYear == 'YYYY') return 'endYear is not selected';
+    if(form.endMonth == 'MM') return 'endMonth is not selected';
+    if(form.endDay == 'DD') return 'endDay is not selected';
+
     if(!area) return 'area is required';
     if(!description) return 'Description is required';
     
