@@ -11,5 +11,4 @@ var schema = new Schema({
 });
 
 var Coins = mongoose.model('Coins', schema);
-
 module.exports = Coins;
