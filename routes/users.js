@@ -26,6 +26,7 @@ router.post('/users/requestsignin', (req, res, next) => {
   var dd = today.getDate();
   var mm = today.getMonth() + 1;
   var yyyy = today.getFullYear();
+  today = yyyy + '년' + mm + '월' + dd + '일';
 
   connection.connect(function(err) {
     if(err){
