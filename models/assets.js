@@ -16,6 +16,7 @@ var schema = new Schema({
     is_evaluate: { type: Boolean, default: false},
     is_approved: { type: Boolean, default: false},
     picture: { type: String },
+    createdAt: {type: Date, default: Date.now}
 }, {
     toJSON: { virtuals: true },
     toObject: { virtuals: true }

@@ -21,12 +21,12 @@ $(function() {
 
   $('.eval_investTable tr.investList').click(function(){
     var idx = $(this).attr('idNum');
-    var url = '/evaluations/detail/:'+idx[1]
+    var url = '/investment/detail/'+idx
     location.href=url
   });
   $('.eval_investTable tr.evalList').click(function(){
     var idx = $(this).attr('idNum');
-    var url = '/investments/detail/:'+idx[1]
+    var url = '/evaluations/detail/'+idx
     location.href=url
   });
 
