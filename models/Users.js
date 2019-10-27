@@ -8,6 +8,7 @@ var schema = new Schema({
   email: {type: String, required: true, unique: true, trim: true},
   is_evaluator: {type: Boolean},
   is_manager: {type: Boolean},
+  createdAt: {type: Date, default: Date.now}
 }, {
   toJSON: { virtuals: true},
   toObject: {virtuals: true}

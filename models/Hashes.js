@@ -4,7 +4,8 @@ var mongoose = require('mongoose'),
 
 var schema = new Schema({
   user_id: { type: Schema.Types.ObjectId, ref: 'Users' },
-  hash_code: {type: String}
+  hash_code: {type: String},
+  createdAt: {type: Date, default: Date.now}
 }, {
   toJSON: { virtuals: true},
   toObject: {virtuals: true}

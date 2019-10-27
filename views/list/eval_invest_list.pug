@@ -14,21 +14,21 @@ block content
       tbody
         if check === 'invest'
           each i, idx in invest
-            tr.investList(class=`${i.value}` idNum=`${i.value}`)
+            tr.investList(idNum=`${i.id}`)
               th(rowspan=2, scope='row')= idx+1
               td= i.category
-              td= i.title
-              td= i.register
-              td= i.D_day
+              td= i.asset_name
+              td= i.user_id.name
+              td= i.createAt
             tr
               td(colspan=4)= `가치 : ${i.value}`
         else if check === 'eval'
-          each e, idx in eval
-            tr.evalList(class=`${e.value}` idNum=`${e.value}`)
-              th(scope='row')= idx+1
+          each e,idx in eval
+            tr.evalList(idNum=`${e.id}`)
+              th(scope='row')= 1
               td= e.category
-              td= e.title
-              td= e.register
-              td= e.date
+              td= e.asset_name
+              td= e.user_id.name
+              td= e.createdAt
 
 
