@@ -1,5 +1,5 @@
 var express = require('express');
-var  Users = require('../models/users');
+var Users = require('../models/users');
 var router = express.Router();
 
 function needAuth(req, res, next) {
