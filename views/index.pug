@@ -2,19 +2,19 @@ extends layout
 
 block content
   
-  .group-nav
+  .group-nav.mypage
     
     nav
-      #nav-tab.nav.nav-tabs(role='tablist')
-        a#nav-home-tab.nav-item.nav-link.active(data-toggle='tab' href='#nav-home' role='tab' aria-controls='nav-home' aria-selected='true') MY 투자
-        a#nav-profile-tab.nav-item.nav-link(data-toggle='tab' href='#nav-profile' role='tab' aria-controls='nav-profile' aria-selected='false') MY 자산
+      #nav-tab.nav.nav-tabs.mypage(role='tablist')
+        a#nav-home-tab.nav-item.nav-link.active.mypage(data-toggle='tab' href='#nav-home' role='tab' aria-controls='nav-home' aria-selected='true') MY 투자
+        a#nav-profile-tab.nav-item.nav-link.mypage(data-toggle='tab' href='#nav-profile' role='tab' aria-controls='nav-profile' aria-selected='false') MY 자산
         //- a#nav-contact-tab.nav-item.nav-link(data-toggle='tab' href='#nav-contact' role='tab' aria-controls='nav-contact' aria-selected='false') Contact
-      #nav-tabContent.tab-content
-        #nav-home.tab-pane.fade.show.active(role='tabpanel' aria-labelledby='nav-home-tab')
+      #nav-tabContent.tab-content.mypage
+        #nav-home.tab-pane.fade.show.active.mypage(role='tabpanel' aria-labelledby='nav-home-tab')
           block content
             h6 보유 코인 : 8908908
-            table.table.listTable
-              thead.thead
+            table.table.listTable.mypage
+              thead.thead.mypage
                 tr
                   each item in list
                     th(scope='col')= item
@@ -28,11 +28,11 @@ block content
                       td= myI.value      
                     tr
                       
-        #nav-profile.tab-pane.fade(role='tabpanel' aria-labelledby='nav-profile-tab') 
+        #nav-profile.tab-pane.fade.mypage(role='tabpanel' aria-labelledby='nav-profile-tab') 
           block content
             h6 보유 코인 : 8908908
-            table.table.listTable
-              thead.thead
+            table.table.listTable.mypage
+              thead.thead.mypage
                 tr
                   each item in list
                     th(scope='col')= item
