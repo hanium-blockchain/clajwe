@@ -226,3 +226,7 @@ p.nav-link {
   display: inline-block;
   height:20px;
 }
+
+.contentBlock {
+  padding: 0 10em;
+}

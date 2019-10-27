@@ -11,13 +11,21 @@ var registersRouter = require('./routes/registers');
 var evaluationsRouter = require('./routes/evaluations');
 var investmentsRouter = require('./routes/investments');
 var managersRouter = require('./routes/managers');
+var mongoose   = require('mongoose');
+
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+mongoose.Promise = global.Promise; 
+  const connStr = 'mongodb://qwert:qwert0000@ds239858.mlab.com:39858/clajwe';
+  mongoose.connect(connStr, {useMongoClient: true });
+  mongoose.connection.on('error', console.error);
 
+
+// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -27,6 +35,10 @@ app.use(methodOverride('_method', {methods: ['POST', 'GET']}));
 //session
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(function(req, res, next) {
+  res.locals.currentUser = req.session.user;
+  next();
+});
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

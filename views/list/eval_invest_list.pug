@@ -1,35 +1,36 @@
 extends ../layout
 
 block content
-  h3= title
-    hr
-    br
-  
-  table.table.listTable.eval_investTable
-    thead.thead-dark
-      tr
-        each item in list
-          th(scope='col')= item
-    tbody
-      if check === 'invest'
-        each i, idx in invest
-          tr.investList(class=i.value)
-            th(rowspan=2, scope='row')= idx+1
-            td= i.category
-            td= i.title
-            td= i.register
-            td= i.D_day
-          tr
-            td(colspan=4)= `가치 : ${i.value}`
-      else if check === 'eval'
-        each e, idx in eval
-          tr.evalList(class=e.value)
-            th(scope='row')= idx+1
-            td= e.category
-            td= e.title
-            td= e.register
-            td= e.date
-            td 
-              a.nav-link(href='../evaluations/detail') 평가하기
+  .contentBlock
+    h3= title
+      hr
+      br
+    
+    table.table.listTable.eval_investTable
+      thead.thead-dark
+        tr
+          each item in list
+            th(scope='col')= item
+      tbody
+        if check === 'invest'
+          each i, idx in invest
+            tr.investList(class=i.value)
+              th(rowspan=2, scope='row')= idx+1
+              td= i.category
+              td= i.title
+              td= i.register
+              td= i.D_day
+            tr
+              td(colspan=4)= `가치 : ${i.value}`
+        else if check === 'eval'
+          each e, idx in eval
+            tr.evalList(class=e.value)
+              th(scope='row')= idx+1
+              td= e.category
+              td= e.title
+              td= e.register
+              td= e.date
+              td 
+                a.nav-link(href='../evaluations/detail') 평가하기
 
 
