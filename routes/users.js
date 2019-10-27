@@ -75,45 +75,29 @@ router.get('/signin', (req, res, next) => {
 
 
 
-router.post('/signin', (req, res, next) => {
+router.post('/signin', async (req, res, next) => {
   var err = validateForm(req.body, {needPassword: true});
-  if(err){
+  if (err) {
     console.log(err)
     return res.redirect('back');
   }
-  Users.findOne({email: req.body.email}, function(err, user) {
-    if (err) {
-      return next(err);
-    }
-    if (user) {
-      console.log('이미존재하는 이메일')
-      // req.alert('danger', 'Email address already exists.');
-      return res.redirect('back');
-    }
-    var newUser = new Users({
-      name: req.body.name,
-      email: req.body.email,
-      is_evaluator: false,
-      is_manager: false
-      
-    });
-    newUser.password = req.body.password;
-
-    newUser.save(function(err) {
-      if (err) {
-        return next(err);
-      } else {
-        console.log('성공~~')
-        
-        // req.flash('success', 'Registered successfully. Please sign in.');
-        res.redirect('/users');
-      }
-    });
+  var newUser = await Users.findOne({email: req.body.email});
+  console.log('USER???', newUser);
+  if (newUser) {
+    console.log('이미 존재하는 메일')
+    return res.redirect('back');
+  }
+  newUser = new Users({
+    name: req.body.name,
+    email: req.body.email,
+    is_evaluator: false,
+    is_manager: false
   });
-
+  newUser.password = await newUser.generateHash(req.body.password);
+  await newUser.save();
+  console.log('성공~~')
+  res.redirect('/users');
 });
-
-
 
 
 module.exports = router;
