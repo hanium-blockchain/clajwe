@@ -6,10 +6,10 @@ block content
   .container
     br
   
-    form(action='users/requestsignin', method='POST')
+    form(action='/users/signin', method='POST')
         .form-group.signin
             label.col-1(for='email') Email
-            input.form-control.sc(type='text', id='email', name='email', placeholder='input your email')
+            input.form-control.sc(type='email', id='email', name='email', placeholder='input your email')
 
         .form-group.signin
             label.col-1(for='password') PW
@@ -17,7 +17,7 @@ block content
 
         .form-group.signin
             label.col-1(for='password2') Check PW
-            input.form-control.sc(type='password', id='password2', name='password2', placeholder='check your password')
+            input.form-control.sc(type='password', id='password_confirmation', name='password_confirmation', placeholder='check your password')
 
         .form-group.signin
             label.col-1(for='name') Name
@@ -44,31 +44,23 @@ block content
             .form-group.signin
                 label.col-2(for='eval_1') 자격증내지번호
                 input.form-control.sc(type='text', placeholder='20019년 8월 3일 이후 발행자격증만 기재')
-
-       
-        
-    
-        script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
-        script(type='text/javascript').
-            $(document).ready(function () {
-            $("#txtMyTextBox").hide();
-            $("#isCheckBox").on("click", function () {
-                if (document.getElementById('isCheckBox').checked) {
-                    $("#txtMyTextBox").show();
-                } else {
-                    $("#txtMyTextBox").hide();
-                    }
-                    });
-                });
         br
-
-       
-    
-
-
         .form-group-submit 
             button.btn.btn-dark.submit(type='submit') Signin
 
         .form-group-submit
             a.btn.btn-dark.back(href='/') back
 
+
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
+    script(type='text/javascript').
+        $(document).ready(function () {
+        $("#txtMyTextBox").hide();
+        $("#isCheckBox").on("click", function () {
+            if (document.getElementById('isCheckBox').checked) {
+                $("#txtMyTextBox").show();
+            } else {
+                $("#txtMyTextBox").hide();
+                }
+                });
+            });
