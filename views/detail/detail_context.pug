@@ -2,18 +2,18 @@ table.table.table-bordered.asset-info
     tbody
         tr  
             th.asset-info(scope='row') 자산명
-            td(scope='row')= asset.name
+            td(scope='row')= asset.asset_name
             th.asset-info(scope='row') 자산 번호
-            td(scope='row')= asset.number
+            td(scope='row')= asset.asset_no
         tr
             th.asset-info(scope='row') 자산 소재지
             td(colspan='3')= asset.address
         tr
             th.asset-info(scope='row') 면적
-            td(colspan='3') 계약면적 #{asset.number} m²
+            td(colspan='3') 계약면적 #{asset.area} m²
         tr
             th.asset-info(scope='row') 준공년월
-            td(colspan='3')= asset.complete_date
+            td(colspan='3')= asset.completion_date
         tr
             th.asset-info(scope='row') 자산 설명
             td(colspan='3')= asset.description
