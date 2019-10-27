@@ -3,15 +3,15 @@ extends ../layout
 block content    
   .login
     
-    form(method="post", action='../user/login')
+    form(method="post", action='users/login')
       .logo
        h3 로그인
       .form-group.login
         label 아이디
-        input#inputId.form-control(type="text", placeholder="아이디를 입력하세요", name="id")
+        input#inputId.form-control(type="text", placeholder="아이디를 입력하세요", name="email")
       .form-group.login.password
         label 비밀번호
-        input#inputPwd.form-control(type="password", placeholder="비밀번호를 입력하세요", name="pwd")
+        input#inputPwd.form-control(type="password", placeholder="비밀번호를 입력하세요", name="password")
       .form-group.login
         input#check(type="checkbox", name="autoLogin")
         label.autoLogin(for="check") 자동로그인
