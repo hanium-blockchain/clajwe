@@ -43,81 +43,98 @@ exports.evalList = [
       category: '건물',
       title: '명지대학교',
       register: '박희라',
+      value: 'asdfas',      
       date: '2019.08.25'
+
   },
   {
       category: '아파트',
       title: '부양 1차 107동',
       register: '이아람',
+      value: 'asdfas',      
       date: '2019.07.15'
   },{
       category: '부동산',
       title: '남가좌동 명지대 부지~~',
       register: '김이진',
+      value: 'asdfas',      
       date: '2019.09.02'
   },{
       category: '부동산',
+      title: '남가좌동 명지대 부지~~',
+      register: '김이진',
+      value: 'asdfas',      
+      date: '2019.09.02'
+  },{
+      category: '부동산',
+      title: '남가좌동 명지대 부지~~',
+      register: '김이진',
+      value: 'asdfas',      
+      date: '2019.09.02'
+  },{
+      category: '부동산',
+      value: 'asdfas',      
+      title: '남가좌동 명지대 부지~~',
+      register: '김이진',
+      date: '2019.09.02'
+  },{
+      category: '부동산',
+      value: 'asdfas',      
+      title: '남가좌동 명지대 부지~~',
+      register: '김이진',
+      date: '2019.09.02'
+  },{
+      category: '부동산',
+      value: 'asdfas',      
+      title: '남가좌동 명지대 부지~~',
+      register: '김이진',
+      date: '2019.09.02'
+  },{
+      category: '부동산',
+      value: 'asdfas',      
+      title: '남가좌동 명지대 부지~~',
+      register: '김이진',
+      date: '2019.09.02'
+  },{
+      category: '부동산',
+      value: 'asdfas',      
+      title: '남가좌동 명지대 부지~~',
+      register: '김이진',
+      date: '2019.09.02'
+  },{
+      category: '부동산',
+      value: 'asdfas',      
+      title: '남가좌동 명지대 부지~~',
+      register: '김이진',
+      date: '2019.09.02'
+  },{
+      category: '부동산',
+      value: 'asdfas',      
+      title: '남가좌동 명지대 부지~~',
+      register: '김이진',
+      date: '2019.09.02'
+  },{
+      category: '부동산',
+      value: 'asdfas',      
+      title: '남가좌동 명지대 부지~~',
+      register: '김이진',
+      date: '2019.09.02'
+  },{
+      category: '부동산',
+      value: 'asdfas',      
       title: '남가좌동 명지대 부지~~',
       register: '김이진',
       date: '2019.09.02'
   },{
       category: '부동산',
       title: '남가좌동 명지대 부지~~',
+      value: 'asdfas',      
       register: '김이진',
       date: '2019.09.02'
   },{
       category: '부동산',
       title: '남가좌동 명지대 부지~~',
-      register: '김이진',
-      date: '2019.09.02'
-  },{
-      category: '부동산',
-      title: '남가좌동 명지대 부지~~',
-      register: '김이진',
-      date: '2019.09.02'
-  },{
-      category: '부동산',
-      title: '남가좌동 명지대 부지~~',
-      register: '김이진',
-      date: '2019.09.02'
-  },{
-      category: '부동산',
-      title: '남가좌동 명지대 부지~~',
-      register: '김이진',
-      date: '2019.09.02'
-  },{
-      category: '부동산',
-      title: '남가좌동 명지대 부지~~',
-      register: '김이진',
-      date: '2019.09.02'
-  },{
-      category: '부동산',
-      title: '남가좌동 명지대 부지~~',
-      register: '김이진',
-      date: '2019.09.02'
-  },{
-      category: '부동산',
-      title: '남가좌동 명지대 부지~~',
-      register: '김이진',
-      date: '2019.09.02'
-  },{
-      category: '부동산',
-      title: '남가좌동 명지대 부지~~',
-      register: '김이진',
-      date: '2019.09.02'
-  },{
-      category: '부동산',
-      title: '남가좌동 명지대 부지~~',
-      register: '김이진',
-      date: '2019.09.02'
-  },{
-      category: '부동산',
-      title: '남가좌동 명지대 부지~~',
-      register: '김이진',
-      date: '2019.09.02'
-  },{
-      category: '부동산',
-      title: '남가좌동 명지대 부지~~',
+      value: 'asdfas',      
       register: '김이진',
       date: '2019.09.02'
   },{
@@ -304,7 +321,8 @@ exports.evaluatorList = [
         li_date: '09.09.09',
         li_birth: '09.09.09',
         li_inner: '000',
-        date: '00.00.00'
+        date: '00.00.00',
+        value: 'asdfas',
     },
     {
         ev_id:	'1',
@@ -314,7 +332,8 @@ exports.evaluatorList = [
         li_date: '09.09.09',
         li_birth: '09.09.09',
         li_inner: '000',
-        date: '00.00.00'
+        date: '00.00.00',
+        value: 'asdfas',
     },
     {
         ev_id:	'2',
@@ -324,7 +343,8 @@ exports.evaluatorList = [
         li_date: '09.09.09',
         li_birth: '09.09.09',
         li_inner: '000',
-        date: '00.00.00'
+        date: '00.00.00',
+        value: 'asdfas',
     },
     {
         ev_id:	'3',
@@ -334,7 +354,8 @@ exports.evaluatorList = [
         li_date: '09.09.09',
         li_birth: '09.09.09',
         li_inner: '000',
-        date: '00.00.00'
+        date: '00.00.00',
+        value: 'asdfas',
     },
     {
         ev_id:	'4',
@@ -344,7 +365,8 @@ exports.evaluatorList = [
         li_date: '09.09.09',
         li_birth: '09.09.09',
         li_inner: '000',
-        date: '00.00.00'
+        date: '00.00.00',
+        value: 'asdfas',
     }
 ]
 

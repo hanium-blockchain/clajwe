@@ -1,30 +1,31 @@
 extends ../layout
 
 block content
-  h3= title
-    hr
-    br
-  table.table.managerListTable
-    thead.thead-dark
-      tr
-        each item in list
-          th(scope='col')= item
-    tbody
-      each i, idx in evaluator
-          tr.showDetailLine
-            th(scope='row')= idx+1
-            td= i.ev_id
-            td= i.date
-            td.btnTdSize
-              button.btn.btn-success.assignBtn 승인하기
-          tr.detailContent.isHide.hi.hepp.hell.vava
-            td
-            td(colspan=3)
-              p=`이름 : ${i.ev_id}`
-              p=`번호 : ${i.li_no}`
-              p=`카테고리 : ${i.li_Category}`
-              p=`발급날짜 : ${i.li_date}`
-              p=`생년월일 : ${i.li_birth}`
-              p=`내지번호 : ${i.li_inner}`
-              a(target="_black" href="https://www.q-net.or.kr/qlf006.do?id=qlf00601&gSite=Q&gId=3") 자격증 확인하러 가기
+  .contentBlock
+    h3= title
+      hr
+      br
+    table.table.managerListTable
+      thead.thead-dark
+        tr
+          each item in list
+            th(scope='col')= item
+      tbody
+        each i, idx in evaluator
+            tr.showDetailLine
+              th(scope='row')= idx+1
+              td= i.ev_id
+              td= i.date
+              td.btnTdSize
+                button.btn.btn-success.assignBtn 승인하기
+            tr.detailContent.isHide.hi.hepp.hell.vava
+              td
+              td(colspan=3)
+                p=`이름 : ${i.ev_id}`
+                p=`번호 : ${i.li_no}`
+                p=`카테고리 : ${i.li_Category}`
+                p=`발급날짜 : ${i.li_date}`
+                p=`생년월일 : ${i.li_birth}`
+                p=`내지번호 : ${i.li_inner}`
+                a(target="_black" href="https://www.q-net.or.kr/qlf006.do?id=qlf00601&gSite=Q&gId=3") 자격증 확인하러 가기
 
