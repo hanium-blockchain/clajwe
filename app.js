@@ -33,6 +33,11 @@ app.use(cookieParser());
 
 app.use(methodOverride('_method', {methods: ['POST', 'GET']}));
 //session
+app.use(session({
+  resave: true,
+  saveUninitialized: true,
+  secret: 'long-long-long-secret-string-1313513tefgwdsvbjkvasd'
+}));
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(function(req, res, next) {
