@@ -8,7 +8,7 @@ var schema = new Schema({
 }, {
   toJSON: { virtuals: true},
   toObject: {virtuals: true}
-});
+}); 
 schema.plugin(mongoosePaginate);
 var Hashes = mongoose.model('Hashes', schema);
 
