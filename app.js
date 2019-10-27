@@ -21,9 +21,9 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 mongoose.Promise = global.Promise; 
-  const connStr = 'mongodb://qwert:qwert0000@ds239858.mlab.com:39858/clajwe';
-  mongoose.connect(connStr, {useMongoClient: true });
-  mongoose.connection.on('error', console.error);
+const connStr = 'mongodb://qwert:qwert0000@ds239858.mlab.com:39858/clajwe';
+mongoose.connect(connStr, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connection.on('error', console.error);
 
 
 // app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

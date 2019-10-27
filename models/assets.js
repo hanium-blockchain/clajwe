@@ -21,7 +21,7 @@ var schema = new Schema({
     toObject: { virtuals: true }
 });
 
-schema.plugin(mongoose.mongoosePaginate);
+schema.plugin(mongoosePaginate);
 var Assets = mongoose.model('Assets', schema);
 
 module.exports = Assets;
