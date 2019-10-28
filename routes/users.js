@@ -15,8 +15,11 @@ function needAuth(req, res, next) {
 function validateForm(form, options) {
   var name = form.name || "";
   var email = form.email || "";
+  
   name = name.trim();
   email = email.trim();
+  
+  
 
   if (!name) {
     return 'Name is required.';
@@ -37,7 +40,34 @@ function validateForm(form, options) {
   if (form.password.length < 6) {
     return 'Password must be at least 6 characters.';
   }
+  // if (is_evaluator==True) {
+  //   var li_Category = form.li_Category || "";
+  //   var li_birth = form.li_birth || "";
+  //   var li_no = form.li_no || "";
+  //   var li_date = form.li_date || "";
+  //   var li_inner = form.li_inner || "";
+  //   li_Category = li_Category.trim();
+  //   li_birth = li_birth.trim();
+  //   li_date = li_date.trim();
+  //   li_no = li_no.trim();
+  //   li_inner = li_inner.trim();
 
+  //   if (!li_Category) {
+  //     return 'Category is required.';
+  //   }
+  //   if (!li_birth) {
+  //     return 'Birth is required.';
+  //   }
+  //   if (!li_no) {
+  //     return '등록 번호 is required.';
+  //   }
+  //   if (!li_inner) {
+  //     return '내지번호 is required.';
+  //   }
+  //   if (!li_date) {
+  //     return 'Date is required.';
+  //   }
+  // }
   return null;
 }
 
