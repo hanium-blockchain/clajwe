@@ -22,7 +22,7 @@ $(function() {
   // 각 투자리스트 평가리스트에서 상세 내역으로 이동
   $('.eval_investTable tr.investList').click(function(){
     var idx = $(this).attr('idNum');
-    var url = '/investment/detail/'+idx
+    var url = '/investments/detail/'+idx
     location.href=url
   });
   $('.eval_investTable tr.evalList').click(function(){

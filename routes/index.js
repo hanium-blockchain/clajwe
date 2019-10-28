@@ -29,6 +29,9 @@ router.get('/home', needAuth,function(req, res, next) {
 // router.get('/', function(req, res, next) {
 //   res.render('user/login');
 // });
-
+router.get('/signout', function(req, res, next) {
+  delete req.session.user;
+  res.redirect('/');
+});
 
 module.exports = router;

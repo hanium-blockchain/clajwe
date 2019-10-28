@@ -4,7 +4,8 @@ var router = express.Router();
 var Assets = require('../models/assets');
 var Users = require('../models/users');
 var Evaluations = require('../models/assets');
-var Coins = require('../models/coins')
+var Coins = require('../models/coins');
+var Values = require('../models/values');
 
 const catchErrors = require('../lib/async-error');
 
@@ -19,23 +20,26 @@ router.get('/detail/:id', catchErrors(async (req,res, next) => {
 
 
 router.post('/request_eval/:id', catchErrors(async (req,res,next)=>{
-
-    const user = await Users.findById(req.session.user.id);
-
-    // console.log(req.params.id);
-    // const asset = await Assets.findById(req.params.id);
-    // console.log('asset???', asset);
-
     var coinVal = req.body.value * 0.01;
-    console.log(coinVal);
 
-    var coin = new Coins({
-        user_id: user.user_id,
+    // var coin = new Coins({
+    //     user_id: req.session.user.id,
+    //     asset_id: req.params.id,
+    //     coin : coinVal
+    // });
+    // coin.save();
+
+    var evalValue = new Values({
         asset_id: req.params.id,
-        coin : coinVal
+        user_id: req.session.user.id,
+        value: req.body.value,
+        value2coin: coinVal
     });
+    evalValue.save();
 
-    coin.save();
+    const asset = await Assets.findById(req.params.id);
+    asset.is_evaluate = true;
+    await asset.save();
 
     return res.redirect('back');
 
