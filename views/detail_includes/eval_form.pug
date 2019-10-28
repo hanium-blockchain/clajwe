@@ -1,7 +1,7 @@
-form(action='#' method='POST')
+form(action=`../request_eval/${asset.id}` method='POST')
     table.table.table-bordered.evaluate
         tbody
-            tr.test
+            tr
                 th.evaluate(scope='row') 평가일시 
                 td(scope='row') 2019-09-03
             tr
@@ -18,4 +18,4 @@ form(action='#' method='POST')
                     label.coinLabel 0000
             tr
                 td.button(colspan='2')
-                    button.btn.btn-dark 평가하기
+                    button.btn.evalBtn.btn-dark 평가하기

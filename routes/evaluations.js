@@ -4,20 +4,43 @@ var router = express.Router();
 var Assets = require('../models/assets');
 var Users = require('../models/users');
 var Evaluations = require('../models/assets');
+var Coins = require('../models/coins')
 
 const catchErrors = require('../lib/async-error');
 
-var Data = require('./data')
 
 router.get('/detail/:id', catchErrors(async (req,res, next) => {
     const asset = await Assets.findById(req.params.id);
-    console.log("asset?? ", asset);
+    // console.log("asset?? ", asset);
     const user = await Users.findById(req.session.user.id);
-    console.log("user???", user);
-
-    // const asset1 = Data.asset;
+    // console.log("user???", user);
     res.render('detail/eval_detail', {asset: asset, user:user});
-}))
+}));
+
+
+router.post('/request_eval/:id', catchErrors(async (req,res,next)=>{
+
+    const user = await Users.findById(req.session.user.id);
+
+    // console.log(req.params.id);
+    // const asset = await Assets.findById(req.params.id);
+    // console.log('asset???', asset);
+
+    var coinVal = req.body.value * 0.01;
+    console.log(coinVal);
+
+    var coin = new Coins({
+        user_id: user.user_id,
+        asset_id: req.params.id,
+        coin : coinVal
+    });
+
+    coin.save();
+
+    return res.redirect('back');
+
+}));
+
 
 
 router.get('/list', catchErrors(async (req, res, next) => {
