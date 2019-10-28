@@ -23,27 +23,27 @@ block content
             label.col-1(for='name') Name
             input.form-control.sc(type='text', id='name', name='name', placeholder='input your name')
         .form-group.signin
-            input#isCheckBox.col-1(type='checkbox',unchecked="true")
+            input#isCheckBox.col-1( type='checkbox',name="is_evaluator",unchecked="True",value="True")
             |  Evaluator
 
         #txtMyTextBox
             .form-group.signin
                 label.col-2(for='type') 자격증 종류
-                select.form-control.col-10
-                            option 수첩형 자격증
-                            option 성장형 자격증
+                select.form-control.col-10(name='li_Category')
+                            option(value=0) 수첩형 자격증
+                            option(value=1) 성장형 자격증
             .form-group.signin
                 label.col-2(for='bir') 생년월일
-                input.form-control.sc(type='text',  placeholder='법정생년월일 6자리')
+                input.form-control.sc(type='text',  placeholder='법정생년월일 6자리',name='li_birth')
             .form-group.signin
                 label.col-2(for='eval_num') 자격증 번호
-                input.form-control.sc(type='text', placeholder='예:1234567890A')
+                input.form-control.sc(type='text', placeholder='예:1234567890A',  name='li_no')
             .form-group.signin
                 label.col-2(for='eval_date') 발급연월일
-                input.form-control.sc(type='text',  placeholder='최근 발급연월일 기재')
+                input.form-control.sc(type='text',  placeholder='최근 발급연월일 기재',  name='li_date')
             .form-group.signin
                 label.col-2(for='eval_1') 자격증내지번호
-                input.form-control.sc(type='text', placeholder='20019년 8월 3일 이후 발행자격증만 기재')
+                input.form-control.sc(type='text', placeholder='20019년 8월 3일 이후 발행자격증만 기재', name='li_inner')
         br
         .form-group-submit 
             button.btn.btn-dark.submit(type='submit') Signin

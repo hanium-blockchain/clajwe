@@ -1,5 +1,6 @@
 var express = require('express');
 var Users = require('../models/users');
+var Evaluators = require('../models/evaluators');
 var router = express.Router();
 
 function needAuth(req, res, next) {
@@ -43,7 +44,6 @@ function validateForm(form, options) {
 
 
 
-
 /* GET users listing. */
 // router.get('/', function(req, res, next) {
 //   res.send('respond with a resource');
@@ -76,13 +76,16 @@ router.get('/signin', (req, res, next) => {
 
 
 router.post('/signin', async (req, res, next) => {
+  console.log('request', req)
   var err = validateForm(req.body, {needPassword: true});
   if (err) {
     console.log(err)
     return res.redirect('back');
   }
   var newUser = await Users.findOne({email: req.body.email});
+  var newEval1 = await Evaluators.findOne({email: req.body.email});
   console.log('USER???', newUser);
+  console.log('USER???', newEval1);
   if (newUser) {
     console.log('이미 존재하는 메일')
     return res.redirect('back');
@@ -90,11 +93,27 @@ router.post('/signin', async (req, res, next) => {
   newUser = new Users({
     name: req.body.name,
     email: req.body.email,
-    is_evaluator: false,
+    is_evaluator: req.body.is_evaluator? true:false,
     is_manager: false
+    
   });
+  if (newEval1) {
+    console.log('이미 존재하는 메일')
+    return res.redirect('back');
+  }
+  newEval1 = new Evaluators({
+    li_no: req.body.li_no,
+    li_Category: req.body.li_Category,
+    li_date: req.body.li_date,
+    li_birth: req.body.li_birth,
+    li_inner: req.body.li_inner
+    
+  });
+
+  console.log(req.body,"s")
   newUser.password = await newUser.generateHash(req.body.password);
-  await newUser.save();
+  await newUser.save(); 
+  await newEval1.save();
   console.log('성공~~')
   res.redirect('/users');
 });
