@@ -8,12 +8,26 @@ const Investments = require('../models/assets');
 
 var Data = require('./data');
 
-router.get('/detail/:id', function(req, res, next){
-    const asset = Data.asset
-    const invest = Data.investDetail2
+// router.get('/detail', function(req, res, next){
+//     const asset = Data.asset
+//     const invest = Data.investDetail2
 
-    res.render('detail/invest_detail', {asset: asset, invest: invest});
-});
+//     res.render('detail/invest_detail', {asset: asset, invest: invest});
+// });
+
+
+router.get('/detail/:id', catchErrors(async (req, res, next)=> {
+
+    const asset = await Assets.findById(req.params.id);
+    const user = await Users.findById(req.session.user.id);
+
+    console.log('asset?', asset);
+
+    console.log('user?', user);
+
+    return res.redirect('back');
+}));
+
 
 router.get('/list', catchErrors(async (req, res, next) => {
     var investHead = ['#', '분류', '자산명', '등록자', '완료일자']
@@ -22,6 +36,8 @@ router.get('/list', catchErrors(async (req, res, next) => {
     // value_id를 asset테이블에 추가하기 --> 평가할때, asset 테이블에 is_evaluate를 바꾸면서 value_id 값을 추가해준다.
     res.render('list/eval_invest_list', {title: '투자 가능한 리스트',check: 'invest', list: investHead, invest: invest});
 }));
+
+
 
 router.post('/request_invest',  (req, res, next) => {
     console.log(req.body);

@@ -21,7 +21,7 @@ $(function() {
 
   $('.eval_investTable tr.investList').click(function(){
     var idx = $(this).attr('idNum');
-    var url = '/investment/detail/'+idx
+    var url = '/investments/detail/'+idx
     location.href=url
   });
   $('.eval_investTable tr.evalList').click(function(){
