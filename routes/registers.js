@@ -137,13 +137,13 @@ router.post('/request_register', catchErrors(async (req, res, next)=> {
         return res.redirect('back');
     }
     
-    const user = await Users.findById(req.session.user.id);
+    // const user = await Users.findById(req.session.user.id);
     var address = req.body.address1 + ' ' + req.body.address2 + ' ' + req.body.address3;
     var completeDate = req.body.completeYear + '년 ' + req.body.completeMonth + '월 ' + req.body.completeDay + '일';
     var endDate = req.body.endYear + '년 ' + req.body.endMonth + '월 ' + req.body.endDay + '일'; 
 
     var asset = new Assets({
-        user_id: user.user_id,
+        user_id: req.session.user.id,
         address: address,
         category: req.body.category,
         asset_no: req.body.number,
