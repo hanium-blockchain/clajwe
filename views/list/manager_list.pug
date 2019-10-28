@@ -14,14 +14,14 @@ block content
         each i, idx in evaluator
             tr.showDetailLine
               th(scope='row')= idx+1
-              td= i.ev_id
-              td= i.date
+              td= i.user_id.name
+              td= i.createAt
               td.btnTdSize
-                button.btn.btn-success.assignBtn 승인하기
-            tr.detailContent.isHide.hi.hepp.hell.vava
+                button.btn.btn-success.assignBtn(data-evalId=`${i.id}`) 승인하기
+            tr.detailContent.isHide
               td
               td(colspan=3)
-                p=`이름 : ${i.ev_id}`
+                p=`이름 : ${i.user_id.name}`
                 p=`번호 : ${i.li_no}`
                 p=`카테고리 : ${i.li_Category}`
                 p=`발급날짜 : ${i.li_date}`
