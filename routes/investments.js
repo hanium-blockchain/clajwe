@@ -3,30 +3,65 @@ const router = express.Router();
 const Users = require('../models/users');
 const Assets = require('../models/assets');
 const Coins = require('../models/coins');
+const Values = require('../models/values');
+
 const catchErrors = require('../lib/async-error');
 const Investments = require('../models/assets');
 
 var Data = require('./data');
 
-// router.get('/detail', function(req, res, next){
+
+// router.get('/detail', catchErrors(async (req, res, next)=> {
 //     const asset = Data.asset
-//     const invest = Data.investDetail2
+//     const invest = Data.investDetail2;
 
 //     res.render('detail/invest_detail', {asset: asset, invest: invest});
-// });
+// }))
 
 
 router.get('/detail/:id', catchErrors(async (req, res, next)=> {
 
     const asset = await Assets.findById(req.params.id);
-    const user = await Users.findById(req.session.user.id);
+    
+    // var myValue = await Values.find().populate('asset_id');
+    // console.log('@@@@@@', myValue);
+    // // var v2c = await myValue.value2coin;
 
-    console.log('asset?', asset);
+    // console.log(myValue[0].value2coin);
+    // console.log(myValue.value);
 
-    console.log('user?', user);
+
+    const value = await Values.findOne({asset_id : req.params.id});
+
+    // var coin = new Coins({
+    //     user_id: req.session.user.id,
+    //     asset_id: req.params.id,
+        
+    // })
+    
+    
+    
+    res.render('detail/invest_detail', {asset: asset, value: value});
+    
+
+    
+}));
+
+
+router.post('/request_invest/:id', catchErrors(async (req, res, next)=> {
+    
+    // console.log(req.body.investValue);
+
+    var coin = new Coins({
+        user_id: req.session.user.id,
+        asset_id: req.params.id,
+        coin: req.body.investValue
+    });
+    coin.save();
 
     return res.redirect('back');
-}));
+}))
+
 
 
 router.get('/list', catchErrors(async (req, res, next) => {
