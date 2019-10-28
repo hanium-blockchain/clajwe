@@ -42,15 +42,20 @@ router.get('/detail/:id', needAuth, catchErrors(async (req, res, next)=> {
     for(var i=0; i<coins.length; i++){
         var coin = coins[i];
         // console.log('@@@coin? ', coin);
-        console.log(coin.coin);
+        // console.log(coin.coin);
         coinSum += coin.coin;
     }
-    console.log('@@@ coinSum?', coinSum);
+    // console.log('@@@ coinSum?', coinSum);
 
     var leftSum = value.value2coin - coinSum;
-    console.log('@@@ leftSum? ', leftSum);
+    // console.log('@@@ leftSum? ', leftSum);
 
     var invPeople = coins.length;
+
+    if(invPeople==0){
+        coinSum = 0;
+        leftSum = 0;
+    }
 
     
     res.render('detail/invest_detail', {asset: asset, value: value, isM: manager, coinSum: coinSum, leftSum: leftSum, invPeople: invPeople});
@@ -90,15 +95,6 @@ router.get('/list', needAuth, catchErrors(async (req, res, next) => {
     // value_id를 asset테이블에 추가하기 --> 평가할때, asset 테이블에 is_evaluate를 바꾸면서 value_id 값을 추가해준다.
     res.render('list/eval_invest_list', {title: '투자 가능한 리스트',check: 'invest', list: investHead, invest: invest});
 }));
-
-
-
-router.post('/request_invest', needAuth,  (req, res, next) => {
-    console.log(req.body);
-
-    
-
-});
 
 
 
