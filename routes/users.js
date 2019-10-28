@@ -76,7 +76,6 @@ router.get('/signin', (req, res, next) => {
 
 
 router.post('/signin', async (req, res, next) => {
-  console.log('request', req)
   var err = validateForm(req.body, {needPassword: true});
   if (err) {
     console.log(err)

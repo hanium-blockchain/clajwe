@@ -7,13 +7,15 @@ const catchErrors = require('../lib/async-error');
 const Investments = require('../models/assets');
 const Evaluators = require('../models/evaluators');
 function needAuth(req, res, next) {
-  next();
-  // if (req.session.user.is_manager) {
-  //   next();
-  // } else {
-  //   req.flash('danger', 'Please signin first.');
-  //   res.redirect('/users/signin');
-  // }
+  if (req.session.user) {
+    if (req.session.user.is_manager) {
+      next();
+    } else {
+      res.redirect('/');
+    }
+  } else {
+    res.redirect('/');
+  }
 }
 router.get('/', needAuth, (req, res, next) => {
   res.render('detail/manager_detail');
@@ -22,6 +24,7 @@ router.get('/', needAuth, (req, res, next) => {
 router.get('/register', needAuth, catchErrors(async (req, res, next) => {
   var evaluatorHead = ['#', '평가자 ', '등록일자', '승인']
   const assign = await Evaluators.find({is_approved: false}).populate('user_id')
+  console.log('assign', assign)
   res.render('list/manager_list', {title: '평가자 승인', list: evaluatorHead, evaluator: assign});
 }))
 
