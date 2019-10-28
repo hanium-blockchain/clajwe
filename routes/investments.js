@@ -10,6 +10,13 @@ const Investments = require('../models/assets');
 
 var Data = require('./data');
 
+function needAuth(req, res, next) {
+    if (req.session.user) {
+      next();
+    } else {
+      res.redirect('/users/signin');
+    }
+  }
 
 // router.get('/detail', catchErrors(async (req, res, next)=> {
 //     const asset = Data.asset
@@ -19,7 +26,7 @@ var Data = require('./data');
 // }))
 
 
-router.get('/detail/:id', catchErrors(async (req, res, next)=> {
+router.get('/detail/:id', needAuth, catchErrors(async (req, res, next)=> {
 
     const asset = await Assets.findById(req.params.id);
     
@@ -38,17 +45,20 @@ router.get('/detail/:id', catchErrors(async (req, res, next)=> {
     //     asset_id: req.params.id,
         
     // })
+    console.log(req.session.user.is_manager)
+    if (req.session.user.is_manager == true) {
+        var manager = true
+    }
     
     
-    
-    res.render('detail/invest_detail', {asset: asset, value: value});
+    res.render('detail/invest_detail', {asset: asset, value: value, isM: manager});
     
 
     
 }));
 
 
-router.post('/request_invest/:id', catchErrors(async (req, res, next)=> {
+router.post('/request_invest/:id', needAuth, catchErrors(async (req, res, next)=> {
     
     // console.log(req.body.investValue);
 
@@ -64,7 +74,7 @@ router.post('/request_invest/:id', catchErrors(async (req, res, next)=> {
 
 
 
-router.get('/list', catchErrors(async (req, res, next) => {
+router.get('/list', needAuth, catchErrors(async (req, res, next) => {
     var investHead = ['#', '분류', '자산명', '등록자', '완료일자']
     const invest = await Investments.find({is_evaluate: true, is_approved: true}).populate('user_id').populate('values_id')
     console.log(invest);
@@ -74,7 +84,7 @@ router.get('/list', catchErrors(async (req, res, next) => {
 
 
 
-router.post('/request_invest',  (req, res, next) => {
+router.post('/request_invest', needAuth,  (req, res, next) => {
     console.log(req.body);
 
     

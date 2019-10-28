@@ -34,7 +34,7 @@ $(function() {
   // 매니저가 투자 리스트에 넣을지 승인 해줌
   $('.assignListTable tr.investList').click(function(){
     var idx = $(this).attr('idNum');
-    var url = '/investment/detail/'+idx
+    var url = '/investments/detail/'+idx
     location.href=url
   });
 
