@@ -106,7 +106,7 @@ router.get('/signin', (req, res, next) => {
 
 
 router.post('/signin', async (req, res, next) => {
-  console.log('request', req)
+  // console.log('request', req)
   var err = validateForm(req.body, {needPassword: true});
   if (err) {
     console.log(err)
@@ -114,8 +114,7 @@ router.post('/signin', async (req, res, next) => {
   }
   var newUser = await Users.findOne({email: req.body.email});
   var newEval1 = await Evaluators.findOne({email: req.body.email});
-  console.log('USER???', newUser);
-  console.log('USER???', newEval1);
+
   if (newUser) {
     console.log('이미 존재하는 메일')
     return res.redirect('back');
@@ -127,11 +126,13 @@ router.post('/signin', async (req, res, next) => {
     is_manager: false
     
   });
-  if (newEval1) {
-    console.log('이미 존재하는 메일')
-    return res.redirect('back');
-  }
+  newUser.password = await newUser.generateHash(req.body.password);
+  await newUser.save(); 
+
+  var finfUser = await Users.findOne({email: req.body.email});
+  
   newEval1 = new Evaluators({
+    user_id: finfUser.id,
     li_no: req.body.li_no,
     li_Category: req.body.li_Category,
     li_date: req.body.li_date,
@@ -141,8 +142,7 @@ router.post('/signin', async (req, res, next) => {
   });
 
   console.log(req.body,"s")
-  newUser.password = await newUser.generateHash(req.body.password);
-  await newUser.save(); 
+  
   await newEval1.save();
   console.log('성공~~')
   res.redirect('/users');
