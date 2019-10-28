@@ -30,6 +30,10 @@ router.post('/request_eval/:id', catchErrors(async (req,res,next)=>{
 
     coin.save();
 
+    const asset = await Assets.findById(req.params.id);
+    asset.is_evaluate = true;
+    await asset.save();
+
     return res.redirect('back');
 
 }));
