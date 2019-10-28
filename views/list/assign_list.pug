@@ -11,11 +11,11 @@ block content
           each item in list
             th(scope='col')= item
       tbody
-        each e, idx in eval
-            tr
+        each i, idx in invest
+            tr.investList(idNum=`${i.id}`)
               th(scope='row')= idx+1
-              td= e.category
-              td= e.title
-              td= e.register
-              td= e.date
+              td= i.category
+              td= i.asset_name
+              td= i.user_id.name
+              td= i.createdAt
 

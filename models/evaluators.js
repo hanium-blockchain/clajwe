@@ -4,6 +4,7 @@ var mongoose = require('mongoose'),
 
 var schema = new Schema({
   user_id: { type: Schema.Types.ObjectId, ref: 'Users' },
+  is_approved: { type: Boolean, default: false},
   li_no: {type: String, trim: true, required: true},
   li_Category: {type: String, trim: true, required: true},
   li_date: {type: String, trim: true, required: true},
