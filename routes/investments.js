@@ -17,7 +17,7 @@ router.get('/detail/:id', function(req, res, next){
 
 router.get('/list', catchErrors(async (req, res, next) => {
     var investHead = ['#', '분류', '자산명', '등록자', '완료일자']
-    const invest = await Investments.find({is_evaluate: true}).populate('user_id').populate('values_id')
+    const invest = await Investments.find({is_evaluate: true, is_approved: true}).populate('user_id').populate('values_id')
     console.log(invest);
     // value_id를 asset테이블에 추가하기 --> 평가할때, asset 테이블에 is_evaluate를 바꾸면서 value_id 값을 추가해준다.
     res.render('list/eval_invest_list', {title: '투자 가능한 리스트',check: 'invest', list: investHead, invest: invest});
