@@ -32,12 +32,28 @@ router.get('/detail/:id', needAuth, catchErrors(async (req, res, next)=> {
 
 
     const value = await Values.findOne({asset_id : req.params.id});
-    console.log(req.session.user.is_manager)
+    // console.log(req.session.user.is_manager)
     if (req.session.user.is_manager == true) {
         var manager = true
     }
+
+    const coins = await Coins.find({asset_id:req.params.id});
+    var coinSum = 0;
+    for(var i=0; i<coins.length; i++){
+        var coin = coins[i];
+        // console.log('@@@coin? ', coin);
+        console.log(coin.coin);
+        coinSum += coin.coin;
+    }
+    console.log('@@@ coinSum?', coinSum);
+
+    var leftSum = value.value2coin - coinSum;
+    console.log('@@@ leftSum? ', leftSum);
+
+    var invPeople = coins.length;
+
     
-    res.render('detail/invest_detail', {asset: asset, value: value, isM: manager});
+    res.render('detail/invest_detail', {asset: asset, value: value, isM: manager, coinSum: coinSum, leftSum: leftSum, invPeople: invPeople});
     
 }));
 

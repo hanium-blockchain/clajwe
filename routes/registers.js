@@ -159,48 +159,6 @@ router.post('/request_register', catchErrors(async (req, res, next)=> {
 
     return res.redirect('back');
 
-}))
-
-
-/*
-router.post('/request_register', (req, res, next) => {
-    var err = validateRegisterForm(req.body);
-    if(err){
-        console.log('@@@ register form error! @@@');
-        console.log(err);
-        return res.redirect('back');
-    }
-
-
-    var user = new Users({
-        name: 'name',
-        pwd: '1234',
-        email: '11@gmail.com',
-    });
-
-    var address = req.body.address1 + ' ' + req.body.address2 + ' ' + req.body.address3;
-    var completeDate = req.body.completeYear + '년 ' + req.body.completeMonth + '월 ' + req.body.completeDay + '일';
-    var endDate = req.body.endYear + '년 ' + req.body.endMonth + '월 ' + req.body.endDay + '일'; 
-
-    var asset = new Assets({
-        user_id: user.user_id,
-        address: address,
-        category: req.body.category,
-        asset_no: req.body.number,
-        asset_name : req.body.name,
-        area: req.body.area,
-        completion_date : completeDate,
-        description: req.body.description,
-        end_date: endDate,
-    });
-
-    asset.save();
-    // alert('자산 등록이 완료되었습니다.');
-
-    return res.redirect('back');
-})
-*/
-
-
+}));
 
 module.exports = router;
