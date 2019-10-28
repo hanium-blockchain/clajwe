@@ -19,18 +19,11 @@ router.get('/detail/:id', catchErrors(async (req,res, next) => {
 
 
 router.post('/request_eval/:id', catchErrors(async (req,res,next)=>{
-
-    const user = await Users.findById(req.session.user.id);
-
-    // console.log(req.params.id);
-    // const asset = await Assets.findById(req.params.id);
-    // console.log('asset???', asset);
-
     var coinVal = req.body.value * 0.01;
-    console.log(coinVal);
+    // console.log(coinVal);
 
     var coin = new Coins({
-        user_id: user.user_id,
+        user_id: req.session.user.id,
         asset_id: req.params.id,
         coin : coinVal
     });
