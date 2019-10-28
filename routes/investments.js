@@ -18,13 +18,6 @@ function needAuth(req, res, next) {
     }
   }
 
-// router.get('/detail', catchErrors(async (req, res, next)=> {
-//     const asset = Data.asset
-//     const invest = Data.investDetail2;
-
-//     res.render('detail/invest_detail', {asset: asset, invest: invest});
-// }))
-
 
 router.get('/detail/:id', needAuth, catchErrors(async (req, res, next)=> {
 
@@ -39,40 +32,40 @@ router.get('/detail/:id', needAuth, catchErrors(async (req, res, next)=> {
 
 
     const value = await Values.findOne({asset_id : req.params.id});
-
-    // var coin = new Coins({
-    //     user_id: req.session.user.id,
-    //     asset_id: req.params.id,
-        
-    // })
     console.log(req.session.user.is_manager)
     if (req.session.user.is_manager == true) {
         var manager = true
     }
     
-    
     res.render('detail/invest_detail', {asset: asset, value: value, isM: manager});
-    
-
     
 }));
 
 
 router.post('/request_invest/:id', needAuth, catchErrors(async (req, res, next)=> {
     
-    // console.log(req.body.investValue);
+    if(req.session.user.is_manager == true){ // 관리자 -> 승인하기 
+        
+        console.log('@@@@@ this is manager @@@@@');
 
-    var coin = new Coins({
-        user_id: req.session.user.id,
-        asset_id: req.params.id,
-        coin: req.body.investValue
-    });
-    coin.save();
+        const asset = await Assets.findById(req.params.id);
+        asset.is_approved = true;
+        await asset.save();
+
+    } else { // 일반 사용자 -> 투자하기 
+
+        console.log('@@@@@ this is invest @@@@@');
+
+        var coin = new Coins({
+            user_id: req.session.user.id,
+            asset_id: req.params.id,
+            coin: req.body.investValue
+        });
+        coin.save();
+    }
 
     return res.redirect('back');
-}))
-
-
+}));
 
 router.get('/list', needAuth, catchErrors(async (req, res, next) => {
     var investHead = ['#', '분류', '자산명', '등록자', '완료일자']
