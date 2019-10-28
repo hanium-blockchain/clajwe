@@ -95,7 +95,7 @@ module.exports = router;
 const express = require('express');
 const Assets = require('../models/assets');
 const Users = require('../models/users');
-// const catchErrors = require('../lib/async-error');
+const catchErrors = require('../lib/async-error');
 
 const router = express.Router();
 
@@ -129,6 +129,40 @@ router.get('/new', function(req, res, next){
     res.render('detail/new_register');
 });
 
+router.post('/request_register', catchErrors(async (req, res, next)=> {
+    var err = validateRegisterForm(req.body);
+    if(err){
+        console.log('@@@ register form error! @@@');
+        console.log(err);
+        return res.redirect('back');
+    }
+    
+    const user = await Users.findById(req.session.user.id);
+    var address = req.body.address1 + ' ' + req.body.address2 + ' ' + req.body.address3;
+    var completeDate = req.body.completeYear + '년 ' + req.body.completeMonth + '월 ' + req.body.completeDay + '일';
+    var endDate = req.body.endYear + '년 ' + req.body.endMonth + '월 ' + req.body.endDay + '일'; 
+
+    var asset = new Assets({
+        user_id: user.user_id,
+        address: address,
+        category: req.body.category,
+        asset_no: req.body.number,
+        asset_name : req.body.name,
+        area: req.body.area,
+        completion_date : completeDate,
+        description: req.body.description,
+        end_date: endDate,
+    });
+
+    asset.save();
+    // alert('자산 등록이 완료되었습니다.');
+
+    return res.redirect('back');
+
+}))
+
+
+/*
 router.post('/request_register', (req, res, next) => {
     var err = validateRegisterForm(req.body);
     if(err){
@@ -165,6 +199,7 @@ router.post('/request_register', (req, res, next) => {
 
     return res.redirect('back');
 })
+*/
 
 
 

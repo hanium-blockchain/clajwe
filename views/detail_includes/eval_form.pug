@@ -1,4 +1,4 @@
-form(action='#' method='POST')
+form(action=`../request_eval/${asset.id}` method='POST')
     table.table.table-bordered.evaluate
         tbody
             tr
@@ -9,11 +9,13 @@ form(action='#' method='POST')
                 td(scope='row')= user.name
             tr
                 .form-group
-                    th.evaluate(rowspan='2') 가치 
+                    th.evaluate 가치 
                     td(scope='row')
-                        input.form-control(type='text' id='value' name='value' placeholder='현금가')
+                        input.evalInput.form-control(type='text' id='value' name='value' placeholder='현금가')
             tr
-                td(scope='row') 코인 
+                th.evaluate 코인가
+                td(scope='row') 
+                    label.coinLabel 0000
             tr
                 td.button(colspan='2')
-                    button.btn.btn-dark 평가하기
+                    button.btn.evalBtn.btn-dark 평가하기
