@@ -33,13 +33,17 @@ $(function() {
 
   $('.inv_mypageTable tr.myInvList').click(function(){
     var idx = $(this).attr('idNum');
-    var url = '/investments/detail/'+idx
+    var url = '/investments/detail_my/'+idx
     location.href=url
+
+
   });
   $('.ast_mypageTable tr.myAstList').click(function(){
     var idx = $(this).attr('idNum');
-    var url = '/investments/detail/'+idx
+    
+    var url = '/investments/detail_my/'+idx
     location.href=url
+
   });
 
   // 매니저가 투자 리스트에 넣을지 승인 해줌
