@@ -6,6 +6,8 @@ const Coins = require('../models/coins');
 const catchErrors = require('../lib/async-error');
 const Investments = require('../models/assets');
 const Evaluators = require('../models/evaluators');
+const Managers = require('../models/managers');
+const API_call = require('../public/javascripts/API_call')();
 function needAuth(req, res, next) {
   if (req.session.user) {
     if (req.session.user.is_manager) {
@@ -40,6 +42,40 @@ router.post('/assign/:id', needAuth, catchErrors(async (req, res, next) => {
   evaluator.is_approved = true;
   evaluator.save();
   return res.json(evaluator)
+}))
+router.post('/makeToken', needAuth, catchErrors(async (req, res, next) => {
+  var txhash, address, value= null 
+  API_call.htokenDeploy((err, result) => {
+    if(!err){
+      console.log('@@@@@ no error-htokenDeploy @@@@@');
+      console.log(result);
+      txhash = result.response.txhash
+      address = result.response.address
+
+      API_call.htokenInit(address, async (err, result) => {
+        if(!err){
+          console.log('@@@@@ no error-htokenInit @@@@@');
+          console.log(result);
+          value = 100000000
+
+          newToken = new Managers({
+            address: address,
+            txhash: txhash,
+            value: value
+          })
+          await newToken.save();
+        
+          return res.json(newToken)
+        } else {
+          console.log('@@@@@ error-htokenInit @@@@@');
+          console.log(err);
+        }
+      })
+    } else {
+      console.log('@@@@@ error-htokenDeploy @@@@@');
+      console.log(err);
+    }
+  })
 }))
 
 module.exports = router;

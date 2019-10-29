@@ -1,17 +1,15 @@
 var mongoose = require('mongoose'),
-    mongoosePaginate = require('mongoose-paginate'),
     Schema = mongoose.Schema;
 
 var schema = new Schema({
-  user_id: { type: Schema.Types.ObjectId, ref: 'Users' },
-  address: {type: String},
-  prvKey: {type: String},
+  address: {type: String, required: true},
+  txhash: {type: String, required: true},
+  value: {type: Number},
   createdAt: {type: Date, default: Date.now}
 }, {
   toJSON: { virtuals: true},
   toObject: {virtuals: true}
 }); 
-schema.plugin(mongoosePaginate);
-var Hashes = mongoose.model('Hashes', schema);
+var Managers = mongoose.model('Managers', schema);
 
-module.exports = Hashes;
+module.exports = Managers;
