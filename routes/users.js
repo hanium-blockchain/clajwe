@@ -6,6 +6,9 @@ const Assets = require('../models/assets');
 const Coins = require('../models/coins');
 const catchErrors = require('../lib/async-error');
 const Values = require('../models/values');
+const server = require('../public/javascripts/server')('wallet');
+
+const request = require('request');
 
 
 function needAuth(req, res, next) {
@@ -88,6 +91,16 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/login', function(req, res, next) {
+  server.createWallet(function(err, result){
+    if(!err){
+      console.log('@@@@@ no error @@@@@');
+      console.log(result);
+    } else {
+      console.log('@@@@@ error @@@@@');
+      console.log(err);
+    }
+  })
+
   Users.findOne({email: req.body.email}, function(err, user) {
     if (err) {
       console.log('err')
