@@ -21,6 +21,10 @@ a {
   margin-left: 20rem;
   margin-bottom: 16rem;
 }
+.row.invest_my_my1{
+  margin-left: 17rem;
+  margin-right: 5rem;
+}
 input.assetNum {
   width: 70%;
 }
