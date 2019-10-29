@@ -73,7 +73,7 @@ module.exports = function() {
                     statusCodeErrorHandler(res.statusCode, callback, result);
                 });
             },
-            cloudsaleSetting: function(contract, htokenAddr, atokenAddr, callback){ 
+            cloudsaleSetting: function(contract, atokenAddr, callback){ 
                 OPTIONS.url = HOST + '/operators/at-crowdsale/'+ contract;
                 OPTIONS.body = JSON.stringify({
                     "method": "setAssetTokenCrowdsale",
