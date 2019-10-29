@@ -4,6 +4,7 @@ const Users = require('../models/users');
 const Assets = require('../models/assets');
 const Coins = require('../models/coins');
 const Values = require('../models/values');
+const AssetTokens = require('../models/assetTokens');
 
 const catchErrors = require('../lib/async-error');
 const Investments = require('../models/assets');
@@ -59,14 +60,6 @@ router.get('/detail_inv/:id', needAuth, catchErrors(async (req, res, next)=> {
 router.get('/detail/:id', needAuth, catchErrors(async (req, res, next)=> {
 
     const asset = await Assets.findById(req.params.id);
-    
-    // var myValue = await Values.find().populate('asset_id');
-    // console.log('@@@@@@', myValue);
-    // // var v2c = await myValue.value2coin;
-
-    // console.log(myValue[0].value2coin);
-    // console.log(myValue.value);
-
 
     const value = await Values.findOne({asset_id : req.params.id});
     // console.log(req.session.user.is_manager)
@@ -116,12 +109,10 @@ router.get('/detail_my/:id', needAuth, catchErrors(async (req, res, next)=> {
 router.post('/request_invest/:id', needAuth, catchErrors(async (req, res, next)=> {
     
     if(req.session.user.is_manager == true){ // 관리자 -> 승인하기 
-        
-        // console.log('@@@@@ this is manager @@@@@');
-
-        var method = '';
+    
         var params = [];
         var txaddress = null;
+        var txhash = null;
 
         API_call.assetTokenize(function(err, result){
             if(!err){
@@ -133,6 +124,13 @@ router.post('/request_invest/:id', needAuth, catchErrors(async (req, res, next)=
                 params._assetId = req.params.id;
 
                 params._txaddress = txaddress;
+
+                var newAssetToken = new AssetTokens({
+                    asset_id: req.params.id,
+                    txhash: result.response.txhash,
+                    address: result.response.address,
+                });
+                newAssetToken.save();
 
                 API_call.goAssetToken(params, (err, result) => {
                     if(!err){
@@ -149,12 +147,6 @@ router.post('/request_invest/:id', needAuth, catchErrors(async (req, res, next)=
                 console.log(err);
             }
         });
-
-        
-
-
-
-
         const asset = await Assets.findById(req.params.id);
         asset.is_approved = true;
         await asset.save();
