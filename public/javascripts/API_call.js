@@ -36,8 +36,8 @@ module.exports = function() {
                     statusCodeErrorHandler(res.statusCode, callback, result);
                 });
             },
-            htokenInit: function(contract, callback) {
-                OPTIONS.url = HOST+'/operators/htoken/'+contract;
+            htokenInit: function(callback) {
+                OPTIONS.url = HOST+'/operators/htoken/0x464dE7103Bf9964904d09D140BD831Af003f6969';
                 OPTIONS.body = JSON.stringify({
                     "method": "setTokenInfo",
                     "params": {
@@ -51,14 +51,39 @@ module.exports = function() {
                     statusCodeErrorHandler(res.statusCode, callback, result);
                 });
             },
-            assetTokenize: function(method, params, callback){ // asset token 배포 
+            assetTokenize: function(callback){ // asset token 배포 
                 OPTIONS.url = HOST + '/operators/asset-token/deploy';
                 OPTIONS.body = JSON.stringify();
                 request.post(OPTIONS, function(err, res, result){
                     statusCodeErrorHandler(res.statusCode, callback, result);
                 });
-            }
-
+            },
+            cloudsaleDeploy: function(callback){ 
+                OPTIONS.url = HOST + '/operators/at-crowdsale/deploy';
+                OPTIONS.body = JSON.stringify({
+                    "method": "",
+                    "params": {}
+                });
+                request.post(OPTIONS, function(err, res, result){
+                    statusCodeErrorHandler(res.statusCode, callback, result);
+                });
+            },
+            cloudsaleSetting: function(contract, htokenAddr, atokenAddr, callback){ 
+                OPTIONS.url = HOST + '/operators/at-crowdsale/'+ contract;
+                OPTIONS.body = JSON.stringify({
+                    "method": "setAssetTokenCrowdsale",
+                    "params": {
+                        "_htokenAddr": "0x464dE7103Bf9964904d09D140BD831Af003f6969",
+                        "_htokenOwnerAddr": "0x0F20E58D0c54d28f336CBf9536cAa8675D33D705",
+                        "_assettokenAddr": atokenAddr,
+                        "_assettokenOwnerAddr": "0x0F20E58D0c54d28f336CBf9536cAa8675D33D705",
+                        "_crowdfundingendday": 20180820
+                    }
+                });
+                request.post(OPTIONS, function(err, res, result){
+                    statusCodeErrorHandler(res.statusCode, callback, result);
+                });
+            },
 
         };
     }
