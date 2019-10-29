@@ -20,8 +20,9 @@ block content
               td= i.asset_name
               td= i.user_id.name
               td.sample_date= i.createdAt
-            tr
-              td(colspan=4)= `가치 : ${i.area}`
+              td= i.area
+            //- tr
+            //-   td(colspan=4)= `가치 : ${i.area}`
         else if check === 'eval'
           each e,idx in eval
             tr.evalList(idNum=`${e.id}`)
