@@ -111,13 +111,15 @@ router.get('/signin', (req, res, next) => {
 
 
 
-router.post('/signin', async (req, res, next) => {
+router.post('/signin', catchErrors(async (req, res, next) => {
   // console.log('request', req)
-  var err = validateForm(req.body, {needPassword: true});
-  if (err) {
-    console.log(err)
-    return res.redirect('back');
-  }
+  // var err = validateForm(req.body, {needPassword: true});
+  // if (err) {
+  //   console.log(err)
+  //   return res.redirect('back');
+  // }
+
+
   var newUser = await Users.findOne({email: req.body.email});
   var newEval1 = await Evaluators.findOne({email: req.body.email});
 
@@ -125,34 +127,39 @@ router.post('/signin', async (req, res, next) => {
     console.log('이미 존재하는 메일')
     return res.redirect('back');
   }
+
+
   newUser = new Users({
     name: req.body.name,
     email: req.body.email,
-    is_evaluator: req.body.is_evaluator? true:false,
+    password: req.body.password,
+    is_evaluator: false,
     is_manager: false
-    
   });
-  newUser.password = req.body.password;
+
+  // newUser.password = req.body.password;
+  // console.log(user)
   await newUser.save(); 
+  console.log('@@@ user save');
 
-  var finfUser = await Users.findOne({email: req.body.email});
+  // var finfUser = await Users.findOne({email: req.body.email});
   
-  newEval1 = new Evaluators({
-    user_id: finfUser.id,
-    li_no: req.body.li_no,
-    li_Category: req.body.li_Category,
-    li_date: req.body.li_date,
-    li_birth: req.body.li_birth,
-    li_inner: req.body.li_inner
-    
-  });
+  if (req.body.is_evaluator == true){
+    newEval1 = new Evaluators({
+      user_id: user.user_id,
+      li_no: req.body.li_no,
+      li_Category: req.body.li_Category,
+      li_date: req.body.li_date,
+      li_birth: req.body.li_birth,
+      li_inner: req.body.li_inner
+    });
 
-  // console.log(req.body,"s")
-  
-  await newEval1.save();
-  console.log('성공~~')
-  res.redirect('/users');
-});
+    await newEval1.save();
+    console.log('@@@ eval success');
+  }
+ 
+  return res.redirect('back');
+}));
 
 
 module.exports = router;
