@@ -6,7 +6,7 @@ const Assets = require('../models/assets');
 const Coins = require('../models/coins');
 const catchErrors = require('../lib/async-error');
 const Values = require('../models/values');
-const server = require('../public/javascripts/server')();
+const API_call = require('../public/javascripts/API_call')();
 const request = require('request');
 
 
@@ -86,7 +86,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/login', function(req, res, next) {
-  server.createWallet(function(err, result){
+  API_call.createWallet(function(err, result){
     if(!err){
       console.log('@@@@@ no error @@@@@');
       console.log(result);
