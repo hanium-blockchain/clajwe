@@ -31,13 +31,13 @@ $(function() {
     location.href=url
   });
 
+  // 마이페이지 
   $('.inv_mypageTable tr.myInvList').click(function(){
     var idx = $(this).attr('idNum');
-    var url = '/investments/detail_my/'+idx
+    var url = '/investments/detail_inv/'+idx
     location.href=url
-
-
   });
+
   $('.ast_mypageTable tr.myAstList').click(function(){
     var idx = $(this).attr('idNum');
     

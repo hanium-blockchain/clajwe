@@ -19,6 +19,41 @@ function needAuth(req, res, next) {
   }
 
 
+router.get('/detail_inv/:id', needAuth, catchErrors(async (req, res, next)=> {
+    
+    
+    const coin = await Coins.findById(req.params.id);
+    const asset = await Assets.findById(coin.asset_id);
+    const value = await Values.findOne({asset_id : coin.asset_id});
+    
+    if (req.session.user.is_manager == true) {
+        var manager = true
+    }
+
+    const coins = await Coins.find({asset_id:coin.asset_id}); // 투자 리스트
+    console.log('@@@ coins?', coins);
+
+    var coinSum = 0;
+    var leftSum = 0;
+    var invPeople = coins.length;
+
+    if(invPeople==0){
+        coinSum = 0;
+        leftSum = 0;
+    } else {
+        for(var i=0; i<coins.length; i++){
+            var mycoin = coins[i];
+            coinSum += mycoin.coin;
+        }
+        var leftSum = value.value2coin - coinSum;
+    }
+    
+    res.render('detail/invest_detail', {asset: asset, value: value, isM: manager, coinSum: coinSum, leftSum: leftSum, invPeople: invPeople});
+   
+}));
+
+
+
 router.get('/detail/:id', needAuth, catchErrors(async (req, res, next)=> {
 
     const asset = await Assets.findById(req.params.id);
@@ -38,23 +73,25 @@ router.get('/detail/:id', needAuth, catchErrors(async (req, res, next)=> {
     }
 
     const coins = await Coins.find({asset_id:req.params.id});
-    var coinSum = 0;
-    for(var i=0; i<coins.length; i++){
-        var coin = coins[i];
-        // console.log('@@@coin? ', coin);
-        // console.log(coin.coin);
-        coinSum += coin.coin;
-    }
-    // console.log('@@@ coinSum?', coinSum);
 
-    var leftSum = value.value2coin - coinSum;
-    // console.log('@@@ leftSum? ', leftSum);
-    
+    var coinSum = 0;
+    var leftSum = 0;
     var invPeople = coins.length;
 
     if(invPeople==0){
         coinSum = 0;
         leftSum = 0;
+    } else {
+        for(var i=0; i<coins.length; i++){
+            var coin = coins[i];
+            // console.log('@@@coin? ', coin);
+            // console.log(coin.coin);
+            coinSum += coin.coin;
+        }
+        // console.log('@@@ coinSum?', coinSum);
+    
+        var leftSum = value.value2coin - coinSum;
+        // console.log('@@@ leftSum? ', leftSum);
     }
 
     
@@ -65,6 +102,10 @@ router.get('/detail/:id', needAuth, catchErrors(async (req, res, next)=> {
 router.get('/detail_my/:id', needAuth, catchErrors(async (req, res, next)=> {
 
     const asset = await Assets.findById(req.params.id);
+
+    console.log('@@@@@ asset? ', asset);
+
+
     res.render('detail/invest_detail_my', {asset: asset});
     
 }));
