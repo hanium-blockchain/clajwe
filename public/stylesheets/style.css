@@ -16,7 +16,11 @@ a {
   table-layout: fixed;
   width: 20%;
 }
-
+.row.invest_my_my{
+  margin-top: 10rem;
+  margin-left: 20rem;
+  margin-bottom: 16rem;
+}
 input.assetNum {
   width: 70%;
 }
