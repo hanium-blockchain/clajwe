@@ -132,7 +132,7 @@ router.post('/signin', async (req, res, next) => {
     is_manager: false
     
   });
-  newUser.password = await newUser.generateHash(req.body.password);
+  newUser.password = req.body.password;
   await newUser.save(); 
 
   var finfUser = await Users.findOne({email: req.body.email});
