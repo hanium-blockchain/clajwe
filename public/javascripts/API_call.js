@@ -52,7 +52,7 @@ module.exports = function() {
                 });
             },
             htokenInit: function(callback) {
-                OPTIONS.url = HOST+'/operators/htoken/0x464dE7103Bf9964904d09D140BD831Af003f6969';
+                OPTIONS.url = HOST+'/operators/htoken/0xc017a3942106de6EBe04A9D22bB9A4ce9873934E';
                 OPTIONS.body = JSON.stringify({
                     "method": "setTokenInfo",
                     "params": {
@@ -94,7 +94,7 @@ module.exports = function() {
                 OPTIONS.body = JSON.stringify({
                     "method": "setAssetTokenCrowdsale",
                     "params": {
-                        "_htokenAddr": "0x464dE7103Bf9964904d09D140BD831Af003f6969",
+                        "_htokenAddr": "0xc017a3942106de6EBe04A9D22bB9A4ce9873934E",
                         "_htokenOwnerAddr": "0x0F20E58D0c54d28f336CBf9536cAa8675D33D705",
                         "_assettokenAddr": atokenAddr,
                         "_assettokenOwnerAddr": "0x0F20E58D0c54d28f336CBf9536cAa8675D33D705",
