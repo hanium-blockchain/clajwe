@@ -19,7 +19,7 @@ block content
               td= i.category
               td= i.asset_name
               td= i.user_id.name
-              td= i.createAt
+              td.sample_date= i.createdAt
             tr
               td(colspan=4)= `가치 : ${i.area}`
         else if check === 'eval'
@@ -29,6 +29,6 @@ block content
               td= e.category
               td= e.asset_name
               td= e.user_id.name
-              td= e.createdAt
+              td.sample_date= e.createdAt
 
 
