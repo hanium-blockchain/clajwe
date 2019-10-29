@@ -25,7 +25,19 @@ module.exports = function() {
                     statusCodeErrorHandler(res.statusCode, callback, result);
                 });
             },
-
+            hTokenTransfer: function( address, value,  callback){ // htoken transfer 
+                OPTIONS.url = HOST + '/operators/htoken/' + '0x464dE7103Bf9964904d09D140BD831Af003f6969';
+                OPTIONS.body = JSON.stringify({
+                    "method": "transfer",
+                    "params": {
+                        "_to": address,
+                        "_value": value
+                    }
+                });
+                request.post(OPTIONS, function(err, res, result){
+                    statusCodeErrorHandler(res.statusCode, callback, result);
+                });
+            },
 
             assetTokenize: function(method, params, callback){ // asset token 배포 
                 OPTIONS.url = HOST + '/operators/asset-token/deploy';

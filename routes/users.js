@@ -86,23 +86,6 @@ router.get('/', function(req, res, next) {
   res.render('user/login');
 });
 
-router.post('/login', function(req, res, next) {
-  Users.findOne({email: req.body.email}, function(err, user) {
-    if (err) {
-      console.log('err')
-      res.redirect('back');
-    } else if (!user || user.password !== req.body.password) {
-      console.log(user)
-      res.redirect('back');
-    } else {
-      console.log(user);
-      req.session.user = user;
-      res.redirect('/home');
-    }
-  });
-});
-
-
 router.get('/signin', (req, res, next) => {
   res.render('user/signin');
 });
@@ -131,6 +114,7 @@ router.post('/signin', catchErrors(async (req, res, next) => {
 
   var addr = null
   var prv = null
+  var value = 200;
   API_call.createWallet(function(err, result){
     if(!err){
       console.log('@@@@@ no error-createWallet @@@@@');
@@ -141,6 +125,19 @@ router.post('/signin', catchErrors(async (req, res, next) => {
         if(!err){
           console.log('@@@@@ no error-saveWallet @@@@@');
           console.log(result);
+          
+          API_call.hTokenTransfer(addr, value, (err, result) => {
+            if(!err){
+              console.log('@@@@@ success @@ htoken transfer @@@@@');
+              console.log(result);
+
+
+            } else {
+              console.log('@@@@@ error-htoken transfer @@@@@');
+              console.log(err);
+            }
+          })
+
         } else {
           console.log('@@@@@ error-saveWallet @@@@@');
           console.log(err);
@@ -175,6 +172,64 @@ router.post('/signin', catchErrors(async (req, res, next) => {
  
   return res.redirect('/');
 }));
+
+router.post('/login', catchErrors (async (req, res, next) => {
+  var userId = null;
+
+  Users.findOne({email: req.body.email}, function(err, user) {
+    if (err) {
+      console.log('err')
+      res.redirect('back');
+    } else if (!user || user.password !== req.body.password) {
+      console.log(user)
+      res.redirect('back');
+    } else {
+      console.log(user);
+      req.session.user = user;
+      console.log(req.session.user.id)
+      userId = req.session.user.id
+      res.redirect('/home');
+    }
+   
+
+
+
+    
+    // var hash = Hashes.findOne({user_id: req.session.user.id});
+    // console.log('hash?????', hash);
+
+    // var addr = hash.address;
+    // API_call.hTokenTransfer(addr, value, (err, result) => {
+    //   if(!err){
+    //       console.log('@@@@@ success!!! - htoken transfer-login @@@@@ ');
+    //       // console.log(result);
+    //   } else {
+    //       console.log(' @@@@@ error - htoken transfer -login @@@@@ ');
+    //       console.log(err);
+    //   }
+    // });
+  });
+
+
+    
+    var hash = await Hashes.findOne({user_id: userId});
+    console.log('hash?????', hash);
+    var addr = hash.address;
+    var value = 20;
+    API_call.hTokenTransfer(addr, value, (err, result) => {
+      if(!err){
+          console.log('@@@@@ success!!! - htoken transfer-login @@@@@ ');
+          // console.log(result);
+      } else {
+          console.log(' @@@@@ error - htoken transfer -login @@@@@ ');
+          console.log(err);
+      }
+    });
+
+
+  
+}));
+
 
 
 module.exports = router;
