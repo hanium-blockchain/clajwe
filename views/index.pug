@@ -13,7 +13,7 @@ block content
         #nav-home.tab-pane.fade.show.active.mypage(role='tabpanel' aria-labelledby='nav-home-tab')
           block content
             h6 보유 코인 : 8908907
-            table.table.listTable.mypage
+            table.table.listTable.inv_mypageTable
               thead.thead.mypage
                 tr
                   each item in invList
@@ -21,7 +21,7 @@ block content
               tbody
                 if (myInv)
                   each myI, idx in myInv
-                    tr
+                    tr.myInvList(idNum=`${myI.id}`)
                       th(rowspan=2,scope='row')= idx+1
                       td= myI.asset_id.category
                       td= myI.asset_id.asset_name
@@ -31,7 +31,7 @@ block content
         #nav-profile.tab-pane.fade.mypage(role='tabpanel' aria-labelledby='nav-profile-tab') 
           block content
             h6 보유 코인 : 8908908
-            table.table.listTable.mypage
+            table.table.listTable.ast_mypageTable
               thead.thead.mypage
                 tr
                   each item in astList
@@ -39,7 +39,7 @@ block content
               tbody
                 if (myAst)
                   each myI, idx in myAst
-                    tr
+                    tr.myAstList(idNum=`${myI.id}`)
                       th(rowspan=2,scope='row')= idx+1
                       td= myI.category
                       td= myI.asset_name

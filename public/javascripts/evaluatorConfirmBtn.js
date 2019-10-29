@@ -31,6 +31,17 @@ $(function() {
     location.href=url
   });
 
+  $('.inv_mypageTable tr.myInvList').click(function(){
+    var idx = $(this).attr('idNum');
+    var url = '/investments/detail/'+idx
+    location.href=url
+  });
+  $('.ast_mypageTable tr.myAstList').click(function(){
+    var idx = $(this).attr('idNum');
+    var url = '/investments/detail/'+idx
+    location.href=url
+  });
+
   // 매니저가 투자 리스트에 넣을지 승인 해줌
   $('.assignListTable tr.investList').click(function(){
     var idx = $(this).attr('idNum');

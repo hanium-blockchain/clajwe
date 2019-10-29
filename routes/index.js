@@ -3,6 +3,17 @@ var router = express.Router();
 const Assets = require('../models/assets');
 const Coins = require('../models/coins');
 const catchErrors = require('../lib/async-error');
+var Values = require('../models/values');
+
+
+
+router.get('/detail/:id', catchErrors(async (req,res, next) => {
+  const asset = await Assets.findById(req.params.id);
+  const user = await Users.findById(req.session.user.id);
+  res.render('detail/eval_detail', {asset: asset, user:user});
+}));
+
+
 
 function needAuth(req, res, next) {
   if (req.session.user) {
@@ -22,15 +33,18 @@ router.get('/', function(req, res, next) {
 
 });
 router.get('/home', needAuth,catchErrors(async (req, res, next) => {
-  console.log('user',req.session.user)
+  // console.log('user',req.session.user)
   const assetList = await Assets.find({user_id: req.session.user.id});
   const invList = await Coins.find({user_id: req.session.user.id}).populate('asset_id');
   var myAstHead=[' ', '분류', '자산명']
   var myInvHead=[' ', '분류', '자산명', '투자한 코인']
-  console.log('ast', assetList)
-  console.log('inv', invList)
+  // console.log('ast', assetList)
+  // console.log('inv', invList)
   res.render('index',{astList: myAstHead, invList: myInvHead, myInv: invList, myAst: assetList});
 }));
+
+
+
 // router.get('/', function(req, res, next) {
 //   res.render('user/login');
 // });

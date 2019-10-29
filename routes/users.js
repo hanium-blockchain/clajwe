@@ -2,6 +2,12 @@ var express = require('express');
 var Users = require('../models/users');
 var Evaluators = require('../models/evaluators');
 var router = express.Router();
+var Assets = require('../models/assets');
+var Coins = require('../models/coins');
+const catchErrors = require('../lib/async-error');
+var Values = require('../models/values');
+
+
 
 function needAuth(req, res, next) {
   if (req.session.user) {
@@ -141,7 +147,7 @@ router.post('/signin', async (req, res, next) => {
     
   });
 
-  console.log(req.body,"s")
+  // console.log(req.body,"s")
   
   await newEval1.save();
   console.log('성공~~')
