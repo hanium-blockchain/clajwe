@@ -51,6 +51,15 @@ module.exports = function() {
                     statusCodeErrorHandler(res.statusCode, callback, result);
                 });
             },
+            assetTokenize: function(method, params, callback){ // asset token 배포 
+                OPTIONS.url = HOST + '/operators/asset-token/deploy';
+                OPTIONS.body = JSON.stringify();
+                request.post(OPTIONS, function(err, res, result){
+                    statusCodeErrorHandler(res.statusCode, callback, result);
+                });
+            }
+
+
         };
     }
 

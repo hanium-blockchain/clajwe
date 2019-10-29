@@ -8,6 +8,8 @@ const Values = require('../models/values');
 const catchErrors = require('../lib/async-error');
 const Investments = require('../models/assets');
 
+const API_call = require('../public/javascripts/API_call')();
+
 var Data = require('./data');
 
 function needAuth(req, res, next) {
@@ -115,7 +117,35 @@ router.post('/request_invest/:id', needAuth, catchErrors(async (req, res, next)=
     
     if(req.session.user.is_manager == true){ // 관리자 -> 승인하기 
         
-        console.log('@@@@@ this is manager @@@@@');
+        // console.log('@@@@@ this is manager @@@@@');
+
+        var method = '';
+        var params = [];
+
+        // API_call.assetTokenize(function(err,result){
+        //     if(!err){
+        //         console.log('@@@@@ success!!! - tokenize asset @@@@@ ');
+        //         console.log(result);
+        //     } else {
+        //         console.log(' @@@@@ error - tokenize asset @@@@@ ');
+        //         console.log(err);
+        //     }
+        // });
+
+        API_call.assetTokenize(method, params, (err, result) => {
+            if(!err){
+                console.log('@@@@@ success!!! - tokenize asset @@@@@ ');
+                console.log(result);
+            } else {
+                console.log(' @@@@@ error - tokenize asset @@@@@ ');
+                console.log(err);
+            }
+        });
+
+        
+
+
+
 
         const asset = await Assets.findById(req.params.id);
         asset.is_approved = true;
