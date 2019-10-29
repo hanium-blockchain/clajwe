@@ -39,14 +39,15 @@ a {
   width: 20%;
 }
 .row.invest_my_my{
-  margin-top: 10rem;
+  margin-top: 5rem;
   margin-left: 20rem;
 
 }
 .row.invest_my_my1{
   margin-left: 20rem;
-  margin-top: 10rem;
+  margin-top: 5rem;
   margin-right: 5rem;
+  margin-bottom: 5rem;
 }
 input.assetNum {
   width: 70%;
