@@ -113,13 +113,21 @@ router.post('/signin', catchErrors(async (req, res, next) => {
 
   var addr = null
   var prv = null
+  
   var value = 200;
-  API_call.createWallet(function(err, result){
+  API_call.createWallet(async function(err, result){
     if(!err){
       console.log('@@@@@ no error-createWallet @@@@@');
       console.log(result);
       addr = result.response.address
       prv = result.response.privateKey
+      newHash = new Hashes({
+        user_id: newUser.id,
+        address: addr,
+        prvKey: prv
+      })
+      await newHash.save();
+      console.log(newHash)
       API_call.saveWallet(addr, (err, result) => {
         if(!err){
           console.log('@@@@@ no error-saveWallet @@@@@');
@@ -129,7 +137,8 @@ router.post('/signin', catchErrors(async (req, res, next) => {
             if(!err){
               console.log('@@@@@ success @@ htoken transfer @@@@@');
               console.log(result);
-
+              
+              console.log(addr,prv, "djWjrh")
 
             } else {
               console.log('@@@@@ error-htoken transfer @@@@@');
@@ -161,13 +170,6 @@ router.post('/signin', catchErrors(async (req, res, next) => {
     await newEval.save();
     console.log('@@@ eval success');
   }
-
-  newHash = new Hashes({
-    user_id: newUser.id,
-    address: addr,
-    prvKey: prv
-  })
-  await newHash.save();
  
   return res.redirect('/');
 }));
@@ -175,7 +177,7 @@ router.post('/signin', catchErrors(async (req, res, next) => {
 router.post('/login', catchErrors (async (req, res, next) => {
   var userId = null;
 
-  Users.findOne({email: req.body.email}, function(err, user) {
+  Users.findOne({email: req.body.email}, async function(err, user) {
     if (err) {
       console.log('err')
       res.redirect('back');
@@ -190,7 +192,25 @@ router.post('/login', catchErrors (async (req, res, next) => {
       res.redirect('/home');
     }
    
+    var hash = await Hashes.findOne({user_id: userId});
+    console.log('hash?????', hash);
+    var addr = hash.address;
+    var value = 20;
+    console.log(addr)
+    API_call.hTokenTransfer(addr, value, (err, result) => {
+      console.log(addr,value, "djWjrh")
 
+      if(!err){
+        console.log('@@@@@ success @@ htoken transfer @@@@@');
+        console.log(result);
+        
+        console.log(addr,value, "djWjrh")
+
+      } else {
+        console.log('@@@@@ error-htoken transfer @@@@@');
+        console.log(err);
+      }
+    })
 
 
     
@@ -211,19 +231,7 @@ router.post('/login', catchErrors (async (req, res, next) => {
 
 
     
-    var hash = await Hashes.findOne({user_id: userId});
-    console.log('hash?????', hash);
-    var addr = hash.address;
-    var value = 20;
-    API_call.hTokenTransfer(addr, value, (err, result) => {
-      if(!err){
-          console.log('@@@@@ success!!! - htoken transfer-login @@@@@ ');
-          // console.log(result);
-      } else {
-          console.log(' @@@@@ error - htoken transfer -login @@@@@ ');
-          console.log(err);
-      }
-    });
+    
 
 
   
