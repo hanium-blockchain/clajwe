@@ -157,7 +157,7 @@ router.post('/signin', catchErrors(async (req, res, next) => {
     }
   })
 
-  if (req.body.is_evaluator == true){
+  if (req.body.is_evaluator == True){
     newEval = new Evaluators({
       user_id: newUser.id,
       li_no: req.body.li_no,

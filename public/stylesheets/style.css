@@ -7,7 +7,7 @@ body{
 a {
   color: #00B7FF;
 }
-.footer-design1  {
+/* .footer-design1  {
   position: absolute;
 
   height: 10em;
@@ -22,13 +22,13 @@ a {
 
 
 
-}
-.footer-design2{
+/* } */
+/* .footer-design2{
   margin-left:2em;
 }
 .footer-design3{
   margin-left:15em;
-}
+} */ 
 
 /* 자산 등록 css */
 .newRegiTable th{
