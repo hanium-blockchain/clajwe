@@ -59,12 +59,14 @@ router.get('/detail_inv/:id', needAuth, catchErrors(async (req, res, next)=> {
 
 router.get('/detail/:id', needAuth, catchErrors(async (req, res, next)=> {
 
-    const asset = await Assets.findById(req.params.id);
+    const asset = await Assets.findById(req.params.id).populate('user_id');
 
     const value = await Values.findOne({asset_id : req.params.id});
     // console.log(req.session.user.is_manager)
     if (req.session.user.is_manager == true) {
         var manager = true
+    } else if (req.session.user.id == asset.user_id.id) {
+        var isMe = true
     }
 
     const coins = await Coins.find({asset_id:req.params.id});
@@ -90,7 +92,7 @@ router.get('/detail/:id', needAuth, catchErrors(async (req, res, next)=> {
     }
 
     
-    res.render('detail/invest_detail', {asset: asset, value: value, isM: manager, coinSum: coinSum, leftSum: leftSum, invPeople: invPeople});
+    res.render('detail/invest_detail', {asset: asset, value: value, isMe: isMe, isM: manager, coinSum: coinSum, leftSum: leftSum, invPeople: invPeople});
     
 }));
 
