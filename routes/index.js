@@ -1,13 +1,15 @@
 var express = require('express');
 var router = express.Router();
-var Data = require('./data')
+const Assets = require('../models/assets');
+const Coins = require('../models/coins');
+const catchErrors = require('../lib/async-error');
 
 function needAuth(req, res, next) {
   if (req.session.user) {
     next();
   } else {
 
-    res.redirect('/signin');
+    res.redirect('/');
   }
 }
 /* GET home page. */
@@ -19,13 +21,16 @@ router.get('/', function(req, res, next) {
   
 
 });
-router.get('/home', needAuth,function(req, res, next) {
-  var myInvHead=[' ', '분류', '자산명', '가격']
-  const myInv = Data.myInv;
-  res.render('index',{check: 'myInv', list: myInvHead, myInv: myInv});
-
-  
-});
+router.get('/home', needAuth,catchErrors(async (req, res, next) => {
+  console.log('user',req.session.user)
+  const assetList = await Assets.find({user_id: req.session.user.id});
+  const invList = await Coins.find({user_id: req.session.user.id}).populate('asset_id');
+  var myAstHead=[' ', '분류', '자산명']
+  var myInvHead=[' ', '분류', '자산명', '투자한 코인']
+  console.log('ast', assetList)
+  console.log('inv', invList)
+  res.render('index',{astList: myAstHead, invList: myInvHead, myInv: invList, myAst: assetList});
+}));
 // router.get('/', function(req, res, next) {
 //   res.render('user/login');
 // });

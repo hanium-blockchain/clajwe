@@ -12,20 +12,20 @@ block content
       #nav-tabContent.tab-content.mypage
         #nav-home.tab-pane.fade.show.active.mypage(role='tabpanel' aria-labelledby='nav-home-tab')
           block content
-            h6 보유 코인 : 8908908
+            h6 보유 코인 : 8908907
             table.table.listTable.mypage
               thead.thead.mypage
                 tr
-                  each item in list
+                  each item in invList
                     th(scope='col')= item
               tbody
-                if check === 'myInv'
+                if (myInv)
                   each myI, idx in myInv
                     tr
                       th(rowspan=2,scope='row')= idx+1
-                      td= myI.category
-                      td= myI.title
-                      td= myI.value      
+                      td= myI.asset_id.category
+                      td= myI.asset_id.asset_name
+                      td= myI.coin     
                     tr
                       
         #nav-profile.tab-pane.fade.mypage(role='tabpanel' aria-labelledby='nav-profile-tab') 
@@ -34,14 +34,13 @@ block content
             table.table.listTable.mypage
               thead.thead.mypage
                 tr
-                  each item in list
+                  each item in astList
                     th(scope='col')= item
               tbody
-                if check === 'myInv'
-                  each myI, idx in myInv
+                if (myAst)
+                  each myI, idx in myAst
                     tr
                       th(rowspan=2,scope='row')= idx+1
-                      td= myI.category_reg
-                      td= myI.title_reg
-                      td= myI.value_reg     
+                      td= myI.category
+                      td= myI.asset_name
                     tr
