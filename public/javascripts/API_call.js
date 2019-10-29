@@ -15,6 +15,15 @@ module.exports = function() {
                 request.post(OPTIONS, function(err, res, result){
                     statusCodeErrorHandler(res.statusCode, callback, result);
                 });
+            },
+            saveWallet: function(address, callback) {
+                OPTIONS.url = HOST+'/wallets/save';
+                OPTIONS.body = JSON.stringify({
+                    "address": address
+                });
+                request.post(OPTIONS, function(err, res, result){
+                    statusCodeErrorHandler(res.statusCode, callback, result);
+                });
             }
         };
     }

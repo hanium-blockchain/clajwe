@@ -3,6 +3,7 @@ const Users = require('../models/users');
 const Evaluators = require('../models/evaluators');
 const router = express.Router();
 const Assets = require('../models/assets');
+const Hashes = require('../models/hashes');
 const Coins = require('../models/coins');
 const catchErrors = require('../lib/async-error');
 const Values = require('../models/values');
@@ -86,16 +87,6 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/login', function(req, res, next) {
-  API_call.createWallet(function(err, result){
-    if(!err){
-      console.log('@@@@@ no error @@@@@');
-      console.log(result);
-    } else {
-      console.log('@@@@@ error @@@@@');
-      console.log(err);
-    }
-  })
-
   Users.findOne({email: req.body.email}, function(err, user) {
     if (err) {
       console.log('err')
@@ -120,7 +111,7 @@ router.get('/signin', (req, res, next) => {
 
 router.post('/signin', catchErrors(async (req, res, next) => {
   var newUser = await Users.findOne({email: req.body.email});
-  var newEval1 = await Evaluators.findOne({email: req.body.email});
+  var newEval = await Evaluators.findOne({email: req.body.email});
 
   if (newUser) {
     console.log('이미 존재하는 메일')
@@ -138,19 +129,32 @@ router.post('/signin', catchErrors(async (req, res, next) => {
   await newUser.save(); 
   console.log('@@@ user save');
 
-  API.createWallet((err, result) => {
-    if (!err) {
-      console.log('지갑 생성 성공');
+  var addr = null
+  var prv = null
+  API_call.createWallet(function(err, result){
+    if(!err){
+      console.log('@@@@@ no error-createWallet @@@@@');
       console.log(result);
+      addr = result.response.address
+      prv = result.response.privateKey
+      API_call.saveWallet(addr, (err, result) => {
+        if(!err){
+          console.log('@@@@@ no error-saveWallet @@@@@');
+          console.log(result);
+        } else {
+          console.log('@@@@@ error-saveWallet @@@@@');
+          console.log(err);
+        }
+      })
     } else {
-      console.log('에러~~~');
+      console.log('@@@@@ error-createWallet @@@@@');
       console.log(err);
     }
-  });
+  })
 
   if (req.body.is_evaluator == true){
-    newEval1 = new Evaluators({
-      user_id: user.user_id,
+    newEval = new Evaluators({
+      user_id: newUser.id,
       li_no: req.body.li_no,
       li_Category: req.body.li_Category,
       li_date: req.body.li_date,
@@ -158,11 +162,18 @@ router.post('/signin', catchErrors(async (req, res, next) => {
       li_inner: req.body.li_inner
     });
 
-    await newEval1.save();
+    await newEval.save();
     console.log('@@@ eval success');
   }
+
+  newHash = new Hashes({
+    user_id: newUser.id,
+    address: addr,
+    prvKey: prv
+  })
+  await newHash.save();
  
-  return res.redirect('back');
+  return res.redirect('/');
 }));
 
 
