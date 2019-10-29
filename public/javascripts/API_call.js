@@ -25,17 +25,22 @@ module.exports = function() {
                     statusCodeErrorHandler(res.statusCode, callback, result);
                 });
             },
-            htokenDeploy: function(callback) {
-                OPTIONS.url = HOST+'/operators/htoken/deploy';
+
+            hTokenTransfer: function( address, value,  callback){ // htoken transfer 
+                OPTIONS.url = HOST + '/operators/htoken/' + '0x464dE7103Bf9964904d09D140BD831Af003f6969';
                 OPTIONS.body = JSON.stringify({
-                    "method": "",
+                    "method": "transfer",
                     "params": {
+                        "_to": address,
+                        "_value": value
+
                     }
                 });
                 request.post(OPTIONS, function(err, res, result){
                     statusCodeErrorHandler(res.statusCode, callback, result);
                 });
             },
+
             htokenInit: function(callback) {
                 OPTIONS.url = HOST+'/operators/htoken/0x464dE7103Bf9964904d09D140BD831Af003f6969';
                 OPTIONS.body = JSON.stringify({
@@ -52,6 +57,7 @@ module.exports = function() {
                 });
             },
             assetTokenize: function(callback){ // asset token 배포 
+
                 OPTIONS.url = HOST + '/operators/asset-token/deploy';
                 OPTIONS.body = JSON.stringify({
                     "method": "",
