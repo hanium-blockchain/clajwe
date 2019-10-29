@@ -19,7 +19,9 @@ form(action=`../request_invest/${asset.id}` method='POST')
             tr
                 th.detail(scope='row') 나의 투자 금액 (코인)
                 td(scope='row') 
-                    input.form-control(type='text' id='investValue' name='investValue' placeholder='투자 금액')
+                    if (isM)
+                    else
+                        input.form-control(type='text' id='investValue' name='investValue' placeholder='투자 금액')
             tr
                 .form-group
                     td.button(colspan='2')

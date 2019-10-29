@@ -25,6 +25,7 @@ module.exports = function() {
                     statusCodeErrorHandler(res.statusCode, callback, result);
                 });
             },
+
             hTokenTransfer: function( address, value,  callback){ // htoken transfer 
                 OPTIONS.url = HOST + '/operators/htoken/' + '0x464dE7103Bf9964904d09D140BD831Af003f6969';
                 OPTIONS.body = JSON.stringify({
@@ -32,6 +33,7 @@ module.exports = function() {
                     "params": {
                         "_to": address,
                         "_value": value
+
                     }
                 });
                 request.post(OPTIONS, function(err, res, result){
@@ -39,15 +41,78 @@ module.exports = function() {
                 });
             },
 
-            assetTokenize: function(method, params, callback){ // asset token 배포 
+            htokenInit: function(callback) {
+                OPTIONS.url = HOST+'/operators/htoken/0x464dE7103Bf9964904d09D140BD831Af003f6969';
+                OPTIONS.body = JSON.stringify({
+                    "method": "setTokenInfo",
+                    "params": {
+                        "_tokenTotalSupply": 100000000,
+                        "_tokenNm": "0x4f5a303030310000000000000000000000000000000000000000000000000000",
+                        "_tokenPrice": 50,
+                        "_tokenId": "0x4f5a303030310000000000000000000000000000000000000000000000000001"
+                    }
+                });
+                request.post(OPTIONS, function(err, res, result){
+                    statusCodeErrorHandler(res.statusCode, callback, result);
+                });
+            },
+            assetTokenize: function(callback){ // asset token 배포 
+
                 OPTIONS.url = HOST + '/operators/asset-token/deploy';
-                OPTIONS.body = JSON.stringify();
+                OPTIONS.body = JSON.stringify({
+                    "method": "",
+                    "params": {
+                     
+                   }
+                });
+                request.post(OPTIONS, function(err, res, result){
+                    statusCodeErrorHandler(res.statusCode, callback, result);
+                });
+            },
+            cloudsaleDeploy: function(callback){ 
+                OPTIONS.url = HOST + '/operators/at-crowdsale/deploy';
+                OPTIONS.body = JSON.stringify({
+                    "method": "",
+                    "params": {}
+                });
+                request.post(OPTIONS, function(err, res, result){
+                    statusCodeErrorHandler(res.statusCode, callback, result);
+                });
+            },
+            cloudsaleSetting: function(contract, htokenAddr, atokenAddr, callback){ 
+                OPTIONS.url = HOST + '/operators/at-crowdsale/'+ contract;
+                OPTIONS.body = JSON.stringify({
+                    "method": "setAssetTokenCrowdsale",
+                    "params": {
+                        "_htokenAddr": "0x464dE7103Bf9964904d09D140BD831Af003f6969",
+                        "_htokenOwnerAddr": "0x0F20E58D0c54d28f336CBf9536cAa8675D33D705",
+                        "_assettokenAddr": atokenAddr,
+                        "_assettokenOwnerAddr": "0x0F20E58D0c54d28f336CBf9536cAa8675D33D705",
+                        "_crowdfundingendday": 20180820
+                    }
+                });
+                request.post(OPTIONS, function(err, res, result){
+                    statusCodeErrorHandler(res.statusCode, callback, result);
+                });
+            }, 
+            goAssetToken: function(params, callback){ // asset token 토큰화 
+                OPTIONS.url = HOST + '/operators/asset-token/' + params._txaddress;
+                OPTIONS.body = JSON.stringify({
+                    "method": "setAssetToken",
+                    "params": {
+                        "_tokenTotalSupply": 10000,
+                        "_tokenNm": "asset token",
+                        "_exTarget": "h token",
+                        "_tokenPrice": 4,
+                        "_tokenId": "123",
+                        "_assetId": params._assetId,
+                        "_settletokenday": 20180830,
+                    }
+                });
                 request.post(OPTIONS, function(err, res, result){
                     statusCodeErrorHandler(res.statusCode, callback, result);
                 });
             }
-
-
         };
     }
 

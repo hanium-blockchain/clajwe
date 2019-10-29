@@ -71,19 +71,24 @@ $(function() {
       complete: function(data) {
       }
     })
+  });
+
+  $('.makeToken').click(function(e) {
+    $.ajax({
+      url: '/007/makeToken',
+      method: 'POST',
+      dataType: 'json',
+      success: function(data) {
+        console.log('평가자 승인 성공~~~~');
+        console.log(data);
+      },
+      error:function(request,status,error){
+        console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+      },
+      complete: function(data) {
+      }
+    })
   })
-
-
-  // $('체크박스 클릭하는거는 찾아보기').click(function(){
-  //   if (체크박스 값 == true) {
-  //     $('.evalDropDown').hide();
-  //   }else {
-  //     $('.evalDropDown').show();
-  //   }
-  // });
-  
-
-
 });
 
 
