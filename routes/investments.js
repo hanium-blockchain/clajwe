@@ -121,21 +121,29 @@ router.post('/request_invest/:id', needAuth, catchErrors(async (req, res, next)=
 
         var method = '';
         var params = [];
+        var txaddress = null;
 
-        // API_call.assetTokenize(function(err,result){
-        //     if(!err){
-        //         console.log('@@@@@ success!!! - tokenize asset @@@@@ ');
-        //         console.log(result);
-        //     } else {
-        //         console.log(' @@@@@ error - tokenize asset @@@@@ ');
-        //         console.log(err);
-        //     }
-        // });
-
-        API_call.assetTokenize(method, params, (err, result) => {
+        API_call.assetTokenize(function(err, result){
             if(!err){
                 console.log('@@@@@ success!!! - tokenize asset @@@@@ ');
                 console.log(result);
+                
+                txaddress = result.response.address;
+                params._tokenId = result.response.txhash;
+                params._assetId = req.params.id;
+
+                params._txaddress = txaddress;
+
+                API_call.goAssetToken(params, (err, result) => {
+                    if(!err){
+                        console.log('@@@@@ success!!! - go token @@@@@ ');
+                        console.log(result);
+                    } else {
+                        console.log('@@@@@ go asset error @@@@@ ');
+                        console.log(err);
+                    }
+                });
+
             } else {
                 console.log(' @@@@@ error - tokenize asset @@@@@ ');
                 console.log(err);
