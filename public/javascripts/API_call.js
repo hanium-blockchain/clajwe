@@ -53,7 +53,12 @@ module.exports = function() {
             },
             assetTokenize: function(callback){ // asset token 배포 
                 OPTIONS.url = HOST + '/operators/asset-token/deploy';
-                OPTIONS.body = JSON.stringify();
+                OPTIONS.body = JSON.stringify({
+                    "method": "",
+                    "params": {
+                     
+                   }
+                });
                 request.post(OPTIONS, function(err, res, result){
                     statusCodeErrorHandler(res.statusCode, callback, result);
                 });
@@ -83,8 +88,25 @@ module.exports = function() {
                 request.post(OPTIONS, function(err, res, result){
                     statusCodeErrorHandler(res.statusCode, callback, result);
                 });
-            },
-
+            }, 
+            goAssetToken: function(params, callback){ // asset token 토큰화 
+                OPTIONS.url = HOST + '/operators/asset-token/' + params._txaddress;
+                OPTIONS.body = JSON.stringify({
+                    "method": "setAssetToken",
+                    "params": {
+                        "_tokenTotalSupply": 10000,
+                        "_tokenNm": "asset token",
+                        "_exTarget": "h token",
+                        "_tokenPrice": 4,
+                        "_tokenId": "123",
+                        "_assetId": params._assetId,
+                        "_settletokenday": 20180830,
+                    }
+                });
+                request.post(OPTIONS, function(err, res, result){
+                    statusCodeErrorHandler(res.statusCode, callback, result);
+                });
+            }
         };
     }
 
