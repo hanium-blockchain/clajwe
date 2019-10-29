@@ -118,7 +118,7 @@ router.post('/signin', catchErrors(async (req, res, next) => {
   API_call.createWallet(async function(err, result){
     if(!err){
       console.log('@@@@@ no error-createWallet @@@@@');
-      console.log(result);
+      // console.log(result);
       addr = result.response.address
       prv = result.response.privateKey
       newHash = new Hashes({
@@ -127,18 +127,18 @@ router.post('/signin', catchErrors(async (req, res, next) => {
         prvKey: prv
       })
       await newHash.save();
-      console.log(newHash)
+      // console.log(newHash)
       API_call.saveWallet(addr, (err, result) => {
         if(!err){
           console.log('@@@@@ no error-saveWallet @@@@@');
-          console.log(result);
+          // console.log(result);
           
           API_call.hTokenTransfer(addr, value, (err, result) => {
             if(!err){
               console.log('@@@@@ success @@ htoken transfer @@@@@');
-              console.log(result);
+              // console.log(result);
               
-              console.log(addr,prv, "djWjrh")
+              // console.log(addr,prv, "djWjrh")
 
             } else {
               console.log('@@@@@ error-htoken transfer @@@@@');
@@ -182,29 +182,29 @@ router.post('/login', catchErrors (async (req, res, next) => {
       console.log('err')
       res.redirect('back');
     } else if (!user || user.password !== req.body.password) {
-      console.log(user)
+      // console.log(user)
       res.redirect('back');
     } else {
-      console.log(user);
+      // console.log(user);
       req.session.user = user;
-      console.log(req.session.user.id)
+      // console.log(req.session.user.id)
       userId = req.session.user.id
       res.redirect('/home');
     }
    
     var hash = await Hashes.findOne({user_id: userId});
-    console.log('hash?????', hash);
+    // console.log('hash?????', hash);
     var addr = hash.address;
     var value = 20;
-    console.log(addr)
+    // console.log(addr)
     API_call.hTokenTransfer(addr, value, (err, result) => {
-      console.log(addr,value, "djWjrh")
+      // console.log(addr,value, "djWjrh")
 
       if(!err){
         console.log('@@@@@ success @@ htoken transfer @@@@@');
-        console.log(result);
+        // console.log(result);
         
-        console.log(addr,value, "djWjrh")
+        // console.log(addr,value, "djWjrh")
 
       } else {
         console.log('@@@@@ error-htoken transfer @@@@@');

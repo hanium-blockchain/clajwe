@@ -55,14 +55,14 @@ $(function() {
 
   $('.assignBtn').click(function(e) {
     var $el = $(e.currentTarget);
-    console.log($el.data('evalid'))
+    // console.log($el.data('evalid'))
     $.ajax({
       url: '/007/assign/'+ $el.data('evalid'),
       method: 'POST',
       dataType: 'json',
       success: function(data) {
         console.log('평가자 승인 성공~~~~');
-        console.log(data);
+        // console.log(data);
         $el.hide();
       },
       error: function() {
@@ -80,10 +80,10 @@ $(function() {
       dataType: 'json',
       success: function(data) {
         console.log('평가자 승인 성공~~~~');
-        console.log(data);
+        // console.log(data);
       },
       error:function(request,status,error){
-        console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+        // console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
       },
       complete: function(data) {
       }

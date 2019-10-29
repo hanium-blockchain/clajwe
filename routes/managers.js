@@ -26,14 +26,14 @@ router.get('/', needAuth, (req, res, next) => {
 router.get('/register', needAuth, catchErrors(async (req, res, next) => {
   var evaluatorHead = ['#', '평가자 ', '등록일자', '승인']
   const assign = await Evaluators.find({is_approved: false}).populate('user_id')
-  console.log('assign', assign)
+  // console.log('assign', assign)
   res.render('list/manager_list', {title: '평가자 승인', list: evaluatorHead, evaluator: assign});
 }))
 
 router.get('/assign', needAuth, catchErrors(async (req, res, next) => {
   var assignHead = ['#', '분류', '자산명', '등록자', '등록일시']
   const assign = await Investments.find({is_evaluate: true, is_approved: false}).populate('user_id').populate('values_id')
-  console.log(assign);
+  // console.log(assign);
   res.render('list/assign_list', {title: '승인되지 않은 투자리스트', list: assignHead, invest: assign});
 }))
 
@@ -56,14 +56,14 @@ router.post('/makeToken', needAuth, catchErrors(async (req, res, next) => {
     API_call.htokenDeploy((err, result) => {
       if(!err){
         console.log('@@@@@ no error-htokenDeploy @@@@@');
-        console.log(result);
+        // console.log(result);
         txhash = result.response.txhash
         address = result.response.address
   
         API_call.htokenInit(async (err, result) => {
           if(!err){
             console.log('@@@@@ no error-htokenInit @@@@@');
-            console.log(result);
+            // console.log(result);
             value = 100000000
 
             newToken = new Managers({
