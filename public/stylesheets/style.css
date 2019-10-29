@@ -7,6 +7,28 @@ body{
 a {
   color: #00B7FF;
 }
+.footer-design1  {
+  position: absolute;
+
+  height: 10em;
+
+  bottom: 0;
+
+  width: 100%;
+
+	/* padding: 15px 0; */
+
+
+
+
+
+}
+.footer-design2{
+  margin-left:2em;
+}
+.footer-design3{
+  margin-left:15em;
+}
 
 /* 자산 등록 css */
 .newRegiTable th{
@@ -19,10 +41,11 @@ a {
 .row.invest_my_my{
   margin-top: 10rem;
   margin-left: 20rem;
-  margin-bottom: 16rem;
+
 }
 .row.invest_my_my1{
-  margin-left: 17rem;
+  margin-left: 20rem;
+  margin-top: 10rem;
   margin-right: 5rem;
 }
 input.assetNum {
