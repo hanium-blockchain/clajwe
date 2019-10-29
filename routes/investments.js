@@ -135,7 +135,32 @@ router.post('/request_invest/:id', needAuth, catchErrors(async (req, res, next)=
                 API_call.goAssetToken(params, (err, result) => {
                     if(!err){
                         console.log('@@@@@ success!!! - go token @@@@@ ');
+
                         // console.log(result);
+
+                        API_call.cloudsaleDeploy(function(err, result){
+                            if(!err){
+                                console.log('@@@ cloud sale deploy success @@@');
+                                console.log(result);
+
+                                var contract = null;
+                                var atokenAddr = null;
+
+
+
+
+
+
+
+                            } else {
+                                console.log('@@@ cloud sale deploy error @@@');
+                                console.log(err);
+                            }
+                        });
+
+
+
+
                     } else {
                         console.log('@@@@@ go asset error @@@@@ ');
                         // console.log(err);
