@@ -38,8 +38,9 @@ router.get('/assign', needAuth, catchErrors(async (req, res, next) => {
 }))
 
 router.post('/assign/:id', needAuth, catchErrors(async (req, res, next) => {
-  const evaluator = await Evaluators.findById(req.params.id);
+  const evaluator = await Evaluators.findById(req.params.id).populate('user_id');
   evaluator.is_approved = true;
+  evaluator.user_id.is_evaluate = true;
   evaluator.save();
   return res.json(evaluator)
 }))
@@ -47,9 +48,9 @@ router.post('/makeToken', needAuth, catchErrors(async (req, res, next) => {
   var txhash, address, value= null 
   const mg = await Managers.find({})
   if (mg.length == 1) {
-    const mg = Managers.find({})
-    mg.value += 100000000
-    await mg.save();
+    mg[0].value += 100000000
+    console.log(mg)
+    await mg[0].save();
     console.log('토큰이 추가 생성되었습니당')
     return res.json(mg)
   } else if (mg.length == 0) {

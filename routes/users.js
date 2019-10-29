@@ -93,7 +93,7 @@ router.get('/signin', (req, res, next) => {
 
 router.post('/signin', catchErrors(async (req, res, next) => {
   var newUser = await Users.findOne({email: req.body.email});
-  var newEval = await Evaluators.findOne({email: req.body.email});
+  // var newEval = await Evaluators.findOne({email: req.body.email});
 
   if (newUser) {
     console.log('이미 존재하는 메일')
@@ -125,12 +125,30 @@ router.post('/signin', catchErrors(async (req, res, next) => {
           console.log('@@@@@ no error-saveWallet @@@@@');
           console.log(result);
           
-          API_call.hTokenTransfer(addr, value, (err, result) => {
+          API_call.hTokenTransfer(addr, value, async (err, result) => {
             if(!err){
               console.log('@@@@@ success @@ htoken transfer @@@@@');
               console.log(result);
-
-
+              if (req.body.is_evaluator == "True"){
+                var newEval = new Evaluators({
+                  user_id: newUser.id,
+                  li_no: req.body.li_no,
+                  li_Category: req.body.li_Category,
+                  li_date: req.body.li_date,
+                  li_birth: req.body.li_birth,
+                  li_inner: req.body.li_inner
+                });
+            
+                await newEval.save();
+                console.log('@@@ eval success');
+              }
+            
+              newHash = new Hashes({
+                user_id: newUser.id,
+                address: addr,
+                prvKey: prv
+              })
+              await newHash.save();
             } else {
               console.log('@@@@@ error-htoken transfer @@@@@');
               console.log(err);
@@ -146,30 +164,8 @@ router.post('/signin', catchErrors(async (req, res, next) => {
       console.log('@@@@@ error-createWallet @@@@@');
       console.log(err);
     }
+    return res.redirect('/');
   })
-
-  if (req.body.is_evaluator == true){
-    newEval = new Evaluators({
-      user_id: newUser.id,
-      li_no: req.body.li_no,
-      li_Category: req.body.li_Category,
-      li_date: req.body.li_date,
-      li_birth: req.body.li_birth,
-      li_inner: req.body.li_inner
-    });
-
-    await newEval.save();
-    console.log('@@@ eval success');
-  }
-
-  newHash = new Hashes({
-    user_id: newUser.id,
-    address: addr,
-    prvKey: prv
-  })
-  await newHash.save();
- 
-  return res.redirect('/');
 }));
 
 router.post('/login', catchErrors (async (req, res, next) => {
