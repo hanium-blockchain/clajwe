@@ -1,12 +1,11 @@
-var express = require('express');
-var Users = require('../models/users');
-var Evaluators = require('../models/evaluators');
-var router = express.Router();
-var Assets = require('../models/assets');
-var Coins = require('../models/coins');
+const express = require('express');
+const Users = require('../models/users');
+const Evaluators = require('../models/evaluators');
+const router = express.Router();
+const Assets = require('../models/assets');
+const Coins = require('../models/coins');
 const catchErrors = require('../lib/async-error');
-var Values = require('../models/values');
-
+const Values = require('../models/values');
 
 
 function needAuth(req, res, next) {
@@ -112,14 +111,6 @@ router.get('/signin', (req, res, next) => {
 
 
 router.post('/signin', catchErrors(async (req, res, next) => {
-  // console.log('request', req)
-  // var err = validateForm(req.body, {needPassword: true});
-  // if (err) {
-  //   console.log(err)
-  //   return res.redirect('back');
-  // }
-
-
   var newUser = await Users.findOne({email: req.body.email});
   var newEval1 = await Evaluators.findOne({email: req.body.email});
 
@@ -127,7 +118,6 @@ router.post('/signin', catchErrors(async (req, res, next) => {
     console.log('이미 존재하는 메일')
     return res.redirect('back');
   }
-
 
   newUser = new Users({
     name: req.body.name,
@@ -137,13 +127,19 @@ router.post('/signin', catchErrors(async (req, res, next) => {
     is_manager: false
   });
 
-  // newUser.password = req.body.password;
-  // console.log(user)
   await newUser.save(); 
   console.log('@@@ user save');
 
-  // var finfUser = await Users.findOne({email: req.body.email});
-  
+  API.createWallet((err, result) => {
+    if (!err) {
+      console.log('지갑 생성 성공');
+      console.log(result);
+    } else {
+      console.log('에러~~~');
+      console.log(err);
+    }
+  });
+
   if (req.body.is_evaluator == true){
     newEval1 = new Evaluators({
       user_id: user.user_id,
