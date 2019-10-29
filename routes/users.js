@@ -189,44 +189,20 @@ router.post('/login', catchErrors (async (req, res, next) => {
       userId = req.session.user.id
       res.redirect('/home');
     }
-   
-
-
-
-    
-    // var hash = Hashes.findOne({user_id: req.session.user.id});
-    // console.log('hash?????', hash);
-
-    // var addr = hash.address;
-    // API_call.hTokenTransfer(addr, value, (err, result) => {
-    //   if(!err){
-    //       console.log('@@@@@ success!!! - htoken transfer-login @@@@@ ');
-    //       // console.log(result);
-    //   } else {
-    //       console.log(' @@@@@ error - htoken transfer -login @@@@@ ');
-    //       console.log(err);
-    //   }
-    // });
   });
-
-
-    
-    var hash = await Hashes.findOne({user_id: userId});
-    console.log('hash?????', hash);
-    var addr = hash.address;
-    var value = 20;
-    API_call.hTokenTransfer(addr, value, (err, result) => {
-      if(!err){
-          console.log('@@@@@ success!!! - htoken transfer-login @@@@@ ');
-          // console.log(result);
-      } else {
-          console.log(' @@@@@ error - htoken transfer -login @@@@@ ');
-          console.log(err);
-      }
-    });
-
-
-  
+  // var hash = await Hashes.findOne({user_id: userId});
+  // console.log('hash?????', hash);
+  // var addr = hash.address;
+  // var value = 20;
+  // API_call.hTokenTransfer(addr, value, (err, result) => {
+  //   if(!err){
+  //       console.log('@@@@@ success!!! - htoken transfer-login @@@@@ ');
+  //       // console.log(result);
+  //   } else {
+  //       console.log(' @@@@@ error - htoken transfer -login @@@@@ ');
+  //       console.log(err);
+  //   }
+  // });
 }));
 
 

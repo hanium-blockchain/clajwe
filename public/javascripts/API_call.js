@@ -40,7 +40,17 @@ module.exports = function() {
                     statusCodeErrorHandler(res.statusCode, callback, result);
                 });
             },
-
+            htokenDeploy: function(callback) {
+                OPTIONS.url = HOST+'/operators/htoken/deploy';
+                OPTIONS.body = JSON.stringify({
+                    "method": "",
+                    "params": {
+                    }
+                });
+                request.post(OPTIONS, function(err, res, result){
+                    statusCodeErrorHandler(res.statusCode, callback, result);
+                });
+            },
             htokenInit: function(callback) {
                 OPTIONS.url = HOST+'/operators/htoken/0x464dE7103Bf9964904d09D140BD831Af003f6969';
                 OPTIONS.body = JSON.stringify({
