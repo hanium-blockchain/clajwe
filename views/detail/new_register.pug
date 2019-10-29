@@ -15,17 +15,17 @@ block content
 
 
                 tr
-                    .form-group
+                    .form-group.assetNumInput
                         th(scope='row') 자산번호
                         td.regi(scope='row')
-                            input.form-control.col-10(type='text' id='number' name='number' placeholder='자산 번호')
+                            input.form-control.assetNum.col-10(type='text' id='number' name='number' placeholder='자산 번호')
                     .form-group
                         th(scope='row') 카테고리
                         td.regi(scope='row')
-                            select.form-control.col-10(id='category' name='category')
+                            select.form-control.asset-category.col-10(id='category' name='category')
                                 option 아파트
                                 option 주택
-                                option 부동산어쩌구
+                                option 토지
 
                 tr
                     .form-group
@@ -53,7 +53,7 @@ block content
                                     option 제주특별자치도
                                 select.form-control.address2.col-3(id='address2' name='address2')
                                     option 시/군/구
-                                input.form-control.col-4(type='text' id='address' name='address3' placeholder='상세주소를 입력해주세요')
+                                input.form-control.address3.col-4(type='text' id='address' name='address3' placeholder='상세주소를 입력해주세요')
                 
                 tr
                     .form-group
@@ -69,17 +69,17 @@ block content
                         th(scope='row') 준공년월
                         td(colspan='3')
                             .row
-                                select.form-control.col-4(id='completeYear' name='completeYear')
+                                select.form-control.completeYear.col-4(id='completeYear' name='completeYear')
                                     //- each val in [1,2,3,4,5,6,7,8,9,10,11,12]
                                     //-     option= val
                                     option YYYY
                                     -for(var i=1990; i<2020; i++)
                                         option= i
-                                select.form-control.col-3(id='completeMonth' name='completeMonth')
+                                select.form-control.completeMonth.col-3(id='completeMonth' name='completeMonth')
                                     option MM
                                     -for(var i=1; i<13; i++)
                                         option= i
-                                select.form-control.col-3(id='completeDay' name='completeDay')
+                                select.form-control.completeDay.col-3(id='completeDay' name='completeDay')
                                     option DD
 
                 tr
@@ -93,15 +93,15 @@ block content
                         th(scope='row') 청산 일시
                         td(colspan='3')
                             .row
-                                select.form-control.col-4(id='endYear' name='endYear')
+                                select.form-control.endYear.col-4(id='endYear' name='endYear')
                                     option YYYY
                                     -for(var i=2019; i<2031; i++)
                                         option= i
-                                select.form-control.col-3(id='endMonth' name='endMonth')
+                                select.form-control.endMonth.col-3(id='endMonth' name='endMonth')
                                     option MM
                                     -for(var i=1; i<13; i++)
                                         option= i
-                                select.form-control.col-3(id='endDay' name='endDay')
+                                select.form-control.endDay.col-3(id='endDay' name='endDay')
                                     option DD
                 
                 tr

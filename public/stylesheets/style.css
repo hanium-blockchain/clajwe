@@ -17,10 +17,44 @@ a {
   width: 20%;
 }
 
-select.address{
-  width : 30%;
-  margin-left: 0.1em;
+input.assetNum {
+  width: 70%;
 }
+
+select.asset-category {
+  width: 100%;
+}
+
+td.regi {
+  width: 40%;
+}
+
+select.address1, select.address2, input.address3 {
+  margin: 0.2em;
+}
+
+select.address1 {
+  margin-left: 0.5em;
+}
+
+select.completeYear, select.completeMonth, select.completeDay {
+  margin: 0.2em;
+}
+
+select.completeYear {
+  margin-left: 0.5em;
+}
+
+select.endYear, select.endMonth, select.endDay {
+  margin: 0.2em;
+}
+
+select.endYear {
+  margin-left: 0.5em;
+}
+
+
+
 
 label.area {
   width: 15%;
