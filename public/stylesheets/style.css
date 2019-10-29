@@ -102,6 +102,12 @@ td.button{
 
 
 /* 평가 css */
+
+.row.eval_my{
+  margin-left: 17rem;
+  margin-right: 5rem;
+}
+
 table.table.table-bordered.evaluate {
   width: 100%;
   margin: auto;
