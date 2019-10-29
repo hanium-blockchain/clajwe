@@ -34,7 +34,7 @@ router.get('/detail_inv/:id', needAuth, catchErrors(async (req, res, next)=> {
     }
 
     const coins = await Coins.find({asset_id:coin.asset_id}); // 투자 리스트
-    // console.log('@@@ coins?', coins);
+    console.log('@@@ coins?', coins);
 
     var coinSum = 0;
     var leftSum = 0;
@@ -98,7 +98,7 @@ router.get('/detail_my/:id', needAuth, catchErrors(async (req, res, next)=> {
 
     const asset = await Assets.findById(req.params.id);
 
-    // console.log('@@@@@ asset? ', asset);
+    console.log('@@@@@ asset? ', asset);
 
 
     res.render('detail/invest_detail_my', {asset: asset});
@@ -117,7 +117,7 @@ router.post('/request_invest/:id', needAuth, catchErrors(async (req, res, next)=
         API_call.assetTokenize(function(err, result){
             if(!err){
                 console.log('@@@@@ success!!! - tokenize asset @@@@@ ');
-                // console.log(result);
+                console.log(result);
                 
                 txaddress = result.response.address;
                 params._tokenId = result.response.txhash;
@@ -135,15 +135,14 @@ router.post('/request_invest/:id', needAuth, catchErrors(async (req, res, next)=
                 API_call.goAssetToken(params, (err, result) => {
                     if(!err){
                         console.log('@@@@@ success!!! - go token @@@@@ ');
-
-                        // console.log(result);
+                        console.log(result);
 
                         API_call.cloudsaleDeploy(function(err, result){
                             if(!err){
                                 console.log('@@@ cloud sale deploy success @@@');
                                 console.log(result);
 
-                                var contract = null;
+                                var contract = result.txhash;
                                 var atokenAddr = null;
 
 
@@ -160,10 +159,9 @@ router.post('/request_invest/:id', needAuth, catchErrors(async (req, res, next)=
 
 
 
-
                     } else {
                         console.log('@@@@@ go asset error @@@@@ ');
-                        // console.log(err);
+                        console.log(err);
                     }
                 });
 
