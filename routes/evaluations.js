@@ -41,7 +41,7 @@ router.post('/request_eval/:id', catchErrors(async (req,res,next)=>{
     asset.is_evaluate = true;
     await asset.save();
 
-    return res.redirect('back');
+    return res.redirect('../list');
 
 }));
 

@@ -173,6 +173,7 @@ router.post('/request_invest/:id', needAuth, catchErrors(async (req, res, next)=
         const asset = await Assets.findById(req.params.id);
         asset.is_approved = true;
         await asset.save();
+        return res.redirect('../../007/assign');
 
     } else { // 일반 사용자 -> 투자하기 
 
@@ -184,9 +185,9 @@ router.post('/request_invest/:id', needAuth, catchErrors(async (req, res, next)=
             coin: req.body.investValue
         });
         coin.save();
-    }
+        return res.redirect('../list');
 
-    return res.redirect('back');
+    }
 }));
 
 router.get('/list', needAuth, catchErrors(async (req, res, next) => {
