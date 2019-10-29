@@ -8,7 +8,6 @@ const Coins = require('../models/coins');
 const catchErrors = require('../lib/async-error');
 const Values = require('../models/values');
 const API_call = require('../public/javascripts/API_call')();
-const request = require('request');
 
 
 function needAuth(req, res, next) {
