@@ -1,27 +1,16 @@
-var request = require('request');
+const request = require('request');
 
-module.exports = function(callee) {
-    function API_Call(callee) {
+module.exports = function() {
+    function API_Call() {
         var OPTIONS = {
             headers: {'Content-Type' : 'application/json'},
             url:null,
             body: null
         };
-        const PORT = 'http://3.19.244.221:8080'
-        // const BASE_PATH = '/';
-        var HOST = null;
-        (function (){
-            switch(callee){
-                case('wallet'):
-                    HOST = PORT + '/wallets'
-                    break;
-                default:
-                    break;
-            }
-        })(callee);
+        const HOST = 'http://3.19.244.221:8080'
         return {
             createWallet: function(callback){
-                OPTIONS.url = HOST;
+                OPTIONS.url = HOST+'/wallets';
                 OPTIONS.body = JSON.stringify();
                 request.post(OPTIONS, function(err, res, result){
                     statusCodeErrorHandler(res.statusCode, callback, result);
@@ -44,7 +33,7 @@ module.exports = function(callee) {
     var INSTANCE;
 
     if(INSTANCE == undefined){
-        INSTANCE = new API_Call(callee);
+        INSTANCE = new API_Call();
     }
     return INSTANCE;
 

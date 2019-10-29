@@ -6,8 +6,7 @@ const Assets = require('../models/assets');
 const Coins = require('../models/coins');
 const catchErrors = require('../lib/async-error');
 const Values = require('../models/values');
-const server = require('../public/javascripts/server')('wallet');
-
+const server = require('../public/javascripts/server')();
 const request = require('request');
 
 
@@ -82,10 +81,6 @@ function validateForm(form, options) {
 
 
 
-/* GET users listing. */
-// router.get('/', function(req, res, next) {
-//   res.send('respond with a resource');
-// });
 router.get('/', function(req, res, next) {
   res.render('user/login');
 });
