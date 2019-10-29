@@ -9,13 +9,13 @@ form(action=`../request_invest/${asset.id}` method='POST')
                 td(scope='row') #{value.value} 원 
             tr
                 th.detail(scope='row') 현재 투자 인원
-                td(scope='row') 0 명 
+                td(scope='row') #{invPeople} 명 
             tr 
                 th.detail(scope='row') 투자 총액
-                td(scope='row') 0 원 
+                td(scope='row') #{coinSum} 원 
             tr
                 th.detail(scope='row') 남은 투자 금액 
-                td(scope='row') 0 원
+                td(scope='row') #{leftSum} 원
             tr
                 th.detail(scope='row') 나의 투자 금액 (코인)
                 td(scope='row') 

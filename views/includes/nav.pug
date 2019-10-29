@@ -14,9 +14,11 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
       li.nav-item
         a.nav-link(href="/investments/list") 
           | 투자
-      li.nav-item
-        a.nav-link(href="/evaluations/list") 
-          | 평가리스트
+      if (currentUser)
+        if (currentUser.is_evaluator)
+          li.nav-item
+            a.nav-link(href="/evaluations/list") 
+              | 평가리스트
       
     form.form-inline.my-2.my-lg-0
         a.nav-link(href="/signout") 

@@ -38,11 +38,11 @@ $(function() {
     location.href=url
   });
 
-  $('.assignBtn').click(function() {
+  $('.assignBtn').click(function(e) {
     var $el = $(e.currentTarget);
-
+    console.log($el.data('evalid'))
     $.ajax({
-      url: '/007/assign/'+ $el.data('evalId'),
+      url: '/007/assign/'+ $el.data('evalid'),
       method: 'POST',
       dataType: 'json',
       success: function(data) {
