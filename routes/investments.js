@@ -142,7 +142,7 @@ router.post('/request_invest/:id', needAuth, catchErrors(async (req, res, next)=
                                 console.log('@@@ cloud sale deploy success @@@');
                                 console.log(result);
 
-                                var contract = null;
+                                var contract = result.txhash;
                                 var atokenAddr = null;
 
 

@@ -113,17 +113,25 @@ router.post('/signin', catchErrors(async (req, res, next) => {
 
   var addr = null
   var prv = null
+  
   var value = 200;
-  API_call.createWallet(function(err, result){
+  API_call.createWallet(async function(err, result){
     if(!err){
       console.log('@@@@@ no error-createWallet @@@@@');
-      console.log(result);
+      // console.log(result);
       addr = result.response.address
       prv = result.response.privateKey
+      newHash = new Hashes({
+        user_id: newUser.id,
+        address: addr,
+        prvKey: prv
+      })
+      await newHash.save();
+      // console.log(newHash)
       API_call.saveWallet(addr, (err, result) => {
         if(!err){
           console.log('@@@@@ no error-saveWallet @@@@@');
-          console.log(result);
+          // console.log(result);
           
           API_call.hTokenTransfer(addr, value, async (err, result) => {
             if(!err){
@@ -149,6 +157,10 @@ router.post('/signin', catchErrors(async (req, res, next) => {
                 prvKey: prv
               })
               await newHash.save();
+              // console.log(result);
+              
+              // console.log(addr,prv, "djWjrh")
+
             } else {
               console.log('@@@@@ error-htoken transfer @@@@@');
               console.log(err);
@@ -166,22 +178,38 @@ router.post('/signin', catchErrors(async (req, res, next) => {
     }
     return res.redirect('/');
   })
+
+  if (req.body.is_evaluator == True){
+    newEval = new Evaluators({
+      user_id: newUser.id,
+      li_no: req.body.li_no,
+      li_Category: req.body.li_Category,
+      li_date: req.body.li_date,
+      li_birth: req.body.li_birth,
+      li_inner: req.body.li_inner
+    });
+
+    await newEval.save();
+    console.log('@@@ eval success');
+  }
+ 
+  return res.redirect('/');
 }));
 
 router.post('/login', catchErrors (async (req, res, next) => {
   var userId = null;
 
-  Users.findOne({email: req.body.email}, function(err, user) {
+  Users.findOne({email: req.body.email}, async function(err, user) {
     if (err) {
       console.log('err')
       res.redirect('back');
     } else if (!user || user.password !== req.body.password) {
-      console.log(user)
+      // console.log(user)
       res.redirect('back');
     } else {
-      console.log(user);
+      // console.log(user);
       req.session.user = user;
-      console.log(req.session.user.id)
+      // console.log(req.session.user.id)
       userId = req.session.user.id
       res.redirect('/home');
     }
@@ -199,6 +227,7 @@ router.post('/login', catchErrors (async (req, res, next) => {
   //       console.log(err);
   //   }
   // });
+
 }));
 
 
