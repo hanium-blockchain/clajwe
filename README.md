@@ -1,11 +1,11 @@
-# CLAJWE
+## CLAJWE : 블록체인을 활용한 자산 유동화 플랫폼
+- 정지우, 최리안, 최은지
 
-#### 블록체인을 활용한 자산 유동화 플랫폼
-#### 정지우, 최리안, 최은지
+<br/>
 
----
 
-**시작방법**
+
+### 시작 방법
 
 ```
 git clone https://github.com/hanium-blockchain/clajwe.git
@@ -13,6 +13,34 @@ git clone https://github.com/hanium-blockchain/clajwe.git
 npm install
 npm start
 ```
+
+<br/>
+
+
+### 프로젝트 소개 
+
+- 다양한 자산을 기반으로 블록체인에 등록(ERC-721 토큰 발행)
+- 해당 자산을 평가한 후에 이를 토큰으로 발행(자산을 평가금액으로 분할)
+- 발행된 토큰을 청약 및 청산, 다양한 다른 토큰으로 교환하는 기능을 구현
+
+<br/>
+
+
+### 주요 기능
+
+- 자산 등록 : 다양한 자산을 ERC-721 토큰화 하여 플랫폼에 등록함
+- 자산평가,토큰발행 : 등록된 자산을 평가하고 이를 기반으로 토큰을 발행함
+- 토큰청약, 청산 : 토큰을 청약받고, 계약조건에 따라 다시 청산(수익 발생)한다.
+- 토큰교환 : 정의된 교환비율에 의해 다양한 토큰 및 암호화폐와 교환한다.
+
+<br/>
+
+
+### 
+
+
+
+
 
 
 
@@ -74,6 +102,8 @@ npm start
 
 
 
+<br/>
+
 
 
 **DB**
@@ -86,6 +116,10 @@ npm start
 | Coins      | coin_id  | user_id<br />asset_id        | coin                                                         |
 | Evaluators | ev_id    | user_id                      | li_no<br/>li_Category<br/>li_date<br/>li_birth<br/>li_inner (내지번호) |
 | Values     | value_id | asset_id<br/>user_id(평가자) | value<br/>value2coin                                         |
+
+
+
+<br/>
 
 
 
