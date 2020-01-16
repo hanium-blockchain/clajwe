@@ -59,17 +59,17 @@ npm start
 |   |   |   |-- invest_form.pug
 |   |   |   |-- invest_info.pug
 |   |   |-- includes
-|   |   |   |-- footer.swift
-|   |   |   |-- header.swift
-|   |   |   |-- nav.swift
+|   |   |   |-- footer.pug
+|   |   |   |-- header.pug
+|   |   |   |-- nav.pug
 |   |   |-- list
-|   |   |   |-- assign_list.swift
-|   |   |   |-- eval_invest_list.swift
-|   |   |   |-- manager_list.swift
+|   |   |   |-- assign_list.pug
+|   |   |   |-- eval_invest_list.pug
+|   |   |   |-- manager_list.pug
 |   |   |-- user
-|   |   |   |-- login.swift
-|   |   |   |-- mypage.swift
-|   |   |   |-- manager_list.swift
+|   |   |   |-- login.pug
+|   |   |   |-- mypage.pug
+|   |   |   |-- manager_list.pug
 |   |   |-- error.pug
 |   |   |-- index.pug
 |   |   |-- layout.pug
