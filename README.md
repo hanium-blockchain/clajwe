@@ -130,6 +130,6 @@ npm start
 
 ## Contributors
 
-- [최은지](https://github.com/ChoiEunji0114)
+- [최담](https://github.com/choidam)
 - [최리안](https://github.com/leeeeean)
 - [정지우](https://github.com/jioo123)
